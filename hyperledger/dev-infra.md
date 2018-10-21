@@ -70,6 +70,12 @@
   curl -sSL http://bit.ly/2ysbOFE | bash -s <fabric> <fabric-ca> <thirdparty>
   curl -sSL http://bit.ly/2ysbOFE | bash -s 1.3.0 1.3.0 0.4.13
    
+   스크립트는 다음을 수행한다.
+   
+  1. If needed, clone the hyperledger/fabric-samples repository
+  2. Checkout the appropriate version tag
+  3. Install the Hyperledger Fabric platform-specific binaries and config files for the version specified into the root of the fabric-samples repository
+  4. Download the Hyperledger Fabric docker images for the version specified
    
    
         
