@@ -9,7 +9,15 @@
 
    ### OS
         
-        VirtualBox , Ubuntu-18.04 
+        VirtualBox , Ubuntu-18.04
+        
+        1. ssh server 설치
+           sudo apt-get install openssh-server
+           
+        2. ifconfig 설치
+           sudo apt install net-tools
+        
+         
           
    ### docker 설치
    
@@ -57,7 +65,7 @@
    wget -qO- https://deb.nodesource.com/setup_8.x | sudo -E bash -
    sudo apt-get install -y nodejs
    
-   npm install npm@5.6.0 -g
+   sudo npm install npm@5.6.0 -g
    
    node -v   // version 확인
    
