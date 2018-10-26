@@ -11,6 +11,10 @@
 
    ./startFabric.sh
    
+   1) channel 을 만들고 peer에 채널을 조인한다.
+   2) fabcar 스마트 계약을 피어의 파일 시스템에 설치하고이를 채널에 인스턴스화합니다 (인스턴스 생성은 컨테이너 시작)
+   3) initLedger 함수를 호출하여 채널 원장에 10 개의 고유 한 자동차를 채 웁니다.
+   
 ### docker log 출력
 
     docker logs -f ca.example.com
@@ -28,7 +32,7 @@
     2018/10/22 13:36:05 [INFO] 172.19.0.1:51074 POST /api/v1/enroll 201 0 "OK"
     
 ### Register and Enroll user1
-    새로 생성 된 admin eCert를 사용하여 이제 CA 서버와 통신하여 새 사용자를 등록하고 등록합니다
+    새로 생성 된 admin eCert를 사용하여 이제 CA 서버와 통신하여 새 사용자를 등록합니다
     
     node registerUser.js
     
@@ -39,10 +43,16 @@
 
 
 ### 조회
-    
     node query.js
     
 ###
+
+
+
+
+## Understanding the Fabcar Network
+
+
 
     
     
