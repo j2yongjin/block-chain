@@ -11,6 +11,10 @@
 
    ./startFabric.sh
    
+   1) channel 을 만들고 peer에 채널을 조인한다.
+   2) fabcar 스마트 계약을 피어의 파일 시스템에 설치하고이를 채널에 인스턴스화합니다 (인스턴스 생성은 컨테이너 시작)
+   3) initLedger 함수를 호출하여 채널 원장에 10 개의 고유 한 자동차를 채 웁니다.
+   
 ### docker log 출력
 
     docker logs -f ca.example.com
@@ -42,7 +46,7 @@
     
     node registerUser.js
     
-    서버 성공 로그
+    성공 로그
     2018/10/22 13:39:25 [INFO] 172.19.0.1:51080 POST /api/v1/register 201 0 "OK"
     2018/10/22 13:39:25 [INFO] signed certificate with serial number 357433460539293339108612625914030457375640499572
     2018/10/22 13:39:25 [INFO] 172.19.0.1:51084 POST /api/v1/enroll 201 0 "OK"
@@ -64,7 +68,7 @@
 
 
 ### 조회
-
+    
     node query.js
     
     내부 소스 
@@ -144,6 +148,13 @@
     2018-10-24 13:41:27.285 UTC [orderer/common/server] Start -> INFO 006 Beginning to serve requests
     2018-10-24 13:41:38.055 UTC [fsblkstorage] newBlockfileMgr -> INFO 007 Getting block information from block storage
     2018-10-24 13:41:38.061 UTC [orderer/commmon/multichannel] newChain -> INFO 008 Created and starting new chain mychannel
+
+
+
+
+## Understanding the Fabcar Network
+
+
 
     
     
