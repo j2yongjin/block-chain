@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/block-chain.iml" filepath="$PROJECT_DIR$/.idea/block-chain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/block-chain.iml" filepath="$PROJECT_DIR$/.idea/modules/block-chain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode.iml" group="books-chaincode" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_main.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_main.iml" group="books-chaincode" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_test.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_test.iml" group="books-chaincode" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier.iml" group="chain-code-supplier" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_main.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_main.iml" group="chain-code-supplier" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_test.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_test.iml" group="chain-code-supplier" />
     </modules>
   </component>
 </project>

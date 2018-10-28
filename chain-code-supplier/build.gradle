@@ -1,0 +1,7 @@
+sourceCompatibility = 1.8
+dependencies{
+
+    // https://mvnrepository.com/artifact/org.hyperledger.fabric-sdk-java/fabric-sdk-java
+    compile group: 'org.hyperledger.fabric-sdk-java', name: 'fabric-sdk-java', version: '1.2.2'
+
+}

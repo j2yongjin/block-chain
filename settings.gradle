@@ -1,0 +1,3 @@
+rootProject.name = 'block-chain'
+include "books-chaincode"
+include "chain-code-supplier"
