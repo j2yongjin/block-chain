@@ -8,4 +8,6 @@
 
     docker network prune
     
-    
+### docker exec
+
+    docker exec -it peer0.org1.example.com /bin/bash
