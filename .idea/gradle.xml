@@ -9,8 +9,11 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/block-chain-common" />
             <option value="$PROJECT_DIR$/books-chaincode" />
             <option value="$PROJECT_DIR$/chain-code-supplier" />
+            <option value="$PROJECT_DIR$/daou-books" />
+            <option value="$PROJECT_DIR$/daou-books-admin" />
           </set>
         </option>
       </GradleProjectSettings>

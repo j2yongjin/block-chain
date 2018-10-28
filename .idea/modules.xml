@@ -3,12 +3,21 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/block-chain.iml" filepath="$PROJECT_DIR$/.idea/modules/block-chain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common.iml" filepath="$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common.iml" group="block-chain-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common_main.iml" group="block-chain-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/block-chain-common/block-chain-common_test.iml" group="block-chain-common" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode.iml" group="books-chaincode" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_main.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_main.iml" group="books-chaincode" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_test.iml" filepath="$PROJECT_DIR$/.idea/modules/books-chaincode/books-chaincode_test.iml" group="books-chaincode" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier.iml" group="chain-code-supplier" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_main.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_main.iml" group="chain-code-supplier" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_test.iml" filepath="$PROJECT_DIR$/.idea/modules/chain-code-supplier/chain-code-supplier_test.iml" group="chain-code-supplier" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books/daou-books.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books/daou-books.iml" group="daou-books" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin.iml" group="daou-books-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin_main.iml" group="daou-books-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books-admin/daou-books-admin_test.iml" group="daou-books-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books/daou-books_main.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books/daou-books_main.iml" group="daou-books" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/daou-books/daou-books_test.iml" filepath="$PROJECT_DIR$/.idea/modules/daou-books/daou-books_test.iml" group="daou-books" />
     </modules>
   </component>
 </project>
