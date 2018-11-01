@@ -1,6 +1,32 @@
 
 ## 프로젝트 네트워크 구성
 
+    byfn
+        -> networkUp
+            -> generateCerts
+                -> cryptogen generate --config=./crypto-config.yaml
+            -> replacePrivateKey
+                
+            -> generateChannelArtifacts
+            
+                    Generating Orderer Genesis block 
+                -> configtxgen -profile TwoOrgsOrdererGenesis -outputBlock ./channel-artifacts/genesis.block
+                
+                    Generating channel configuration transaction 'channel.tx'
+                -> configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
+                
+                    Generating anchor peer update for Org1MSP
+                -> configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org1MSP
+                
+                    Generating anchor peer update for Org2MSP
+                -> ./channel-artifacts/Org2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org2MSP
+         
+            -> 
+                -> docker-compose-cli.yaml 호출
+                        -> base/docker-compose-base.yaml
+                        
+                
+
 ### 샘플 네트워크 분석
 
    ~/fabric-samples/first-network
@@ -38,18 +64,18 @@
 generateCerts    
    
     cryptogen 도구를 사용하여 암호 자료 (x509 certs)를 생성합니다.
-     우리의 다양한 네트워크 엔터티. 인증서는 표준 PKI를 기반으로합니다.
-     공통 트러스트 앵커에 도달하여 유효성을 검사하는 구현
+    우리의 다양한 네트워크 엔터티. 인증서는 표준 PKI를 기반으로합니다.
+    공통 트러스트 앵커에 도달하여 유효성을 검사하는 구현
      
      Cryptogen은 네트워크를 포함하는 파일``crypto-config.yaml``을 사용합니다.
-      토폴로지를 사용하여 두 가지 모두에 대한 인증서 라이브러리를 생성 할 수 있습니다.
+     토폴로지를 사용하여 두 가지 모두에 대한 인증서 라이브러리를 생성 할 수 있습니다.
      조직 및 해당 조직에 속하는 구성 요소. 마다
      조직은 고유 한 루트 인증서 (``ca-cert``)를 제공합니다.
-      특정 구성 요소 (동료 및 주문자)를 해당 Org. 거래 및 통신
-      within Fabric은 엔티티의 개인 키 ( "keystore")에 의해 서명 된 후 검증됩니다
-      공개 키 (``signcerts``)를 사용하여. "count"변수가 있음을 알 수 있습니다.
-      이 파일. 우리는이를 사용하여 조직 당 피어의 수를 지정합니다. 우리의
-      Org 당 두 명의 동료가있는 경우입니다.
+     특정 구성 요소 (동료 및 주문자)를 해당 Org. 거래 및 통신
+     within Fabric은 엔티티의 개인 키 ( "keystore")에 의해 서명 된 후 검증됩니다
+     공개 키 (``signcerts``)를 사용하여. "count"변수가 있음을 알 수 있습니다.
+     이 파일. 우리는이를 사용하여 조직 당 피어의 수를 지정합니다. 우리의
+     Org 당 두 명의 동료가있는 경우입니다.
        
       이 도구를 실행하면 certs가 "crypto-config"라는 폴더에 보관됩니다
 
@@ -285,6 +311,89 @@ replacePrivateKey
            networks:
              - byfn
              
+### docker-compose-base.yaml
+    
+    services:
+    
+      orderer.example.com:
+        container_name: orderer.example.com
+        image: hyperledger/fabric-orderer:$IMAGE_TAG
+        environment:
+          - ORDERER_GENERAL_LOGLEVEL=INFO
+          - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+          - ORDERER_GENERAL_GENESISMETHOD=file
+          - ORDERER_GENERAL_GENESISFILE=/var/hyperledger/orderer/orderer.genesis.block
+          - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+          - ORDERER_GENERAL_LOCALMSPDIR=/var/hyperledger/orderer/msp
+          # enabled TLS
+          - ORDERER_GENERAL_TLS_ENABLED=true
+          - ORDERER_GENERAL_TLS_PRIVATEKEY=/var/hyperledger/orderer/tls/server.key
+          - ORDERER_GENERAL_TLS_CERTIFICATE=/var/hyperledger/orderer/tls/server.crt
+          - ORDERER_GENERAL_TLS_ROOTCAS=[/var/hyperledger/orderer/tls/ca.crt]
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric
+        command: orderer
+        volumes:
+        - ../channel-artifacts/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
+        - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp:/var/hyperledger/orderer/msp
+        - ../crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/:/var/hyperledger/orderer/tls
+        - orderer.example.com:/var/hyperledger/production/orderer
+        ports:
+          - 7050:7050
+    
+      peer0.org1.example.com:
+        container_name: peer0.org1.example.com
+        extends:
+          file: peer-base.yaml
+          service: peer-base
+        environment:
+          - CORE_PEER_ID=peer0.org1.example.com
+          - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+          - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.org1.example.com:7051
+          - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.org1.example.com:7051
+          - CORE_PEER_LOCALMSPID=Org1MSP
+        volumes:
+            - /var/run/:/host/var/run/
+            - ../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp:/etc/hyperledger/fabric/msp
+            - ../crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls:/etc/hyperledger/fabric/tls
+            - peer0.org1.example.com:/var/hyperledger/production
+        ports:
+          - 7051:7051
+          - 7053:7053
+    
+      peer1.org1.example.com:
+        container_name: peer1.org1.example.com
+        extends:
+          file: peer-base.yaml
+          service: peer-base
+        environment:
+          - CORE_PEER_ID=peer1.org1.example.com
+          - CORE_PEER_ADDRESS=peer1.org1.example.com:7051
+          
+          
+### peer-base.yaml
+
+    services:
+      peer-base:
+        image: hyperledger/fabric-peer:$IMAGE_TAG
+        environment:
+          - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+          # the following setting starts chaincode containers on the same
+          # bridge network as the peers
+          # https://docs.docker.com/compose/networking/
+          - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_byfn
+          - CORE_LOGGING_LEVEL=INFO
+          #- CORE_LOGGING_LEVEL=DEBUG
+          - CORE_PEER_TLS_ENABLED=true
+          - CORE_PEER_GOSSIP_USELEADERELECTION=true
+          - CORE_PEER_GOSSIP_ORGLEADER=false
+          - CORE_PEER_PROFILE_ENABLED=true
+          - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+          - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+          - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+        working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+        command: peer node start
+
+
 
 
 
