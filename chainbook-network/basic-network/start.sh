@@ -25,4 +25,6 @@ docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/h
 # Join peer0.org1.example.com to the channel.
 docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org1.chainbooks.com/msp" peer0.org1.chainbooks.com peer channel join -b mychannel.block
 
+docker exec -e "CORE_PEER_LOCALMSPID=Org2MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org2.chainbooks.com/msp" peer0.org2.chainbooks.com peer channel fetch oldest mychannel.block -c mychannel
+
 docker exec -e "CORE_PEER_LOCALMSPID=Org2MSP" -e "CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/msp/users/Admin@org2.chainbooks.com/msp" peer0.org2.chainbooks.com peer channel join -b mychannel.block
