@@ -62,21 +62,23 @@
      
    ### nodejs 설치
    
-   wget -qO- https://deb.nodesource.com/setup_8.x | sudo -E bash -
-   sudo apt-get install -y nodejs
+	wget -qO- https://deb.nodesource.com/setup_8.x | sudo -E bash -
+	
+	sudo apt-get install -y nodejs
    
-   sudo npm install npm@5.6.0 -g
+	sudo npm install npm@5.6.0 -g
    
-   node -v   // version 확인
+	node -v   // version 확인
    
 ## 개발 환경 구성
 
   Install Sample , Binary , Docker images
   
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.3.0
+	curl -sSL http://bit.ly/2ysbOFE | bash -s 1.3.0
    
-  curl -sSL http://bit.ly/2ysbOFE | bash -s <fabric> <fabric-ca> <thirdparty>
-  curl -sSL http://bit.ly/2ysbOFE | bash -s 1.3.0 1.3.0 0.4.13
+	curl -sSL http://bit.ly/2ysbOFE | bash -s <fabric> <fabric-ca> <thirdparty>
+	
+	curl -sSL http://bit.ly/2ysbOFE | bash -s 1.3.0 1.3.0 0.4.13
    
    스크립트는 다음을 수행한다.
    

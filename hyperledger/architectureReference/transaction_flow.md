@@ -49,7 +49,7 @@
 ### 4. Client assembles endorsements into a transaction(클라이언트가 보증을 트랜잭션으로 합칩니다.)
 
     응용 프로그램은 Transaction Proposal 와 response을 "transaction message"로 Ordering Service에 broadcasting 합니다 
-    트랜잭션에는 읽기 / 쓰기 세트, 승인 피어 서명 및 채널 ID가 포함됩니다. 
+    트랜잭션에는 읽기 / 쓰기 세트, endorsing 피어 서명 및 채널 ID가 포함됩니다. 
     Ordering Service는 트랜잭션을 수행하기 위해 트랜잭션의 전체 내용을 검사 할 필요가 없으며 네트워크의 모든 채널에서 트랜잭션을 수신하고 채널별로 
     시간순으로 정렬하며 채널당 트랜잭션 블록을 생성합니다
     

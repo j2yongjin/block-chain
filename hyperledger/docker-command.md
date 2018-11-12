@@ -1,4 +1,8 @@
 
+### active container stop
+
+    docker stop $(docker ps -qa)
+    
 ### active container kill
 
     docker rm -f $(docker ps -a -q)
