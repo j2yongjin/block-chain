@@ -2,7 +2,7 @@ package com.daou.supplier.service;
 
 import org.hyperledger.fabric.sdk.*;
 import org.hyperledger.fabric.sdk.exception.InvalidArgumentException;
-import org.hyperledger.fabric.sdk.exception.TransactionException;
+import org.hyperledger.fabric.sdk.security.CryptoSuite;
 
 /**
  * Created by yjlee on 2018-10-28.
@@ -11,26 +11,23 @@ public class DefaultChannelService implements ChannelService {
 
     HFClient hfClient;
 
-    public DefaultChannelService(HFClient hfClient){
-        this.hfClient = hfClient;
+
+    public DefaultChannelService(User user) throws Exception {
+        CryptoSuite cryptoSuite = CryptoSuite.Factory.getCryptoSuite();
+        // setup the client
+        hfClient = HFClient.createNewInstance();
+        hfClient.setCryptoSuite(cryptoSuite);
+        hfClient.setUserContext(user);
     }
 
-    @Override
-    public Channel getChannel() throws InvalidArgumentException, TransactionException {
-        // initialize channel
-        // peer name and endpoint in fabcar network
-        Peer peer = hfClient.newPeer("peer0.org1.example.com", "grpc://localhost:7051");
-        // eventhub name and endpoint in fabcar network
-        EventHub eventHub = hfClient.newEventHub("eventhub01", "grpc://localhost:7053");
-        // orderer name and endpoint in fabcar network
-        Orderer orderer = hfClient.newOrderer("orderer.example.com", "grpc://localhost:7050");
-        // channel name in fabcar network
-        Channel channel = hfClient.newChannel("mychannel");
-        channel.addPeer(peer);
-        channel.addEventHub(eventHub);
-        channel.addOrderer(orderer);
-        channel.initialize();
-        return channel;
-
+    public ChannelCustomClient createChannelClient(String name) throws InvalidArgumentException {
+        Channel channel = hfClient.newChannel(name);
+        ChannelCustomClient client = new ChannelCustomClient(name, channel, this);
+        return client;
     }
+
+    public HFClient getInstance() {
+        return hfClient;
+    }
+
 }
