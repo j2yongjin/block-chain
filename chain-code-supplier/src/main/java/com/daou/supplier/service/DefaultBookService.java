@@ -41,7 +41,7 @@ public class DefaultBookService implements BookService {
         ChannelCustomClient channelCustomClient = defaultChannelService.createChannelClient(SupplierConfig.CHANNEL_NAME);
         Channel channel = channelCustomClient.getChannel();
 
-        Peer peer = defaultChannelService.getInstance().newPeer(SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL);
+        Peer peer = defaultChannelService.getInstance().newPeer(SupplierConfig.ORG2_PEER_0,SupplierConfig.ORG2_PEER_0_URL);
         EventHub eventHub = defaultChannelService.getInstance().newEventHub("eventhub01", "grpc://localhost:7053");
         Orderer orderer = defaultChannelService.getInstance().newOrderer(SupplierConfig.ORDERER_NAME, SupplierConfig.ORDERER_URL);
 

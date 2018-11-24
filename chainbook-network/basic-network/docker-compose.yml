@@ -15,7 +15,7 @@ services:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
       - FABRIC_CA_SERVER_CA_NAME=ca.chainbooks.com
       - FABRIC_CA_SERVER_CA_CERTFILE=/etc/hyperledger/fabric-ca-server-config/ca.org1.chainbooks.com-cert.pem
-      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/7753c9c6c2ecf5294c430c6d304aa49f8e24cf653b8aed40de1c89ce414d13cd_sk
+      - FABRIC_CA_SERVER_CA_KEYFILE=/etc/hyperledger/fabric-ca-server-config/9fd7460376637602761fd79238b9afb1a538e9caa2f1882e751e0091e054193b_sk
 
     ports:
       - "7054:7054"

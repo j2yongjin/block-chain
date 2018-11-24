@@ -61,14 +61,16 @@ public class DefaultBookServiceTest {
         String adminName = "admin";
         String adminPw = "adminpw";
         BlockchainUser admin = new BlockchainUser();
-        admin.setAffiliation(SupplierConfig.ORG1);
-        admin.setMspId(SupplierConfig.ORG1_MSP);
+        admin.setAffiliation(SupplierConfig.ORG2);
+        admin.setMspId(SupplierConfig.ORG2_MSP);
         admin.setName(adminName);
 
         UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
 
-        Books books = defaultBookService.getByName(admin,"1111-222-333");
+//        String isbn = "1111-222-333";
+        String isbn = "112-33-22";
+        Books books = defaultBookService.getByName(admin, isbn);
 
         System.out.println("books name : " + books.getName());
 
@@ -86,7 +88,7 @@ public class DefaultBookServiceTest {
 
         UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
-        String isbn = "112-33-22";
+        String isbn = "112-33-221";
         Books books = new Books(isbn,"hello block chain","zone",1000, "20181123",0);
         defaultBookService.addBooks(admin,books);
 
