@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../daou-books">
       <excludeFolder url="file://$MODULE_DIR$/../../../daou-books/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../daou-books/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../daou-books/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

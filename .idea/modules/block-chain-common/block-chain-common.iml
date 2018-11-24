@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../block-chain-common">
       <excludeFolder url="file://$MODULE_DIR$/../../../block-chain-common/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../block-chain-common/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../block-chain-common/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
