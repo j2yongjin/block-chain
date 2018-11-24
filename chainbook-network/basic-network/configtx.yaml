@@ -43,6 +43,13 @@ Organizations:
             # encoded in the genesis block in the Application section context
             - Host: peer0.org1.chainbooks.com
               Port: 7051
+    - &Org2
+        Name: Org2MSP
+        ID: Org2MSP
+        MSPDir: crypto-config/peerOrganizations/org2.chainbooks.com/msp
+        AnchorPeers:
+            - Host: peer0.org2.chainbooks.com
+              Port: 7051
 
 ################################################################################
 #
@@ -122,10 +129,11 @@ Profiles:
             SampleConsortium:
                 Organizations:
                     - *Org1
+                    - *Org2
     OneOrgChannel:
         Consortium: SampleConsortium
         Application:
             <<: *ApplicationDefaults
             Organizations:
                 - *Org1
-
+                - *Org2

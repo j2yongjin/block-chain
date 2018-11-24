@@ -28,6 +28,9 @@ cd ../basic-network
 docker-compose -f ./docker-compose.yml up -d cli
 
 docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.chainbooks.com/users/Admin@org1.chainbooks.com/msp" cli peer chaincode install -n chainbooks -v 1.0 -p "$CC_SRC_PATH" -l "$LANGUAGE"
+
+docker exec -e "CORE_PEER_LOCALMSPID=Org2MSP" -e "CORE_PEER_ADDRESS=peer0.org2.chainbooks.com:7051" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.chainbooks.com/users/Admin@org2.chainbooks.com/msp" cli peer chaincode install -n chainbooks -v 1.0 -p "$CC_SRC_PATH" -l "$LANGUAGE"
+
 docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.chainbooks.com/users/Admin@org1.chainbooks.com/msp" cli peer chaincode instantiate -o orderer.chainbooks.com:7050 -C mychannel -n chainbooks "$LANGUAGE" -v 1.0 -c '{"Args":["init","a","100","b","200"]}' -P "OR ('Org1MSP.member','Org2MSP.member')"
 sleep 10
 #docker exec -e "CORE_PEER_LOCALMSPID=Org1MSP" -e "CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.chainbooks.com/users/Admin@org1.chainbooks.com/msp" cli peer chaincode invoke -o orderer.chainbooks.com:7050 -C mychannel -n fabcar1 -c '{"Args":["invoke","a","b","10"]}'
