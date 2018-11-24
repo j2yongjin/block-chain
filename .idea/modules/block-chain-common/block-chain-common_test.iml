@@ -3,10 +3,7 @@
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
     <output-test url="file://$MODULE_DIR$/../../../block-chain-common/build/classes/test" />
     <exclude-output />
-    <content url="file://$MODULE_DIR$/../../../block-chain-common/src/test">
-      <sourceFolder url="file://$MODULE_DIR$/../../../block-chain-common/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/../../../block-chain-common/src/test/resources" type="java-test-resource" />
-    </content>
+    <content url="file://$MODULE_DIR$/../../../block-chain-common/src/test" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="block-chain-common_main" />

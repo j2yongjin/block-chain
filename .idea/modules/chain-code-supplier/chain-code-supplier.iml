@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../chain-code-supplier">
       <excludeFolder url="file://$MODULE_DIR$/../../../chain-code-supplier/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../chain-code-supplier/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../chain-code-supplier/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
