@@ -1,0 +1,449 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button,input,figure {margin:0;padding:0}
+body,input, textarea, select, button {font-size: 14px; font-family: 'Noto Sans Korean',돋움,dotum,sans-serif; font-weight: 600; color:#1d2b36; line-height: 1.5}
+body,input, select {*word-break:break-all; -ms-word-wrap:break-all; white-space:normal; word-break:break-all}
+body {min-width: 1000px}
+select:disabled {background-color: #eee; color:#999}
+span {vertical-align: middle}
+h1 {font-size:20px}
+h2 {font-size:18px}
+h3 {font-size:16px}
+input,select,button{vertical-align:middle;font-size:12px}
+img{vertical-align:top}
+a{color:#3b73af; text-decoration:none; cursor:pointer}
+a:hover{text-decoration: underline}
+a img, img {border:0}
+ul, ol {list-style:none}
+table {border-collapse:collapse; width:100%}
+input.checkbox {margin-right:2px; /*vertical-align:baseline;*/ position:relative; top:2px}
+input.radio {margin-right:3px; position:relative; top:-1px}
+label {vertical-align:baseline}
+fieldset {border:none}
+data-role {background: red}
+select {border: 1px solid #ccc; padding: 5px; height: 34px; background: none; box-sizing: border-box; background: #fff; white-space: nowrap}
+input[type="text"], input[type="password"] {border: 1px solid #ccc; padding: 0 10px; height: 34px; background: none; box-sizing: border-box}
+input[type="text"]:disabled {background: #eee; color: #888}
+textarea {width: 100%; resize: none; border: 1px solid #ccc; padding: 10px; height: 300px; background: #fff; box-sizing: border-box; line-height: 2}
+dl, font, p, ol {line-height:150%}
+.blind {position: absolute; overflow: hidden; clip: rect(0 0 0 0); margin: -1px; width: 1px; height: 1px}
+button {background: none; border: 0; cursor: pointer; white-space: nowrap}
+.modal {position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: #000; opacity: 0.6; z-index: 1}
+
+/* z-index */
+.help_txt {z-index: 10}
+.card .menu_more .layer {z-index: 1}
+
+/* layout */
+html, body, .doas {height: 100%; background: #fff}
+.doas {display: table; table-layout: fixed; width: 100%}
+.doas .side {display: table-cell; vertical-align: top; width: 230px; height: 100%; background: #1d2b36}
+.doas .side a:hover {text-decoration: none}
+.doas .side .menu {display: block; position: relative; height: 45px; line-height: 45px}
+.doas .side .gnb .menu .txt {color: #7c7f83}
+.doas .side .gnb .menu .ic {opacity: 0.5}
+.doas .side .menu:hover .txt {color: #ccc}
+.doas .side .menu:hover .ic {opacity: 0.8}
+.doas .side .wrap_gnb {border-top: 1px solid #0f1922; padding: 20px 0}
+.doas .side .wrap_gnb .tit {padding: 5px 20px; color: #555c63; font-size: 13px; font-weight: bold}
+.doas .side .gnb .menu {padding: 0 48px}
+.doas .side .gnb .menu > .ic {position: absolute; top: 15px; left: 20px}
+.doas .side .gnb .menu .arrow_down, .doas .side .gnb .menu .arrow_up {display: inline-block; position: absolute; top: 15px; left: inherit; right: 20px}
+.doas .side .gnb li.on .snb {display: block}
+.doas .side .gnb li.on>.menu>.txt {color: #fff}
+.doas .side .gnb li.on>.menu>.ic {opacity: 1}
+.doas .side .gnb li.on .menu:hover {opacity: 1}
+.doas .side .menu .txt {color: #fff}
+.doas .side .snb {display: none; background: #151e25}
+.doas .side .snb li .menu {position: relative; overfow: hidden}
+.doas .side .snb li.on .menu {opacity: 1}
+.doas .side .snb li.on .menu .txt {color: #fff}
+/* .doas .side .snb li.on .menu .bar {display: block; position: absolute; top: 0; left: 0; bottom: 0; background: #25cad6; width: 3px } */
+.doas .side .snb li.on .menu .bar {display: none}
+.doas .side_more {display: table-cell; width: 250px; background: blue}
+.doas .contents {vertical-align: top}
+.doas .contents .header {position: relative; height: 60px; padding: 0 30px; border-bottom: 1px solid #d4d9e2; background: #f0f2f8}
+.doas .contents .header .profile {display: inline-block; position: absolute; top: 15px; right: 40px; font-size: 13px}
+.doas .contents .header .profile .photo {margin: 0 5px 0 0}
+.doas .contents .header .profile .email {color: #888; max-width: 300px}
+.doas .contents .header h2 {position: absolute; top: 20px; left: 30px; font-size: 15px; font-weight: normal}
+.doas .contents .header h2 a {color: #1d2b36}
+.doas .contents .header h2 a:hover {text-decoration: underline}
+.doas .contents .header h2 .part {}
+.doas .contents .body {padding: 30px 40px}
+.doas .contents .form .form_body .form_tr .form_td .card.api {margin: 0 15px 15px 0}
+.doas .contents .form .form_body .form_tr .form_td .card.api:last-child {margin-right: 0}
+.doas .contents.wrap_error {text-align: center; vertical-align: middle; display: block; position: absolute; width: 600px; left: 50%; margin-left: -200px; min-height: 400px; top: 50%; margin-top: -200px;}
+.doas .contents .error {display: inline-block; text-align: center}
+.doas .contents .error .error_img {display: inline-block; text-align: center}
+.doas .contents .error .error_img .ic_error {display: inline-block; background-image:url(./assets/images/error_big.png);  height: 140px; width: 140px; }
+.doas .contents .error .error_msg {margin: 20px 0 0  0}
+.doas .contents .error .error_msg .code {font-size: 52px; color:#444;}
+.doas .contents .error .error_msg .tit {font-size: 17px}
+.doas .contents .error .error_msg .desc {color: #888; margin: 10px 0 0 0}
+.doas .contents .error .error_msg .btn {margin: 30px 0 0 0}
+.paging {position: relative; padding: 30px 0; text-align: center}
+.paging + .search {text-align: center}
+.paging .list_paging a {display: inline-block; width: 30px; height: 30px; line-height: 30px; border-radius: 30px; color: #5e7384}
+.paging .list_paging a:hover {background: #f1f1f1; text-decoration: none}
+.paging .list_paging a.on {background: #1d2b36; color: #fff}
+.paging .page {position: absolute; top: 30px; right: 10px}
+.wrap_search {text-align: center}
+.notice {background: #f7f9cd; padding: 15px 30px; margin: 0; border-bottom: 1px solid #dee1b0; color: #7f7e19}
+
+.write_notice .form_editor {display: block; position: relative}
+
+/* component */
+.wrap_tabs {margin:15px 0 15px; padding:0; display:block; border-bottom: 1px solid #dfdfdf}
+.wrap_tabs .tabs  {overflow:hidden; margin-bottom:-1px}
+.wrap_tabs .tabs li {float:left; border:1px solid #dfdfdf; background:#f5f5f5; padding: 6px 12px; margin-right: -1px; z-index:1; cursor:pointer}
+.wrap_tabs .tabs li .txt {font-size:13px; color:#999; font-weight:bold; display: inline-block; vertical-align: top}
+.wrap_tabs .tabs li .num {display: inline-block}
+.wrap_tabs .tabs li:hover {background: #eee}
+.wrap_tabs .tabs li:hover .txt {color:#656565}
+.wrap_tabs .tabs li.on {background:#fff; border-bottom-color:#fff}
+.wrap_tabs .tabs li.on:hover {cursor: normal}
+.wrap_tabs .tabs li.on .txt {color:#656565}
+.wrap_tabs .tabs li .ic_txt_change {display: none}
+.wrap_tabs .tabs li.selectable .ic_txt_change {display: inline-block}
+.wrap_tog .txt {font-size: 12px}
+.wrap_tog.on .txt {color: #888}
+.wrap_tog.off .txt {color: #ccc}
+.c_state {display: inline-block; width: 12px; height: 12px; border-radius: 100%}
+.c_state.off {background: #ccc}
+.c_state.on {background: #25cad6}
+.msg_result {text-align: center; padding: 20px}
+.msg_result .msg {font-size: 16px}
+/* days */
+.days {display: inline-block; padding: 10px}
+.days a {display: inline-block; color: #999; text-decoration: none; background: #f1f1f1; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 100px; margin: 0 5px}
+.days a:hover {background: #ddd}
+.days a.on {color: #fff; background: #25cad6}
+/* add */
+.add {display: block; width: 200px; margin: 0 auto; text-align: center; cursor: pointer}
+.add .ic.plus_round {margin: 0 0 10px 0}
+.add .subject {font-size: 18px}
+.add .desc {display: inline-block; margin: 5px 0 0 0; color: #bbb}
+/* msg_guide */
+.msg_guide {display: block; width: 200px; margin: 0 auto; text-align: center}
+.msg_guide .ic.plus_round {margin: 0 0 10px 0}
+.msg_guide .subject {font-size: 18px}
+.msg_guide .desc {display: inline-block; margin: 5px 0 0 0; color: #bbb}
+/* profile */
+.photo {display: inline-block; overflow: hidden; width: 30px; height: 30px; border-radius: 100%}
+.photo img {display: inline-block; width: 30px; height: 30px}
+.syn_state {}
+.syn_state .ic {vertical-align: middle; margin: 0 4px 0 0}
+.syn_state .txt {color: #999}
+.filter {background: #f0f2f8; border-bottom: 1px solid #d4d9e2; padding: 10px 30px}
+.filter select {background: none}
+.filter .btn {padding: 0 10px; margin: 0 5px; border: 1px solid #ccc}
+.filter .btn:hover {background: none; border-color: #999}
+.filter .btn:first-child {margin-left: 0}
+.filter .btn.submenu .layer_submenu {display: none}
+.filter .submenu.on .txt {color: #999}
+.filter>.search {display: inline-block; margin-top: -2px}
+.filter>.search select {border: 0}
+.filter>.search input {border: 0}
+.filter>.search .wrap_ipt {border: 0}
+.filter>.search {height: 34px; border: 1px solid #ccc}
+.filter .btn .txt, .filter .btn .data {display: inline-block; margin: -4px 0 0 0}
+.filter .btn .ic.arrow {margin: -4px 0 0 4px}
+.btn.submenu {position: relative}
+.btn.submenu .layer_submenu {position: absolute; top: 34px; left: 0; background: #fff; z-index: 10; padding: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); min-width: 80px; text-align: left}
+.els {display: inline-block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; max-width: 100%}
+.key .info {position: relative; background: #ECF7FF; border: 1px solid #cddbe6}
+.key .key_info {margin: 10px 0 0 0; font-size: 13px; color: #999}
+.key .info .id {font-size: 20px; padding: 10px 20px}
+.key .info .tit {font-size: 12px; color: #999}
+.key .info .pw {position: relative; padding: 10px 20px; border-top: 1px solid #cddbe6}
+.key .info .pw input {border: 0;  font-size: 18px; padding: 0; height: auto; background: none}
+.key .info .pw input[type="password"] {font-size: 12px; height: 22px}
+.key .info .pw .btn_show {display: inline-block; padding: 5px}
+.key .info .bar {position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: #1D2B36}
+.key .info .btn_apply {position: absolute; top: 15px; right: 20px}
+.key.error .info {background: #FFF3F3}
+.key.error .bar {background: #E26B6B}
+.key.error .info {padding: 20px}
+.key.error .info .desc {margin: 0}
+.key.error .info .id {font-size: 18px; padding: 0; text-align: left}
+.status {display: inline-block; background: gray; font-size: 12px; height: 22px; line-height: 24px; padding: 0 10px; color: #fff; border-radius: 30px}
+.status.auto {background: none; border: 1px solid #ccc; color: #999}
+.null {padding: 60px 40px; color: #999; text-align: center; font-size: 18px}
+.desc {color: #999; font-size: 13px}
+.ipt {width: 100%}
+.w_xs	{width: 50px}
+.w_s		{width: 100px}
+.w_m	{width: 200px}
+.w_l		{width: 500px}
+.w_f		{width: 100%}
+.footer {text-align: center; padding: 30px; font-size: 0; border-top: 1px solid #eee; margin: 20px -40px}
+.footer button, .footer a {margin: 0 5px}
+.toolbar {position: relative; background: #f0f2f8; height: 34px; padding: 15px 30px; border-bottom: 1px solid #d4d9e2;}
+.toolbar .optional {top: 15px; right: 20px}
+.toolbar input, .toolbar select {background: none}
+.optional {position: absolute; top: 0; right: 0;}
+.search .wrap_ipt {position: relative; display: inline-block; border: 1px solid #c7ccd7; height: 34px}
+.search .wrap_ipt .btn_search {display: inline-block; position: absolute; top: 0; right: 0; padding: 7px 10px}
+.search .wrap_ipt {padding-right: 30px}
+.search .wrap_ipt input {border: 0}
+.search select, .search input {vertical-align: middle}
+.part {display: inline-block; margin: 0 5px; color: #bbb; font-size: 13px}
+h1 {height: 60px; text-align: center}
+h1 a {display: inline-block; vertical-align: top; padding: 17px; font-size: 22px; color: #fff; cursor: default;}
+.ic.help {position: relative}
+.ic.help:hover .help_txt {display: block}
+.ic.help .help_txt {text-align: left}
+.help_txt {display: none; position: absolute; background: #1d2b36; color: #fff; padding: 10px; z-index: 10; top: 0; left: 0; box-shadow: 0 0 15px #999}
+.help_api {width: 290px!important}
+/* form */
+.form {display: table; table-layout: fixed; width: 100%; box-sizing: border-box}
+.form .option_view {margin: 10px 0 0 0}
+.form_tr {display: table; table-layout: fixed; width: 100%; box-sizing: border-box}
+.form .form_tr .form_th {display: table-cell; padding: 10px 10px 10px 0; width: 140px; vertical-align: top; text-align: left}
+.form .form_tr .form_th .txt {display: inline-block; margin: 4px 0 0 0}
+.form .form_tr .form_th .ic.help {margin: 6px 0 0 4px; vertical-align: top}
+.form .form_tr .form_td {display: table-cell; padding: 10px 0; box-sizing: border-box; text-align: left}
+.form .form_tr .form_td .card {vertical-align: top; margin: 0 0 20px 0}
+.form .form_tr .form_th .tit_sub {color: #999}
+.form_txt, .form_ipt, form_btn, form_txt, .form_opt, .form_slt {display: inline-block; vertical-align: middle}
+.space {display: inline-block; width: 4px}
+.form .wrap_v {margin-top: 10px}
+.form .wrap_v:first-child {margin-top: 0}
+.form_txt, .form_opt {padding: 8px 0}
+.form_header {position: relative; height: 30px; line-height: 30px; margin: 10px 0}
+.form_header .tit {position: absolute; top: 0; left: 0; font-size: 15px; font-weight: bold; background: #fff; cursor: pointer; padding-right: 10px; width: auto;}
+.form_header .tit .ic.warning {margin: 0 2px 0 0}
+.form .desc {margin: 10px 0 0 0}
+.form_header .arrow {position: absolute; top: 8px; left: -20px}
+.form_header hr {position: absolute; top: 10px; left: 0; width: 100%; z-index: 0;}
+.form_header + .form_body {padding: 0 0 0 25px}
+.form_error input {border-color: red}
+.form_error .txt_error {color: red}
+.form.view {margin: 10px 0}
+.form.view .form_tr .form_th, .form.view .form_tr .form_td {padding: 4px 10px 4px 0}
+.form.view .form_tr .form_th {width: 100px}
+.doc_subject {font-size: 26px; letter-spacing: -1px;}
+
+/* card */
+.card {display: inline-block; position: relative; background: #fff; border: 1px solid #ddd; padding: 25px}
+.card.api.on {background: #d7f3f5}
+.card.api .form .form_body .form_tr .form_th,
+.card.api .form .form_body .form_tr .form_td	{padding: 5px 0;}
+.card.api .form .form_func {position: absolute; bottom: 20px; left: 20px; width: 190px; text-align: right}
+.card.api .form .form_func a  {margin: 0 5px}
+.card.api {background: #f7f7f7; width: 180px; height: 180px; box-shadow: 0 0 15px #ddd}
+.card.api .opt {position: absolute; bottom: 0; left: 0; width: 100%; height: 50px; background-color: #fff; border-top: 1px solid #eee}
+.card.api .info {margin: 55px 0 20px; text-align: center}
+.card.api .info .tit {font-size: 20px; margin: 8px 0}
+.card.api .info .form_opt {padding: 0; margin-top: -10px}
+.card.api .opt:after {display: block; clear: both; content:'';}
+.card.api .opt .txt {display: inline-block; float: left; margin: 14px 0 0 20px; color: #999}
+.card.api .opt .tog {float: right; margin: 12px 16px 0 0}
+.card.api .form_opt label {color: #999; font-size: 13px}
+.card.api.add {display: inline-block; text-align: center; cursor: pointer}
+.card.api.add .ic.plus_round {margin-top: 30px}
+.card.api .form .form_body .form_tr .form_th {width: 80px!important;}
+.card.api .list_syn_result {margin: 5px 0 0 0}
+.card .btn_x {display: inline-block; position: absolute; top: 0; right: 0; padding: 10px 15px}
+.card .menu_more {position: absolute; top: 15px; right: 5px}
+.btn_menu_more:hover {background: #ddd;}
+.menu_more {display: inline-block}
+.menu_more .btn_menu_more {padding: 3px 14px 8px; border-radius: 100%}
+.menu_more .layer {display: inline-block; width: auto; padding: 10px 0; box-shadow: 0 0 15px #ddd;}
+.menu_more .layer > ul > li {padding: 10px 20px; white-space: nowrap; cursor: pointer}
+.menu_more .layer > ul > li:hover {background: #eee}
+.menu_more .wrap.menu_more {position: relative}
+.card .btn_x:hover {background: #f5f5f5}
+.card .menu_more .layer {position: absolute; top: 0; left: 0}
+.card.sys {padding: 10px 30px 30px;}
+.card.sys:hover {border-color: #1d2b36}
+.card.sys:hover>.btn_x {background: #1d2b36}
+.card.sys>.form {margin: 20px 0 0 0}
+.card.sys .form .form_tr .form_th {width: 70px}
+.card.sys .form .form_body .form_tr .form_th	{width: 120px; padding: 10px 0}
+.card.sys .card .form .form_body .form_tr .form_td	{padding: 5px 0;}
+.card.ib {display: inline-block}
+.card.s {padding: 10px}
+.card.r {border-radius: 8px}
+.syn_doc .card {width: 250px; margin: 0 10px 10px 0!important}
+.syn_doc .card .layer {left: inherit; right: -10px}
+.syn_doc .card .c_state {vertical-align: middle; margin: 0 4px 0 0; position: relative}
+.syn_doc .card .c_state.off:hover .help_txt {display: block; width: 40px}
+.syn_doc .card .c_state.on:hover .help_txt {display: block; width: 120px}
+.syn_doc .card .c_state .help_txt .desc {margin: 0}
+.syn_doc .card .txt {max-width: 210px}
+.syn_doc .card .menu_more {top: 9px; right: 4px}
+
+/* list */
+/* list_certifi */
+.list_certifi li {position: relative; padding: 5px 0}
+.list_certifi li .btn_x_s {display: inline-block; position: absolute; top: 5px; right: -5px}
+.list_certifi li .wrap_certifi {margin-right: 30px}
+.list_certifi li .wrap_certifi input {font-size: 13px}
+.list_certifi li .wrap_certifi .key {display: inline-block; width: 100px; margin: 0 10px 0 0}
+.list_certifi li .wrap_certifi .noti {display: inline-block; width: 510px}
+/* list_syn_result */
+.list_syn_result li {font-size: 12px; color: #888}
+/* list_syn_passive */
+.list_syn_passive li {border-bottom: 1px solid #ddd; padding: 10px}
+.list_syn_passive li:last-child {border-top: 0}
+.list_syn_passive li .data {font-size: 13px; color: #999}
+.list_syn_passive li .tit {font-size: 13px}
+/* list_syn */
+.list_syn li {position: relative; padding: 10px 0; border-bottom: 1px solid #ddd}
+.list_syn li .btn_x_s {display: inline-block; position: absolute; top: 5px; right: -5px}
+/* layer */
+.layer {display: block; position: absolute; width: 400px;  box-shadow: 0px 0px 0 rgba(0, 0, 0, 0); z-index: 10; background: #fff}
+.layer .layer_header {position: relative; padding: 15px 20px}
+.layer .layer_header .subject .ic.help {vertical-align: middle; margin: 2px 0 0 4px}
+.layer .layer_header .optional {top: 15px; right: 20px}
+.layer .btn_close {display: inline-block; position: absolute; top: 6px; right: 0px; padding: 10px}
+.layer .btn_close:hover {display: inline-block; position: absolute; top: 6px; right: 0px; padding: 10px}
+.layer .layer_body {padding: 20px}
+.layer .layer_footer {padding: 20px; text-align: right}
+.layer .layer_footer>button {margin: 0 5px}
+/* layer_syn */
+.layer_certifi {width: 700px}
+.layer_certifi .layer_body {height: 200px}
+.layer_certifi .layer_header .subject .help .help_txt {width: 300px}
+.layer_certifi .add {width: 300px; margin-top: 50px;}
+/* layer_syn */
+.layer_syn {width: 400px}
+.layer_syn .layer_body {height: 190px}
+.layer_syn .layer_body .add {margin-top: 40px}
+.layer_syn .layer_body .msg_guide {margin-top: 40px; width: 330px}
+.layer .layer_body .btn_plus {margin: 10px 0 0 0}
+.layer_syn .layer_header .subject .help .help_txt {width: 200px}
+.layer_syn .list_syn li select {border: 0; font-size: 15px; padding: 0}
+.layer_syn .list_syn li {padding: 5px 0}
+.layer_syn .list_syn select:disabled {background: none; color: #ccc}
+/* layer_notice */
+.layer_notice {}
+.layer_notice .layer_header {height: auto; background: #1d2b36}
+.layer_notice .layer_header .subject {color: #fff; max-width: 90%}
+.layer_notice .layer_body {height: 300px; overflow-y: auto; line-height: 2 }
+/* layer_conform */
+.layer_conform .layer_header {border: 0; padding: 10px 20px}
+.layer_conform .layer_body .subject {font-size: 18px; text-align: center; margin: 0 0 10px 0}
+.layer_conform .layer_body .txt {color: #888}
+.layer_alarm {display: inline-block; position: absolute; top: 10px; background: #1d2b36; padding: 15px; width: 30%; left: 35%; text-align: center; box-shadow: 0 0 10px #333}
+.layer_alarm .layer_alarm_body {position: relative}
+.layer_alarm .layer_alarm_body .txt {color: #fff; padding: 0 50px}
+.layer_alarm .layer_alarm_body .btn_close {position: absolute; top: 0; right: 0}
+/* table */
+/* tb */
+.tb tr:hover td {background: #f9f9f9}
+.tb th.sort {cursor: pointer}
+.tb th {border-bottom: 1px solid #c6c7c8}
+.tb th .arrow {margin: -2px 0 0 4px}
+.tb td {border-bottom: 1px solid #eee; color: #5e7384}
+.tb th {height: 35px; padding: 4px 10px; text-align: left}
+.tb td {height: 35px; padding: 10px; text-align: left}
+.tb th:first-child, .tb td:first-child {padding-left: 0}
+.tb th:last-child, .tb td:last-child {padding-right: 0}
+.tb .code				{min-width: 80px; width: 80px}
+.tb .msg				{min-width: 300px; width: 300px}
+.tb .num				{min-width: 60px; width: 60px}
+.tb .mail				{min-width: 200px; width: 200px}
+.tb .date				{min-width: 130px; width: 130px}
+.tb .state				{min-width: 100px; width: 100px}
+.tb .name  			{min-width: 80px; width: 80px}
+.tb .doc					{min-width: 80px; width: 80px}
+.tb .system			{min-width: 130px; width: 130px}
+.tb .type				{min-width: 130px; width: 130px}
+.tb .subject			{min-width: 200px}
+.tb .name_custom {min-width: 200px; width: 200px}
+.tb .name .txt		{min-width: 80px; width: 80px}
+.tb .id					{min-width: 100px; width: 100px}
+/* tb_error */
+.tb_error tr td {cursor: default}
+/* tb_data_completion */
+.tb_data_completion td {cursor: default!important}
+.tb_data_completion .msg {min-width: 150px; width: 150px}
+/* tb_in */
+.tb_in th {background: #f5f5f5; border: 1px solid #ddd; width: 100px; padding: 10px; text-align: left}
+.tb_in td {background: #fff; border: 1px solid #ddd; padding: 10px}
+/* button */
+.btn_plus {display: inline-block}
+.btn_plus:hover {text-decoration: none}
+.btn_plus .ic {margin: 0 4px 0 0}
+.btn_plus .txt {color: #333}
+.btn_x_s {display: inline-block; padding: 4px 10px 7px; border-radius: 100%}
+.btn_x_s:hover {background: #f1f1f1}
+.btn {display: inline-block; background: none; color: #1d2b36; padding: 0 10px; border: 1px solid transparent; height: 34px; line-height: 34px; padding: 0 15px; font-size: 13px}
+.btn:hover {background: #ddd; color: #1d2b36; text-decoration: none}
+.btn.line {background: none; color: #1d2b36; border: 1px solid #ccc; padding: 0 10px}
+.btn.line .ic {vertical-align: middle; margin: -4px 2px 0 0}
+.btn.line .txt {display: inline-block; vertical-align: middle; margin: -4px 0 0 0; color: #666}
+.btn.line:hover {background: none; color: #1d2b36; border: 1px solid #aaa}
+.btn.s {height: 32px; line-height: 32px; padding: 0 10px}
+.btn.l {height: 45px; line-height: 45px; padding: 0 20px}
+.btn.critical {background: #d55555; color: #fff; border-color: #d55555}
+.btn.critical:hover {background: #db3333; color: #fff}
+.btn.major {background: #1d2b36; color: #ddd; border-color: #1d2b36}
+.btn.major:hover {background: #0f1922; color: #fff}
+.btn.minor {background: transparent; border: 1px solid #ddd}
+.btn.minor:hover {border-color: #aaa}
+.btn.caution {background: #25cad6; border-color: #25cad6; color: #fff}
+/* icon */
+.ic {display: inline-block; background:url(./assets/images/ic.png) no-repeat}
+.ic.chk_b					{background-position: -650px -150px; width: 23px; height: 15px}
+.ic.syn_b_on				{background-position: -450px -150px; width: 40px; height: 40px}
+.ic.syn_b					{background-position: -400px -150px; width: 40px; height: 40px}
+.ic.plus						{background-position: -350px -150px; width: 15px; height: 15px}
+.ic.more					{background-position: -300px -150px; width: 4px; height: 19px}
+.ic.more					{background-position: -600px -150px; width: 3px; height: 16px}
+.ic.syn.on					{background-position: -200px -150px; width: 18px; height: 14px}
+.ic.syn						{background-position: -250px -150px; width: 18px; height: 14px}
+.ic.gear						{background-position: -150px -150px; width: 16px; height: 16px}
+.ic.warning				{background-position: -550px -150px; width: 20px; height: 20px}
+.ic.search					{background-position: -300px -100px; width: 13px; height: 13px}
+.ic.connect				{background-position: 0 0; width: 20px; height: 20px}
+.ic.log						{background-position: -50px 0; width: 20px; height: 20px}
+.ic.error						{background-position: -100px 0; width: 20px; height: 20px}
+.ic.api						{background-position: -150px 0; width: 20px; height: 20px}
+.ic.costom					{background-position: -200px 0; width: 20px; height: 20px}
+.ic.set						{background-position: -250px 0; width: 20px; height: 20px}
+.ic.chart					{background-position: -300px 0; width: 20px; height: 20px}
+.ic.arrow_up				{background-position: 0 -100px; width: 15px; height: 8px}
+.ic.arrow_down			{background-position: -50px -100px; width: 15px; height: 8px}
+.ic.sort.up					{background-position: -100px -100px; width: 13px; height: 7px}
+.ic.sort.down				{background-position: -150px -100px; width: 13px; height: 7px}
+.ic.sort.up					{background-position: -100px -100px; width: 13px; height: 7px}
+.ic.arrow.up				{background-position: -100px -100px; width: 13px; height: 13px}
+.ic.arrow.down			{background-position: -150px -100px; width: 13px; height: 13px}
+.ic.arrow.right			{background-position: -200px -100px; width: 13px; height: 13px}
+.ic.arrow.left				{background-position: -250px -100px; width: 13px; height: 13px}
+.ic.help						{background-position: -350px -100px; width: 18px; height: 18px; vertical-align: middle; margin: -2px 0 0 5px}
+.ic.plus_round			{background-position: -400px -100px; width: 40px; height: 40px}
+.ic.tog						{background-position: 0px -150px; width: 37px; height: 24px; cursor: pointer}
+.ic.tog.on					{background-position: -50px -150px}
+.ic.x_s						{background-position: -450px -100px; width: 12px; height: 12px}
+.ic.show					{background-position: -500px -150px; width: 20px; height: 12px}
+.ic.hide						{background-position: -500px -100px; width: 20px; height: 12px}
+.ic.pin						{background-position: -550px -100px; width: 15px; height: 19px}
+.ic.x_m_w					{background-position: -650px -100px; width: 22px; height: 22px}
+.ic.x_m_b					{background-position: -600px -100px; width: 22px; height: 22px}
+hr{border: none; border-bottom: 1px solid #ebebeb; height: 1px; margin: 5px 0;}
+input[type=radio] {width: 28px; margin: 0; padding: 0; opacity: 0}
+input[type=radio] + label {display: inline-block; margin: 0 0 0 -28px; background:url(./assets/images/ic_radio_off.png) no-repeat; line-height: 18px; cursor: pointer; padding-left: 28px}
+input[type=radio]:checked+ label {display: inline-block; margin: 0 0 0 -28px; background:url(./assets/images/ic_radio_on.png) no-repeat; line-height: 18px; cursor: pointer; padding-left: 28px}
+input[type=checkbox] {width: 28px; margin: 0; padding: 0; opacity: 0}
+input[type=checkbox] + label {display: inline-block; margin: 0 0 0 -28px; background:url(./assets/images/ic_check_off.png) no-repeat; line-height: 18px; cursor: pointer; padding-left: 28px}
+input[type=checkbox]:checked+ label {display: inline-block; margin: 0 0 0 -28px; background:url(./assets/images/ic_check_on.png) no-repeat; line-height: 18px; cursor: pointer; padding-left: 28px}
+
+.mode_modify {position: relative}
+.mode_modify .btn_del {position: absolute; top: 0; right: 0; display: none}
+.mode_modify:hover {outline: 1px solid #25cad6}
+.mode_modify:hover .btn_del {display: block}
+
+.btn_toggle>button {float: left; margin-right: -1px; z-index: 0; border: 1px solid #ddd}
+.btn_toggle>button:hover {position: relative; z-index: 2; background: transparent; border-color: #aaa}
+.btn_toggle>button.on {position: relative; background: #25cad6; border-color: #25cad6; color: #fff; z-index: 1}
+.btn_toggle>button.on:hover {cursor: default}
+
+@media screen and (max-width: 1200px){
+}
+/* Safari and Chrome hack*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  .key .info .pw input[type="password"] {font-size: 18px}
+}

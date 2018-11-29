@@ -1,0 +1,50 @@
+<div *ngIf="overlayVisible" class="overlay {{ openedClass ? 'nsm-overlay-open' : 'nsm-overlay-close'}}"
+     [style.z-index]="visible ? layerPosition-1 : -1"
+     [ngClass]="{'transparent':!backdrop}"
+     (click)="dismiss($event)">
+</div>
+<div *ngIf="modalVisible" [style.z-index]="visible ? layerPosition : -1" style="background-color:white; left:0;right:0;top: 30%; margin-right:auto; margin-left:auto;" class="layer">
+  <div class="layer_header">
+    <span class="subject els">{{title}}</span>
+    <button class="btn_close" *ngIf="closable" type="button" title="닫기" (click)="close()">
+      <span class="ic x_m_b"></span>
+    </button>
+  </div>
+  <div class="layer_body" [innerHtml] = "content">
+  </div>
+  <div class="layer_footer">
+    <button *ngFor="let button of buttons" class="btn {{button.btype}} s" (click)="autoClose(button)">{{button.btext}}</button>
+    <!--<button class="btn major s">확인</button>
+    <button class="btn s" (click)="close()">취소</button>-->
+  </div>
+</div>
+<!-- 컨펌 레이어 -->
+<div class="layer layer_conform" *ngIf="modalConfirmVisible" [style.z-index]="visible ? layerPosition : -1" style="background-color:white; left:0;right:0;top: 30%; margin-right:auto; margin-left:auto;">
+  <div class="layer_header">
+    <button class="btn_close" *ngIf="closable" type="button" title="닫기" (click)="close()">
+      <span class="ic x_m_b"></span>
+    </button>
+  </div>
+  <div class="layer_body">
+    <p class="subject">{{title}}</p>
+    <div class="txt" [innerHtml] = "content"></div>
+  </div>
+  <div class="layer_footer">
+    <button *ngFor="let button of buttons" class="btn {{button.btype}} s" (click)="autoClose(button)">{{button.btext}}</button>
+    <!--<button class="btn s" (click)="close()">취소</button>-->
+  </div>
+</div><!-- //컨펌 레이어 -->
+<div class="layer_alarm" *ngIf="notiVisible">
+  <div class="layer_alarm_body">
+    <div class="txt">{{title}}</div>
+    <a class="btn_close" title="닫기" (click)="close()">
+      <span class="ic x_m_w"></span>
+    </a>
+  </div>
+</div>
+
+<div class="layer layer_conform" *ngIf="popupVisible" [style.z-index]="visible ? layerPosition : -1" style="background-color:white; left:0;right:0;top: 30%; margin-right:auto; margin-left:auto;">
+  <ng-content></ng-content>
+</div>
+
+

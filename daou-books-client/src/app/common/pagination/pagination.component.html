@@ -1,0 +1,39 @@
+<div class="body">
+  <div class="null" *ngIf="!hasContent && pageOptions.params.keyword && pageOptions.params.searchtype">
+    검색 결과가 없습니다.
+  </div>
+  <div class="null" *ngIf="!hasContent && (!pageOptions.params.keyword || !pageOptions.params.searchtype)">
+    등록된 데이터가 없습니다.
+  </div>
+  <table class="tb" *ngIf="hasContent">
+    <thead></thead>
+    <tbody>
+      <tr>
+        <th class="{{column.thClass}}" *ngFor="let column of pageOptions.columns" (click)="sortProperty($event, column)" [class.sort]="column.sortable">
+          <span class="txt">{{column.dataName}}</span>
+          <span class="ic" [class.arrow]="column.sortable" [class.down]="column.sortable"></span>
+        </th>
+      </tr>
+      <tr *ngFor="let data of pageModel.content">
+        <td class="{{column.class}}" *ngFor="let column of pageOptions.columns" (click)="clickEventCallback(data, column)" [innerHtml]="getColumnData(data, column)">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="paging" *ngIf="hasContent">
+    <div class="list_paging">
+      <a class="맨 앞" (click)="onFirst()"><<</a>
+      <a class="이전" (click)="onPrev()"><</a>
+      <a *ngFor="let pageNum of pages" (click)="changePage(pageNum)" [class.on]="pageModel.pageInfo.page + 1 == pageNum">{{pageNum}}</a>
+      <a title="다음"(click)="onNext()">></a>
+      <a title="맨 뒤"(click)="onLast()">>></a>
+    </div>
+    <select name="" id="" class="page" (change)="changeOffset($event.currentTarget.value)">
+      <option value="10" [selected]="this.offset == 10">10</option>
+      <option value="20" [selected]="this.offset == 20">20</option>
+      <option value="30" [selected]="this.offset == 30">30</option>
+      <option value="40" [selected]="this.offset == 40">40</option>
+    </select>
+  </div>
+</div>
+

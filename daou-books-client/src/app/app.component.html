@@ -1,0 +1,46 @@
+<div class="doas">
+  <div class="side">
+    <h1>
+      <a>DAOU BOOKS</a>
+    </h1>
+    <div class="wrap_gnb">
+      <ul class="gnb">
+        <li routerLinkActive="on" routerLink="/book/register">
+          <a class="menu" >
+            <span class="ic log"></span>
+            <span class="txt">책등록</span>
+          </a>
+        </li>
+        <li routerLinkActive="on">
+          <a class="menu" >
+            <span class="ic log"></span>
+            <span class="txt">판매부수 조회</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="wrap_gnb" *ngIf="isAdmin">
+      <div class="tit">DAOU BOOKS ADMIN</div>
+      <ul class="gnb">
+        <li *ngFor="let groupMenu of adminMenuConfig"  [class.on]="groupMenu.openFlag" routerLinkActive="on">
+          <a class="menu" (click)="closeOtherGroupMenu(); groupMenu.openFlag = !groupMenu.openFlag;">
+            <span class="ic {{groupMenu.class}}"></span>
+            <span class="txt">{{groupMenu.groupMenuName}}</span>
+            <span class="ic" [class.arrow_up]="groupMenu.openFlag" [class.arrow_down]="!groupMenu.openFlag">
+								<span class="blind"></span>
+							</span>
+          </a>
+          <ul class="snb">
+            <li *ngFor="let menu of groupMenu.menus" routerLinkActive="on">
+              <a class="menu" [routerLink]="menu.menuUrl" [queryParams]="menu.params">
+                <span class="bar"></span>
+                <span class="txt">{{menu.menuName}}</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>-->
+  </div>
+  <router-outlet></router-outlet>
+</div>
