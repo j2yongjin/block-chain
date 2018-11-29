@@ -1,0 +1,7 @@
+
+sourceCompatibility = 1.8
+dependencies {
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.0.RELEASE'
+    compile 'com.rabbitmq:amqp-client:5.5.0'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+}

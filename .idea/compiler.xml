@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel>
+      <module name="block-chain-common_main" target="1.8" />
+      <module name="block-chain-common_test" target="1.8" />
+      <module name="books-chaincode_main" target="1.8" />
+      <module name="books-chaincode_test" target="1.8" />
+      <module name="books-queue_main" target="1.8" />
+      <module name="books-queue_test" target="1.8" />
+      <module name="chain-code-supplier_main" target="1.8" />
+      <module name="chain-code-supplier_test" target="1.8" />
+      <module name="daou-books-admin_main" target="1.8" />
+      <module name="daou-books-admin_test" target="1.8" />
+      <module name="daou-books_main" target="1.8" />
+      <module name="daou-books_test" target="1.8" />
+      <module name="invokeConsumer_main" target="1.8" />
+      <module name="invokeConsumer_test" target="1.8" />
+      <module name="queueConsumer_main" target="1.8" />
+      <module name="queueConsumer_test" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
