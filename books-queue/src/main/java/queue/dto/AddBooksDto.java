@@ -12,6 +12,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AddBooksDto {
 
     @JsonProperty
+    static final ChainFunction chainFunction = ChainFunction.ADD_BOOK;
+
+    @JsonProperty
     String isbn;
     @JsonProperty
     String name;
@@ -33,4 +36,7 @@ public class AddBooksDto {
         this.salesCount = salesCount;
     }
 
+    public static ChainFunction getChainFunction() {
+        return chainFunction;
+    }
 }
