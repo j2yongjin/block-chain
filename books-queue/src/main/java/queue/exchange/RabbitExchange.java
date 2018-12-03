@@ -26,7 +26,7 @@ public class RabbitExchange {
 
     private void createExchangeAndQueue() throws IOException {
         channel.exchangeDeclare(exchangeName,"direct",true);
-        \
+
         channel.queueBind(queueName,exchangeName,"1");
     }
 }

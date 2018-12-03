@@ -5,6 +5,8 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.GetResponse;
+import lombok.extern.slf4j.Slf4j;
 import queue.dto.AddBooksDto;
 import queue.network.RabbitChannelFactory;
 import queue.util.JsonConverter;
@@ -19,6 +21,7 @@ import java.util.concurrent.TimeoutException;
  * @date : 2018-11-29
  * @desc :
  */
+@Slf4j
 public class DefaultPublishService implements PublishService{
 
     Connection connection;
@@ -42,9 +45,12 @@ public class DefaultPublishService implements PublishService{
             this.channel.queueDeclare(queueName,true,false,false,null);
             String jsonValue = JsonConverter.toJson(t);
             channel.basicPublish(exchangeName, "", null, jsonValue.getBytes());
-        }finally {
-            connection.close();
+//            channel.waitForConfirms();
+            GetResponse getResponse = channel.basicGet(queueName,false);
+            log.info(" response : " + getResponse);
+        } finally {
             channel.close();
+            connection.close();
         }
     }
 }
