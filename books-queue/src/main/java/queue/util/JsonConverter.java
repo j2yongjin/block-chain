@@ -3,6 +3,7 @@ package queue.util;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import queue.dto.AddBooksDto;
+import queue.dto.UpdateSaleBooksDto;
 
 import java.io.IOException;
 
@@ -28,11 +29,12 @@ public class JsonConverter {
     public static <T> T toObject(byte[] body) throws IOException {
         String textBody = new String(body);
         ObjectMapper objectMapper = new ObjectMapper();
-
-        if(textBody.contains("")) {
+        if(textBody.contains("ADD_BOOK")) {
             return objectMapper.readValue(textBody, (Class<T>) AddBooksDto.class);
+        }else{
+            return objectMapper.readValue(textBody, (Class<T>) UpdateSaleBooksDto.class);
         }
-        return null;
+
     }
 
 

@@ -1,7 +1,20 @@
 
 sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.0.RELEASE'
+//    compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.0.0.RELEASE'
+    testCompile group: 'junit', name: 'junit', version: '4.4'
     compile 'com.rabbitmq:amqp-client:5.5.0'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.6'
+    // https://mvnrepository.com/artifact/org.projectlombok/lombok
+    compile group: 'org.projectlombok', name: 'lombok', version: '1.18.0'
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-classic
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+    // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+
 }

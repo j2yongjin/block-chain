@@ -9,10 +9,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @date : 2018-11-29
  * @desc :
  */
-public class UpdateSaleBooksDto {
+public class UpdateSaleBooksDto extends QueueDto {
 
-    @JsonProperty
-    static final ChainFunction chainFunction = ChainFunction.UPDATE_BOOK;
+//    @JsonProperty
+//    ChainFunction chainFunction = ChainFunction.UPDATE_BOOK;
 
     @JsonProperty
     String isbn;
@@ -20,11 +20,12 @@ public class UpdateSaleBooksDto {
     Integer salesCount;
 
     public UpdateSaleBooksDto(String isbn, Integer salesCount) {
+        super(ChainFunction.ADD_BOOK);
         this.isbn = isbn;
         this.salesCount = salesCount;
     }
 
-    public static ChainFunction getChainFunction() {
+    public ChainFunction getChainFunction() {
         return chainFunction;
     }
 }
