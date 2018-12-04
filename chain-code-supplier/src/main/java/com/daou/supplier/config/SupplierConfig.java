@@ -20,7 +20,7 @@ public class SupplierConfig {
     public static final String ORG1_PEER_0_URL = "grpc://127.0.0.1:7051";
 
     public static final String ORG2_PEER_0 = "peer0.org2.chainbooks.com";
-    public static final String ORG2_PEER_0_URL = "grpc://localhost:8051";
+    public static final String ORG2_PEER_0_URL = "grpc://127.0.0.1:8051";
 
     public static final String CHAINCODE_NAME = "chainbooks";
 }

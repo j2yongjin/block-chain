@@ -3,6 +3,7 @@ package com.daou.supplier.service;
 import com.daou.supplier.config.SupplierConfig;
 import com.daou.supplier.model.BlockchainUser;
 import com.daou.supplier.model.Books;
+import com.daou.supplier.model.PeerDomainConfig;
 import org.hyperledger.fabric.sdk.Enrollment;
 import org.hyperledger.fabric.sdk.HFClient;
 import org.hyperledger.fabric.sdk.exception.CryptoException;
@@ -28,7 +29,7 @@ public class DefaultBookServiceTest {
 
     @Before
     public void init(){
-        defaultBookService = new DefaultBookService();
+
     }
 
     @Test
@@ -51,12 +52,43 @@ public class DefaultBookServiceTest {
         LocalDate issueDate = LocalDate.of(2018,11,21);
         Integer salesCount = 0;
         Books books = new Books(isbn,bookName,writer,amount,issueDate.format(DateTimeFormatter.ofPattern("yyyyMMdd")),salesCount);
-        defaultBookService.addBooks(admin,books);
+
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        defaultBookService.addBooks(books);
 
     }
 
     @Test
-    public void given_whenGetByName_thenSuccess() throws Exception {
+    public void givenORG1_whenGetByName_thenSuccess() throws Exception {
+
+        String adminName = "admin";
+        String adminPw = "adminpw";
+        BlockchainUser admin = new BlockchainUser();
+        admin.setAffiliation(SupplierConfig.ORG1);
+        admin.setMspId(SupplierConfig.ORG1_MSP);
+        admin.setName(adminName);
+
+        UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
+        admin = userService.enrollAdminUser(admin,adminName,adminPw);
+
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+//        String isbn = "1111-222-333";
+        String isbn = "112-3334-121";
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        Books books = defaultBookService.getByName(isbn);
+
+        System.out.println("books name : " + books.getName());
+
+    }
+
+    @Test
+    public void givenORG2_whenGetByName_thenSuccess() throws Exception {
+
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG2,SupplierConfig.ORG2_MSP
+                ,SupplierConfig.ORG2_PEER_0,SupplierConfig.ORG2_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
 
         String adminName = "admin";
         String adminPw = "adminpw";
@@ -69,15 +101,16 @@ public class DefaultBookServiceTest {
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
 
 //        String isbn = "1111-222-333";
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
         String isbn = "112-33-22";
-        Books books = defaultBookService.getByName(admin, isbn);
+        Books books = defaultBookService.getByName(isbn);
 
         System.out.println("books name : " + books.getName());
 
     }
 
     @Test
-    public void given_whenAddBooks_thenSuccess() throws Exception {
+    public void givenOrg1_whenAddBooks_thenSuccess() throws Exception {
 
         String adminName = "admin";
         String adminPw = "adminpw";
@@ -90,9 +123,36 @@ public class DefaultBookServiceTest {
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
         String isbn = "112-33-221";
         Books books = new Books(isbn,"hello block chain","zone",1000, "20181123",0);
-        defaultBookService.addBooks(admin,books);
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        defaultBookService.addBooks(books);
 
-        Books searchResult = defaultBookService.getByName(admin,isbn);
+        Books searchResult = defaultBookService.getByName(isbn);
+
+        System.out.println("searchResult name : " + searchResult.getName());
+    }
+
+    @Test
+    public void givenOrg2_whenAddBooks_thenSuccess() throws Exception {
+
+        String adminName = "admin";
+        String adminPw = "adminpw";
+        BlockchainUser admin = new BlockchainUser();
+        admin.setAffiliation(SupplierConfig.ORG2);
+        admin.setMspId(SupplierConfig.ORG2_MSP);
+        admin.setName(adminName);
+
+        UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
+        admin = userService.enrollAdminUser(admin,adminName,adminPw);
+        String isbn = "112-33-221";
+        Books books = new Books(isbn,"hello block chain","zone",1000, "20181123",0);
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG2,SupplierConfig.ORG2_MSP
+                ,SupplierConfig.ORG2_PEER_0,SupplierConfig.ORG2_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        defaultBookService.addBooks(books);
+
+        Books searchResult = defaultBookService.getByName(isbn);
 
         System.out.println("searchResult name : " + searchResult.getName());
     }
@@ -111,8 +171,10 @@ public class DefaultBookServiceTest {
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
         String isbn = "1111-222-333";
 
-        defaultBookService.incrementSalesCount(admin,isbn,1);
-
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        defaultBookService.incrementSalesCount(isbn,1);
     }
 
 

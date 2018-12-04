@@ -22,6 +22,8 @@ public class ConsumerTask {
                     log.info("UPDATE BOOK {} " , (AddBooksDto)queueDto);
                     break;
             }
+
+
         });
         return queueDtoConsumer;
     }
