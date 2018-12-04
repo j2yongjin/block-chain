@@ -1,6 +1,7 @@
 package queue.consume;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 /**
  * block-chain
@@ -11,5 +12,5 @@ import java.io.IOException;
  */
 public interface ConsumerService {
 
-    void consume() throws IOException;
+    void consume(Consumer consumer) throws IOException;
 }

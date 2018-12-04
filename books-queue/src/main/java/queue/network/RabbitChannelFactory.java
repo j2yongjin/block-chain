@@ -19,6 +19,11 @@ public class RabbitChannelFactory {
     Integer portNumber;
     ConnectionFactory connectionFactory;
 
+    public RabbitChannelFactory(String hostName){
+        connectionFactory = new ConnectionFactory();
+        connectionFactory.setHost(hostName);
+    }
+
     public RabbitChannelFactory(String username, String password, String virtualHost, String hostName, Integer portNumber) {
         this.username = username;
         this.password = password;
