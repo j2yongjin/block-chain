@@ -21,4 +21,9 @@ public class Company {
     @Column
     private String name;
 
+    public Company(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
 }

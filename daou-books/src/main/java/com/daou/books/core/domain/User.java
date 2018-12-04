@@ -16,7 +16,7 @@ public class User {
     private Long id;
 
     @Column
-    private String login_id;
+    private String loginId;
 
     @Column
     private String password;
@@ -24,10 +24,23 @@ public class User {
     @Column
     private String name;
 
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
     private Company company;
 
     @Column
+    @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    public enum UserRole {
+        SUPERADMIN, ADMIN, USER
+    }
+
+    public User(Company company, String adminName, String adminId, String adminPw, UserRole superAdmin) {
+        this.company = company;
+        this.name = adminName;
+        this.loginId = adminId;
+        this.password = adminPw;
+        this.role = superAdmin;
+    }
 
 }

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -18,11 +19,11 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column
+    @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @Column
-    private Book book;
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<Book> book;
 
     @Column
     private ProcessStatus status;
