@@ -1,4 +1,4 @@
-package com.daou.books.repository;
+package com.daou.books.book.repository;
 
 import com.daou.books.domain.DaouBookTest;
 import org.springframework.data.jpa.repository.JpaRepository;

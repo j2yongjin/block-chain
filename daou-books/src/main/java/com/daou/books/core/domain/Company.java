@@ -1,4 +1,4 @@
-package com.daou.books.domain;
+package com.daou.books.core.domain;
 
 import lombok.Getter;
 import lombok.Setter;

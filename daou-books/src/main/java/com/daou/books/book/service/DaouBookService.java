@@ -1,4 +1,4 @@
-package com.daou.books.service;
+package com.daou.books.book.service;
 
 import com.daou.books.domain.DaouBookTest;
 

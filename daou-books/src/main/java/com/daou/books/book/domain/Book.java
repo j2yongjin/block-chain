@@ -1,9 +1,11 @@
-package com.daou.books.domain;
+package com.daou.books.book.domain;
 
+import com.daou.books.core.ProcessStatus;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "books")
@@ -38,6 +40,6 @@ public class Book {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private OrderStatus status;
+    private ProcessStatus status;
 
 }

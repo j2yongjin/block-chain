@@ -1,5 +1,8 @@
-package com.daou.books.domain;
+package com.daou.books.order.domain;
 
+import com.daou.books.book.domain.Book;
+import com.daou.books.core.ProcessStatus;
+import com.daou.books.core.domain.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +25,6 @@ public class Order {
     private Book book;
 
     @Column
-    private OrderStatus status;
+    private ProcessStatus status;
 
 }

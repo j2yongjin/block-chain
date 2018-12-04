@@ -1,7 +1,7 @@
-package com.daou.books.service;
+package com.daou.books.book.service;
 
+import com.daou.books.book.repository.DaouBookServiceRepository;
 import com.daou.books.domain.DaouBookTest;
-import com.daou.books.repository.DaouBookServiceRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
