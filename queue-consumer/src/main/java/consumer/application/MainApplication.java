@@ -7,6 +7,8 @@ import queue.dto.QueueDto;
 import queue.network.RabbitChannelFactory;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 
@@ -19,9 +21,12 @@ public class MainApplication {
 
         try {
             RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
-            DefaultConsumerService defaultConsumerService = new DefaultConsumerService(rabbitChannelFactory, QueueConfig.EXCHANGE_NAME, QueueConfig.QUEUE);
-            Consumer<QueueDto> consumer = ConsumerTask.getConsumer();
-            defaultConsumerService.consume(consumer);
+            int nThreads = 5;
+            ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
+            for(int i=0;i<5;i++){
+                executorService.execute(new consumer.task.ConsumerTask(rabbitChannelFactory));
+            }
+
         }catch (Exception e){
 
         }

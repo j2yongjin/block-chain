@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -111,10 +112,11 @@ public class ChannelCustomClient {
      * @throws InvalidArgumentException
      */
     public Collection<ProposalResponse> sendTransactionProposal(TransactionProposalRequest request)
-            throws ProposalException, InvalidArgumentException {
+            throws ProposalException, InvalidArgumentException, ExecutionException, InterruptedException {
         Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
                 "Sending transaction proposal on channel " + channel.getName());
 
+        // send to endoser
         Collection<ProposalResponse> response = channel.sendTransactionProposal(request, channel.getPeers());
         for (ProposalResponse pres : response) {
             String stringResponse = new String(pres.getChaincodeActionResponsePayload());
@@ -124,8 +126,10 @@ public class ChannelCustomClient {
             Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,stringResponse);
         }
 
+        // send to orderer
         CompletableFuture<TransactionEvent> cf = channel.sendTransaction(response);
         Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,cf.toString());
+
 
         return response;
     }

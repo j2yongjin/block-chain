@@ -19,6 +19,10 @@ public class UpdateSaleBooksDto extends QueueDto {
     @JsonProperty
     Integer salesCount;
 
+    public UpdateSaleBooksDto(){
+        super(ChainFunction.UPDATE_BOOK);
+    };
+
     public UpdateSaleBooksDto(String isbn, Integer salesCount) {
         super(ChainFunction.UPDATE_BOOK);
         this.isbn = isbn;

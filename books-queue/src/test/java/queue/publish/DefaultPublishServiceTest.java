@@ -22,7 +22,7 @@ public class DefaultPublishServiceTest {
 
         RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
         DefaultPublishService defaultPublishService = new DefaultPublishService(rabbitChannelFactory,"books-queue","book");
-        AddBooksDto addBooksDto = new AddBooksDto("1234","hello-world","yjlee",1000,"20181114",1);
+        AddBooksDto addBooksDto = new AddBooksDto("1234","hello-world" + System.currentTimeMillis(),"yjlee",1000,"20181114",1);
         defaultPublishService.basicPublish(addBooksDto);
 
 //        AddBooksDto addBooksDto = new AddBooksDto("1234","hello-world","yjlee",1000,"20181114",1);
