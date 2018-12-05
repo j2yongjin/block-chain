@@ -75,22 +75,16 @@ public class MainApplication {
             Peer peer0_org1 = fabClient.getInstance().newPeer(SupplierConfig.ORG1_PEER_0, SupplierConfig.ORG1_PEER_0_URL);
 //            Peer peer1_org1 = fabClient.getInstance().newPeer(SupplierConfig.ORG1_PEER_1, SupplierConfig.ORG1_PEER_1_URL);
             Peer peer0_org2 = fabClient.getInstance().newPeer(SupplierConfig.ORG2_PEER_0, SupplierConfig.ORG2_PEER_0_URL);
-//            Peer peer1_org2 = fabClient.getInstance().newPeer(SupplierConfig.ORG2_PEER_1, SupplierConfig.ORG2_PEER_1_URL);
 
-            // 채널을 피어들에 연결하기
             mychannel.joinPeer(peer0_org1);
-//            mychannel.joinPeer(peer1_org1);
 
-            // 채널에 오더러
             mychannel.addOrderer(orderer);
 
-            // 채널 초기화
             mychannel.initialize();
 
             fabClient.getInstance().setUserContext(org2Admin);
             mychannel = fabClient.getInstance().getChannel("mychannel");
             mychannel.joinPeer(peer0_org2);
-//            mychannel.joinPeer(peer1_org2);
 
             Logger.getLogger(MainApplication.class.getName()).log(Level.INFO, "Channel created "+mychannel.getName());
             Collection peers = mychannel.getPeers();

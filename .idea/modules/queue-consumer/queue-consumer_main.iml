@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module external.linked.project.id=":queue-consumer:main" external.linked.project.path="$MODULE_DIR$/../../../queue-consumer" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="block-chain" external.system.module.type="sourceSet" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
+    <output url="file://$MODULE_DIR$/../../../queue-consumer/build/classes/java/main" />
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../queue-consumer/src/main">
+      <sourceFolder url="file://$MODULE_DIR$/../../../queue-consumer/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../../queue-consumer/src/main/resources" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="books-queue_main" />
+    <orderEntry type="module" module-name="chain-code-supplier_main" />
+    <orderEntry type="library" name="Gradle: com.rabbitmq:amqp-client:5.5.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-databind:2.9.6" level="project" />
+    <orderEntry type="library" name="Gradle: org.projectlombok:lombok:1.18.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.slf4j:slf4j-api:1.7.25" level="project" />
+    <orderEntry type="library" name="Gradle: org.hyperledger.fabric-sdk-java:fabric-sdk-java:1.2.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.9.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-core:2.9.6" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-netty:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-protobuf:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-stub:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-tcnative-boringssl-static:2.0.10.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http2:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java-util:3.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:3.6.0" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcpkix-jdk15on:1.60" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpclient:4.5.6" level="project" />
+    <orderEntry type="library" name="Gradle: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Gradle: commons-cli:commons-cli:1.4" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.commons:commons-compress:1.17" level="project" />
+    <orderEntry type="library" name="Gradle: commons-io:commons-io:2.6" level="project" />
+    <orderEntry type="library" name="Gradle: log4j:apache-log4j-extras:1.2.17" level="project" />
+    <orderEntry type="library" name="Gradle: log4j:log4j:1.2.17" level="project" />
+    <orderEntry type="library" name="Gradle: org.glassfish:javax.json:1.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.21" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-protobuf-lite:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-core:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler-proxy:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.guava:guava:20.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.api.grpc:proto-google-common-protos:1.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.gson:gson:2.7" level="project" />
+    <orderEntry type="library" name="Gradle: org.bouncycastle:bcprov-jdk15on:1.60" level="project" />
+    <orderEntry type="library" name="Gradle: org.apache.httpcomponents:httpcore:4.4.10" level="project" />
+    <orderEntry type="library" name="Gradle: commons-codec:commons-codec:1.10" level="project" />
+    <orderEntry type="library" name="Gradle: javax.json:javax.json-api:1.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: io.grpc:grpc-context:1.13.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.errorprone:error_prone_annotations:2.1.2" level="project" />
+    <orderEntry type="library" name="Gradle: com.google.code.findbugs:jsr305:3.0.0" level="project" />
+    <orderEntry type="library" name="Gradle: io.opencensus:opencensus-contrib-grpc-metrics:0.12.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.opencensus:opencensus-api:0.12.3" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-handler:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-socks:4.1.25.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec-http:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-codec:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-transport:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-buffer:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-resolver:4.1.26.Final" level="project" />
+    <orderEntry type="library" name="Gradle: io.netty:netty-common:4.1.26.Final" level="project" />
+  </component>
+</module>

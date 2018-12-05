@@ -34,6 +34,23 @@ public class DefaultBookService implements BookService {
     PeerDomainConfig peerDomainConfig;
     BlockchainUser admin;
 
+    public DefaultBookService() throws Exception {
+        String adminName = "admin";
+        String adminPw = "adminpw";
+        BlockchainUser admin = new BlockchainUser();
+        admin.setAffiliation(SupplierConfig.ORG1);
+        admin.setMspId(SupplierConfig.ORG1_MSP);
+        admin.setName(adminName);
+
+        UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
+        admin = userService.enrollAdminUser(admin,adminName,adminPw);
+
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        this.admin = admin;
+        this.peerDomainConfig = peerDomainConfig;
+    }
+
     public DefaultBookService(BlockchainUser admin,PeerDomainConfig peerDomainConfig) {
         this.admin = admin;
         this.peerDomainConfig = peerDomainConfig;
