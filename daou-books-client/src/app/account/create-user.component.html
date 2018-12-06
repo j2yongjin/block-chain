@@ -1,0 +1,53 @@
+<div class="contents">
+  <div class="header">
+    <h2>
+      어드민 등록
+    </h2>
+  </div>
+  <div class="body">
+    <div class="form">
+      <div class="form_body">
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">이름</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.userName"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">아이디</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.userId"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">비밀번호</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.userPw"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="btn minor l" >취소</button>
+      <button class="btn major l" (click)="createUser()">저장</button>
+    </div>
+  </div>
+</div>

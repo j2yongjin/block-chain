@@ -8,13 +8,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class CompanyController {
+public class UserController {
 
-    @Autowired
-    private CompanyService companyService;
-
-    @PostMapping("/api/company")
+    @PostMapping("/api/user")
     public CreateCompanyModel createCompany(@RequestBody CreateCompanyModel model) {
-        return companyService.saveCompany(model);
+        return model;
     }
 }

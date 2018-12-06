@@ -17,4 +17,11 @@ public class CreateCompanyModel {
 
     private String adminPw;     // superAdmin
 
+    //나중에 모델 정리하고 알려주세요.
+    private String userName;
+
+    private String userId;
+
+    private String userPw;
+
 }
