@@ -15,6 +15,6 @@ public class CompanyController {
 
     @PostMapping("/api/company")
     public CreateCompanyModel createCompany(@RequestBody CreateCompanyModel model) {
-        return companyService.saveCompany(model);
+        return companyService.addCompany(model);
     }
 }

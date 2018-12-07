@@ -4,5 +4,5 @@ import com.daou.books.core.domain.model.CreateCompanyModel;
 
 public interface CompanyService {
 
-    CreateCompanyModel saveCompany(CreateCompanyModel newCompany);
+    CreateCompanyModel addCompany(CreateCompanyModel newCompany);
 }

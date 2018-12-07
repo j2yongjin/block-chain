@@ -20,12 +20,12 @@ public class CompanyServiceImpl implements CompanyService {
     private UserRepository userRepository;
 
     @Override
-    public CreateCompanyModel saveCompany(CreateCompanyModel model) {
+    public CreateCompanyModel addCompany(CreateCompanyModel model) {
 //        CreateCompanyModel model = new CreateCompanyModel();
 
         // 1. db save
         Company company = companyRepository.save(new Company(model.getCompanyCode(), model.getCompanyName()));
-        User superAdmin = userRepository.save(new User(company, model.getAdminName(), model.getAdminId(), model.getAdminPw(), User.UserRole.SUPERADMIN));
+        User superAdmin = userRepository.save(new User(company, model.getAdminName(), model.getAdminId(), model.getAdminPw(), User.UserRole.ADMIN));
 
         // 2. chaincode create
 
