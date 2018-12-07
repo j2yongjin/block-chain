@@ -75,13 +75,11 @@ public class DefaultBookServiceTest {
 
         PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
                 ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
-//        String isbn = "1111-222-333";
-        String isbn = "112-3334-121";
+        String isbn = "112-33-221";
         defaultBookService = new DefaultBookService(admin,peerDomainConfig);
         Books books = defaultBookService.getByName(isbn);
 
         System.out.println("books name : " + books.getName());
-
     }
 
     @Test
@@ -169,14 +167,12 @@ public class DefaultBookServiceTest {
 
         UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
-        String isbn = "1111-222-333";
+        String isbn = "112-33-221";
 
         PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
                 ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
         defaultBookService = new DefaultBookService(admin,peerDomainConfig);
         defaultBookService.incrementSalesCount(isbn,1);
     }
-
-
 
 }

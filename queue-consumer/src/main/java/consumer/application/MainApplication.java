@@ -1,5 +1,6 @@
 package consumer.application;
 
+import lombok.extern.slf4j.Slf4j;
 import queue.config.QueueConfig;
 import queue.consume.ConsumerTask;
 import queue.consume.DefaultConsumerService;
@@ -15,20 +16,20 @@ import java.util.function.Consumer;
 /**
  * Created by yjlee on 2018-12-05.
  */
+@Slf4j
 public class MainApplication {
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    static final int THREAD_POOL_COUNT = 5;
 
+    public static void main(String[] args) throws IOException, TimeoutException {
         try {
             RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
-            int nThreads = 5;
-            ExecutorService executorService = Executors.newFixedThreadPool(nThreads);
-            for(int i=0;i<5;i++){
+            ExecutorService executorService = Executors.newFixedThreadPool(THREAD_POOL_COUNT);
+            for(int i=0;i<THREAD_POOL_COUNT;i++){
                 executorService.execute(new consumer.task.ConsumerTask(rabbitChannelFactory));
             }
-
         }catch (Exception e){
-
+            log.error("Consumer Thread Exception " , e);
         }
 
     }

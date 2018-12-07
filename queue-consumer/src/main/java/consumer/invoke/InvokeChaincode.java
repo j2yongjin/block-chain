@@ -28,7 +28,6 @@ public class InvokeChaincode {
                         Books books = new Books(addBooksDto.getIsbn(), addBooksDto.getName(), addBooksDto.getWriter()
                                 , addBooksDto.getAmount(), addBooksDto.getIssueDate(), addBooksDto.getSalesCount());
                         defaultBookService.addBooks(books);
-
                         break;
                     case UPDATE_BOOK:
                         UpdateSaleBooksDto updateSaleBooksDto = (UpdateSaleBooksDto) queueDto;
