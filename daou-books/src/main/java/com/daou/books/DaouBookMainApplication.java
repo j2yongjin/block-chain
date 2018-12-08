@@ -31,19 +31,3 @@ public class DaouBookMainApplication implements CommandLineRunner {
         }
     }
 }
-
-//    @Autowired
-//    private BoardRepository boardRepository;
-//
-//    public static void main(String[] args) {
-//        SpringApplication.run(SimpleAttachmentApplication.class, args);
-//    }
-//
-//    @Override
-//    public void run(String... args) throws Exception {
-//
-//        List<Board> boards = IntStream.rangeClosed(1, 100)
-//                .mapToObj(n -> new Board("title" + n, "content" + n, (long) n))
-//                .collect(Collectors.toList());
-//        boardRepository.saveAll(boards);
-//    }
