@@ -1,12 +1,10 @@
 package com.daou.books.core.controller;
 
 import com.daou.books.core.domain.model.CreateCompanyModel;
+import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,7 +20,11 @@ public class CompanyController {
     }
 
     @GetMapping("/api/companies")
-    public List<CreateCompanyModel> getCompanies() {
-        return companyService.getCompanies();
+    public PageModel<CreateCompanyModel> getCompanies(
+            @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(value = "offset", required = false, defaultValue = "20") int offset,
+            @RequestParam(value = "direction", required = false, defaultValue = "desc") String direction,
+            @RequestParam(value = "property", required = false, defaultValue = "id") String property) {
+        return companyService.getCompanies(page, offset, direction, property);
     }
 }

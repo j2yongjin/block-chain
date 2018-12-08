@@ -2,6 +2,8 @@ package com.daou.books.core.repository;
 
 import com.daou.books.core.domain.Company;
 import com.daou.books.core.domain.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByLoginId(String loginId);
 
-    List<User> findByUserAndRole(User.UserRole role);
+    Page<User> findByRole(User.UserRole role, Pageable pageable);
 
 }

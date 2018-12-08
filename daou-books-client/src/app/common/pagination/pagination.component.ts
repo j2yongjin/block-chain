@@ -48,7 +48,7 @@ export class PaginationComponent implements OnInit{
     let urlParameters = Object.keys(this.pageOptions.params).map(key => `${key}=${encodeURIComponent(this.pageOptions.params[key])}`).join('&');
 
     this.paginationService.getPageList(url+'?'+urlParameters).subscribe(res => {
-      this.pageModel = res.data as PageModel;
+      this.pageModel = res as PageModel;
       this.getPages();
       this.hasContent = this.pageModel.pageInfo.total > 0;
       this.onSearchEvent.emit(this.pageOptions.params);

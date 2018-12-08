@@ -3,11 +3,16 @@ package com.daou.books.core.service;
 import com.daou.books.core.domain.Company;
 import com.daou.books.core.domain.User;
 import com.daou.books.core.domain.model.CreateCompanyModel;
+import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.repository.CompanyRepository;
 import com.daou.books.core.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,8 +40,12 @@ public class CompanyServiceImpl implements CompanyService {
         return model;
     }
 
-    @Override public List<CreateCompanyModel> getCompanies() {
-        List<User> users = userRepository.findByUserAndRole(User.UserRole.ADMIN);
+    @Override
+    public PageModel<CreateCompanyModel> getCompanies(int page, int offset, String direction, String property) {
+
+        Pageable pageable = new PageRequest(page, offset, new Sort(Sort.Direction.fromString(direction), property));
+        Page<User> users = userRepository.findByRole(User.UserRole.ADMIN, pageable);
+
         List<CreateCompanyModel> models = Lists.newArrayList();
         for(User user: users){
             CreateCompanyModel model = new CreateCompanyModel();
@@ -46,6 +55,6 @@ public class CompanyServiceImpl implements CompanyService {
             model.setAdminName(user.getName());
             models.add(model);
         }
-        return models;
+        return new PageModel(models, users);
     }
 }
