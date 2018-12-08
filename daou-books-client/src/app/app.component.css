@@ -36,7 +36,7 @@ body.user_front  { background-image: none; }
 .go_wrap.mint_theme .go_intro div.change_pw input.ipt_login:focus { background: #f1feff; }
 
 .go_wrap.mint_theme .btn_login { position: static !important; width: 366px; height:43px; line-height:45px; background: #7c7f83; }
-.go_wrap.mint_theme .btn_login:hover { background:#23c4cd; }
+.go_wrap.mint_theme .btn_login:hover { background:#7C7F9B; }
 
 .go_wrap.mint_theme .login_check { clear: both; margin: 8px 96px; }
 .go_wrap.mint_theme .login_check:after {display:block;clear:both;overflow:hidden;height:0;content:'';}
