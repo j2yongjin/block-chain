@@ -40,38 +40,6 @@ public class BookServiceTest {
     }
 
     @Test
-    public void generateIsbn() {
-
-        long timeSeed = System.nanoTime(); // to get the current date time value
-        double randSeed = Math.random() * 1000; // random number generation
-        long midSeed = (long) (timeSeed * randSeed); // mixing up the time and
-
-        String s = midSeed + "";
-        String subStr = s.substring(0, 8);
-        int finalSeed = Integer.parseInt(subStr); // integer value
-
-        String num = String.format("%08d", finalSeed);
-        String newIbsn = String.format("1000%s", num);
-
-        System.out.println(newIbsn);
-    }
-
-
-//    @Test
-//    public void given_whenbasicPublish_then() throws IOException, TimeoutException {
-//
-//        RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
-//        DefaultPublishService defaultPublishService = new DefaultPublishService(rabbitChannelFactory,"books-queue","book");
-//        AddBooksDto addBooksDto = new AddBooksDto("1234","hello-world" + System.currentTimeMillis(),"yjlee",1000,"20181114",1);
-//        defaultPublishService.basicPublish(addBooksDto);
-//
-////        AddBooksDto addBooksDto = new AddBooksDto("1234","hello-world","yjlee",1000,"20181114",1);
-//        UpdateSaleBooksDto updateSaleBooksDto = new UpdateSaleBooksDto("1234",10);
-//        defaultPublishService.basicPublish(updateSaleBooksDto);
-//
-//    }
-
-    @Test
     public void connectionMQ() throws Exception {
         ConnectionFactory factory = new ConnectionFactory();
         // "guest"/"guest" by default, limited to localhost connections
