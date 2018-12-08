@@ -11,6 +11,10 @@ import { PaginationService } from './common/pagination/pagination.service.compon
 import { CreateAdminComponent } from "./account/create-admin.component";
 import { CreateUserComponent } from "./account/create-user.component";
 import { AccountService } from "./account/account.service.component";
+import {LayoutComponent} from "./common/layout/layout.component";
+import {AuthService} from "./auth.service";
+import { CookieService } from 'ngx-cookie-service';
+import {AdminListComponent} from "./account/admin-list.component";
 
 
 @NgModule({
@@ -20,7 +24,9 @@ import { AccountService } from "./account/account.service.component";
     PaginationComponent,
     ModalComponent,
     CreateAdminComponent,
-    CreateUserComponent
+    CreateUserComponent,
+    LayoutComponent,
+    AdminListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +37,9 @@ import { AccountService } from "./account/account.service.component";
   ],
   providers: [
     PaginationService,
-    AccountService
+    AccountService,
+    AuthService,
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

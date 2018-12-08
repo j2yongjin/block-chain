@@ -6,8 +6,11 @@ import com.daou.books.core.domain.model.CreateCompanyModel;
 import com.daou.books.core.repository.CompanyRepository;
 import com.daou.books.core.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Slf4j
 @Service
@@ -32,4 +35,17 @@ public class CompanyServiceImpl implements CompanyService {
         return model;
     }
 
+    @Override public List<CreateCompanyModel> getCompanies() {
+        List<User> users = userRepository.findByUserAndRole(User.UserRole.ADMIN);
+        List<CreateCompanyModel> models = Lists.newArrayList();
+        for(User user: users){
+            CreateCompanyModel model = new CreateCompanyModel();
+            model.setCompanyCode(user.getCompany().getCode());
+            model.setCompanyName(user.getCompany().getName());
+            model.setAdminId(user.getLoginId());
+            model.setAdminName(user.getName());
+            models.add(model);
+        }
+        return models;
+    }
 }

@@ -5,6 +5,7 @@ import com.daou.books.core.repository.CompanyRepository;
 import com.daou.books.core.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class LoginSerivceImpl implements LoginSerivce {
@@ -16,6 +17,7 @@ public class LoginSerivceImpl implements LoginSerivce {
     private CompanyRepository companyRepository;
 
     @Override
+    @Transactional
     public User login(String id, String pw) {
         User user = userRepository.findByLoginId(id);
         if(null == user) {

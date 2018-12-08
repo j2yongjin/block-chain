@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {RegisterComponent} from "./register/register.component";
 import {CreateAdminComponent} from "./account/create-admin.component";
 import {CreateUserComponent} from "./account/create-user.component";
+import {AdminListComponent} from "./account/admin-list.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -11,7 +12,8 @@ const routes: Routes = [
     ]},
   { path: 'admin', children : [
       { path : 'user/create', component: CreateUserComponent },
-      { path : 'company/create', component: CreateAdminComponent }
+      { path : 'company/create', component: CreateAdminComponent },
+      { path : 'company/list', component: AdminListComponent }
     ]}
 ];
 

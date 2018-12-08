@@ -1,0 +1,239 @@
+body.user_front  { background-image: none; }
+.go_wrap.mint_theme { background: #fff; }
+
+
+.go_wrap.mint_theme input::-webkit-input-placeholder {color:#bbb !important;}
+.go_wrap.mint_theme input:-moz-placeholder {color:#bbb !important;}
+.go_wrap.mint_theme input::-moz-placeholder {color:#bbb !important;}
+.go_wrap.mint_theme input:-ms-input-placeholder {color:#bbb !important;}
+.go_wrap.mint_theme .find_pw { border:solid 1px #a5a5a5; color: #707070; box-sizing:border-box; padding:7px; float:right; }
+.go_wrap.mint_theme .find_pw:hover { background: #eee; }
+.go_wrap.mint_theme .option_wrap { float:left; margin-top: 10px; color: #707070; }
+
+
+.go_wrap.mint_theme .custom_visual { background: none; }
+
+.go_wrap.mint_theme .login_box {  border:solid 1px #e0e0e0 !important; border-radius: 0px !important; box-shadow: none !important; }
+.go_wrap.mint_theme .login_id,
+.go_wrap.mint_theme .login_pw {  margin-bottom: 7px; }
+
+.go_wrap.mint_theme fieldset { margin: 0px 96px !important; }
+.go_wrap.mint_theme .login_id input,
+.go_wrap.mint_theme .login_pw input{
+  background: #fff; box-shadow: none; padding: 0px 10px 0px 10px; color:#707070; border:solid 1px #7c7f83; width: 366px !important; height:44px !important; box-sizing:border-box;
+}
+/*ie8*/
+.go_wrap.mint_theme .login_id input,
+.go_wrap.mint_theme .login_pw input { line-height: 42px\9 !important; }
+
+
+.go_wrap.mint_theme .go_intro div.change_pw input.ipt_login { background: #fff; box-shadow: none; padding: 0px 10px 0px 10px; color:#707070; border:solid 1px #7c7f83; height:44px !important; box-sizing:border-box; width: 350px !important; }
+.go_wrap.mint_theme .go_intro .glad_box div.change_pw input.ipt_login {width:366px!important;}
+
+.go_wrap.mint_theme .login_id input { /*width: 366px !important; */ }
+.go_wrap.mint_theme .login_id input:focus,
+.go_wrap.mint_theme .login_pw input:focus,
+.go_wrap.mint_theme .go_intro div.change_pw input.ipt_login:focus { background: #f1feff; }
+
+.go_wrap.mint_theme .btn_login { position: static !important; width: 366px; height:43px; line-height:45px; background: #7c7f83; }
+.go_wrap.mint_theme .btn_login:hover { background:#23c4cd; }
+
+.go_wrap.mint_theme .login_check { clear: both; margin: 8px 96px; }
+.go_wrap.mint_theme .login_check:after {display:block;clear:both;overflow:hidden;height:0;content:'';}
+.go_wrap.mint_theme .select_list { border:solid 1px #7c7f83; right: 0px; top: 1px; }
+.go_wrap.mint_theme .select_list ul { background: #fff;  }
+.go_wrap.mint_theme .select_list ul li { border-top:solid 1px #7c7f83; }
+.go_wrap.mint_theme .select_list ul li:hover {background: #fff; }
+.go_wrap.mint_theme .select_list ul li a { color: #bbb; height: 42px; line-height: 42px;  }
+.go_wrap.mint_theme .select_list ul li a:hover { background: #f1feff; color: #707070; }
+.go_wrap.mint_theme .select_list .btn_dropdown { top: 11px; }
+
+
+.go_wrap.mint_theme .layer_confim_front { z-index: 1; }
+
+.go_wrap.mint_theme .login_id .ipt_login { width: 245px !important; }
+.go_wrap.mint_theme .login_id .ipt_login.login_wide{ width: 366px !important; }
+.go_wrap.mint_theme .glad_box .change_pw {margin:  0 21px 5px; }
+
+
+
+/*@go_intro style_Renewal--------------------------------------------------------------------------------------*/
+.go_intro_wrap {padding-bottom:50px}
+.go_intro_wrap header.go_header {background:none;border:none}
+.go_intro_wrap header.go_header h1 a {color:#999; font-size:12px; font-weight:bold}
+.go_intro_wrap header.go_header .language  {float:right; margin:5px 10px 0 0}
+.go_intro_wrap header.go_header .language select {min-width:140px; padding:3px; font-weight:bold; border:1px solid #c9c9c9; color:#484848; box-shadow:none; box-sizing:border-box}
+.go_intro {width:600px; margin:0 auto; position:relative}
+.custom_visual img {margin-top:0px; max-width: 70%}
+.go_intro section.login_box {position:relative; padding:20px 20px 40px 20px; margin-top:80px; margin-bottom:30px; background:#fff /*url(../images/bg_front_box.png) no-repeat 0 0*/; border:1px solid #babbbb; border-radius:15px; box-shadow:0px 0px 10px #c9c9c9}
+.go_intro section.login_box div.sticker span.alpha {background-position:0px -340px}
+.go_intro section.login_box div.sticker span.beta {background-position:-300px -340px}
+.go_intro section.login_box div.sticker span.TMS8_1 {background-position:-300px -340px}
+.go_intro section.login_box div.sticker span.go {display:none;background-position:-300px -340px}
+.go_intro .login_msg {position:relative; padding:10px; background:#333; color:#fff; box-sizing:border-box; margin:0 auto 5px; width:366px}
+.go_intro .login_msg span.ic_error {position:absolute; top:10px; left:10px; padding:2px 6px; background:#f44e40; border-radius:2px; border:1px solid #df6c36; color:#fff; font-weight:bold; margin-right:4px}
+.go_intro .login_msg span.txt {display:block; margin:1px 0 0 26px; color:#fff; line-height:1.5}
+.go_intro section.login_box fieldset,
+.go_intro .glad_box {position:relative}
+.go_intro section.login_box fieldset {margin: 0 80px}
+.go_intro section.login_box fieldset legend {display:none; height:0}
+.go_intro section.login_box fieldset.step_otp input.login_wide {width:179px}
+.go_intro section.login_box fieldset.step_otp input,
+.go_intro section.login_box fieldset.step_otp label {vertical-align:top}
+.go_intro label.title {display:none; /*display:inline-block;font-size:14px; text-align:right; font-weight:bold; letter-spacing:-1px*/}
+.go_intro section.login_box fieldset label.title {width:60px; color:#fff; display:none}
+.go_intro section.login_single {width:470px; margin:0 auto}
+.go_intro section.login_single .login_msg {width:371px}
+.go_intro section.login_single input.ipt_login {width:251px}
+.go_intro .glad_box {margin:10px 0 0 0px}
+.go_intro .glad_box label.title {width:120px}
+.go_intro .glad_box .login_msg {width:366px;}
+.go_intro .glad_box .msg2 {left:129px; top:40px; width:296px}
+.go_intro .glad_box>form {margin:0 96px;}
+.go_intro input {font-size:12px}
+.go_intro input.ipt_login ,
+.go_intro .select_list {width:190px; background:#8ccccf; border:1px solid #8badaf; box-shadow:3px 3px 5px #8cc8cb inset; color:#fff}
+.go_intro input.ipt_login,
+.go_intro input.ipt_login::-webkit-input-placeholder {color:#698687}/* for chrome */
+.go_intro input.ipt_login::-moz-placeholder {color:#698687; opacity:1}/* for firefox 19+ */
+.go_intro input.ipt_login:-moz-placeholder {color:#698687}/* for firefox 18- */
+.go_intro input.ipt_login:-ms-input-placeholder {color:#698687}/* for IE */
+.go_intro div.login_id input.ipt_login {background-position:5px 7px; width:149px}
+.go_intro div.login_id input.login_wide {width:276px}
+.go_intro div.change_pw input.ipt_login,
+.go_intro div.login_pw input.ipt_login {background-position:5px -263px; width:276px}
+.go_intro div.login_id input.ipt_login:focus {background-position:5px -33px; border-color:#4a979c}
+.go_intro div.change_pw input.ipt_login:focus,
+.go_intro div.login_pw input.ipt_login:focus {background-position:5px -302px;border-color:#4a979c}
+.go_intro .select_list {position:relative; width:120px}
+.go_intro .select_list .btn_dropdown {position:absolute;  top:7px; right:5px}
+.go_intro .login_pw {margin-top:5px}
+.go_intro .login_id .select_list {position:absolute; top:0; right:90px}
+.go_intro .login_id .select_list ul li {border-top:1px solid #7eb8bb}
+.go_intro .login_id .select_list ul li:first-child {border:none}
+.go_intro .login_id .select_list ul li:hover {background:#81c0c5}
+.go_intro .login_id .select_list ul li a {color:#fff}
+.go_intro .login_id .select_list ul li a {display:block; padding:0px 30px 0 10px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; height:33px; line-height:33px}
+.go_intro .login_btn {}
+.go_intro section.login_box fieldset a.btn_login,
+.go_intro section.login_box fieldset a.btn_confirm {position:absolute; top:0; right:0; padding:0; font-weight:bold}
+.login_check span label {}
+.login_check {margin:15px 80px}
+.glad_box .change_pw {margin:0 0 5px 129px}
+.layer_task_type .wrap_txt {display: inline-block;padding: 2px 0;vertical-align: top}
+.layer_task_type input.txt {padding: 5px 4px; border-radius: 2px;box-sizing: border-box;-moz-box-sizing: border-box;line-height: 1.3\0/IE9;border: 1px solid #cacaca;border-top-color: #bcbcbc;border-bottom-color: #d9d9d9;box-shadow: inset 1px 1px 1px rgba(150,150,150,0.1)}
+.layer_task_type input.txt:hover {border: 1px solid #1c99a0;box-shadow: inset 1px 1px 1px rgba(150,150,150,0.1)}
+.layer_task_type:root .go_renew input.txt,
+.layer_task_type:root .go_renew textarea,
+.layer_task_type:root .go_renew span.txt,
+.layer_task_type:root .go_renew span.txt_caution,
+.layer_task_type:root .go_renew label {line-height: 1.3\0/IE9}
+.go_intro ul.link_download {width:478px; margin:0 auto; height: 95px}
+.go_intro ul.link_download li {float:left; margin-left:5px}
+.go_intro ul.link_download li:first-child {margin-left:0}
+.go_intro ul.link_download li:hover a {animation:btnani 0.5s;-webkit-animation:btnani 0.5s; /*Safari and Chrome*/}
+@keyframes btnani
+{from {opacity:0.5}to {opacity:1}}
+@-webkit-keyframes btnani /*Safari and Chrome*/
+{from {opacity:0.5}to {opacity:1}}
+.go_intro ul.link_download li.iphone a {background-position: 0 0}
+.go_intro ul.link_download li.android a {background-position: -162px 0}
+.go_intro ul.link_download li.pc a {background-position: -323px 0}
+.go_intro ul.link_download li.iphone:hover a {background-position: 0 -100px}
+.go_intro ul.link_download li.android:hover a {background-position: -162px -100px}
+.go_intro ul.link_download li.pc:hover a {background-position: -323px -100px}
+.go_intro a.pc_link:hover {color:#359aa2; background-position:0 -100px}
+nav.side_menu+a.messenger_down,
+nav.side_menu+a.app_down {margin-top:10px}
+a.messenger_down,
+a.app_down {display:block; border:1px solid #bcc1c7; text-align:center; margin:0 10px; padding: 12px 0; border-radius:3px;
+  box-shadow:inset 0 1px 0 rgba(255, 255, 255, 1)}
+a.messenger_down span.ic_messenger_down {vertical-align:top; margin:0 5px 0 0}
+a.messenger_down span.title {font-size:14px; font-weight:bold; color:#666}
+a.app_down span.ic_ios_down {vertical-align:top; margin:-4px 5px 0 0}
+a.app_down span.title {font-size:14px; font-weight:bold; color:#666}
+a.messenger_down:hover,
+a.app_down:hover {background:#f7f7f7}
+a.messenger_down:hover span.title,
+a.app_down:hover span.title {color:#000}
+a.btn_login:hover {background-position:0 -200px}
+a.btn_confirm:hover {background-position:0 -500px}
+a.btn_bk {display:inline-block; padding:15px 20px; color:#fff; border:1px solid #4e4f51; border-radius:2px; background:#4d4d4d; color:#fff; font-size:18px; font-weight:bold;}
+a.btn_bk:hover {background:#71797c;}
+.go_intro section.msg_box {padding-top:20px}
+.go_intro .sleeping_msg {padding-top:20px; /*background:url(../images/ic_sleep.png) no-repeat 50% 0;*/ }
+.go_intro .sleeping_msg,
+.go_intro .glad_msg {text-align:center }
+.go_intro .glad_msg p.title {margin-top:20px}
+.go_intro p.title {font-size:20px; font-weight:bold}
+section.login_box .sleeping_msg p.title {}
+.go_intro section.login_box p.desc {font-size:12px;  margin-top:10px}
+.go_intro .btn_box {margin-top:20px; text-align:center}
+.go_intro .glad_box a.btn_bk {/*margin-left:-67px*/}
+.go_intro .glad_box a.btn_bk_p {margin-left:10px;}
+.go_intro .glad_box .btn_space {margin-left:6px;}
+.go_intro .glad_box .pw_space {margin-top:25px;}
+.go_intro .glad_box .btn_wrap {text-align:center;margin-top:20px;}
+.go_intro .glad_box .btn_wrap .btn_bk {font-size:12px;font-weight:bold;}
+.go_intro .glad_box .btn_wrap a.btn_bk {padding:10px 15px;}
+.go_intro .glad_box .btn_wrap .btn_major_s {background:#737373;border:1px solid #646668;padding:8px 15px;}
+.go_intro .glad_box .btn_wrap .btn_major_s:hover{background:#4d4d4d;border:1px solid #4e4f51}
+.go_intro .glad_box .btn_wrap .btn_minor_s {background:#f3f3f3;border:1px solid #cecece;padding:8px 15px;}
+.go_intro .glad_box .btn_wrap .btn_minor_s:hover{background:#e1e1e1;border:1px solid #c0c0c0}
+span.msg_false {color:red}
+span.msg_true {color:#2ba629}
+.go_intro .portlet_box {overflow:hidden}
+.go_intro .portlet_warp {margin-bottom:10px; border:1px solid #c9c9c9; border-top:none; overflow:hidden}
+.go_intro .portlet_multi {}
+.go_intro .portlet_multi .portlet_warp {float:left; width:49.6%; min-width:318px}
+.go_intro .portlet_multi .portlet_last {position:relative; left:-1px}
+.go_intro_wrap header.go_header {background:none; background-image:none; filter:none}
+.go_intro_wrap footer.go_footer section.meta {float:none; text-align:center}
+.go_intro_wrap footer.go_footer section.meta small.copyright{float:none; display:block}
+div.layer_access_error {width:300px}
+/* noti_wrap */
+div.noti_wrap {position:fixed; right:10px; bottom:0px; z-index:9999}
+div.noti_content {position:relative; padding:20px 25px 10px 10px; width:350px; border-radius:10px 10px 0 0; height:44px; background-color:#fff; border:2px solid #2F2F2F; border-bottom:0; box-shadow:0 0 5px rgba(0,0,0,0.5)}
+div.noti_content span, div.noti_content a {vertical-align:middle}
+div.noti_content span.ic_gnb {margin:0}
+div.noti_content span.fine {color:#888; margin-right:2px}
+div.noti_content span.photo {margin:0 2px 0;display:inline-block; width:40px; height:40px; overflow:hidden; border-radius:5px}
+div.noti_content span.photo img {height:100%}
+div.noti_content a.msg {display:inline-block; width:260px; overflow:hidden; max-height:46px; line-height:1.4}
+div.noti_content a.btn_layer_x {top:0px; right:0px; border-bottom: 1px solid #E3E3E3; padding:3px 5px 6px 7px; border-radius:0 10px 0 10px}
+div.null_guide {text-align:center!important; padding:14px 0}
+div.null_guide p.desc {margin-top:5px}
+/*intro_side*/
+section.intro {text-align:center; min-height:100px; padding:50px 0 ; border-top: 0; border-bottom:0}
+section.intro p.desc {line-height:1.5}
+section.intro span.ic_survey_symbol {width:76px; height:60px; background-position:-350px -650px}
+section.intro span.ic_task_symbol {width:76px; height:60px; background-position:-350px -450px}
+section.intro span.ic_report_symbol {width:76px; height:60px; background-position:-350px -350px}
+section.intro span.ic_appr_symbol {width:76px; height:60px; background-position:-350px -550px}
+section.intro span.ic_comm_symbol span.txt,
+section.intro span.ic_survey_symbol span.txt,
+section.intro span.ic_task_symbol span.txt,
+section.intro span.ic_report_symbol span.txt,
+section.intro span.ic_appr_symbol span.txt {display:none}
+section.intro p.desc {margin-top:15px}
+section.intro span.btn_side_st { margin-bottom:5px; padding-left:10px; width:180px; height:36px; line-height:36px; text-align:left}
+section.intro span.btn_side_st span.ic_gnb {vertical-align:middle}
+section.intro span.txt {padding-left:7px; line-height:36px; font-size:12px; font-weight:bold}
+section.intro
+section.intro+section.function {border:none}
+.null_guide {text-align:center; min-height:100px; padding:50px 0 ; border-top: 0; border-bottom:0}
+.null_guide p.desc {line-height:1.5}
+.null_guide p.desc {margin-top:15px}
+.null_guide span.btn_side_st { margin-bottom:5px; padding-left:10px; width:180px; height:36px; line-height:36px; text-align:left}
+.null_guide span.btn_side_st span.ic_gnb {vertical-align:middle}
+.null_guide span.txt {display: inline-block; vertical-align: top; padding-left:7px; line-height: 1; font-size:12px; font-weight:bold; margin: 12px 0 0 0}
+.null_guide
+.null_guide+.function {border:none}
+span.btn_add_item:hover span.ic_add {background-position: -150px -300px}
+span.btn_add_item:hover span.txt {color:#ff7000}
+a.btn_login {display:inline-block;padding:0;color:#fff;width:85px;height:75px;color:#fff;font-size:16px;font-family:돋움,dotum,AppleGothic,arial,Helvetica,sans-serif;text-align:center;vertical-align:middle;line-height:73px;}
+a.btn_login:hover {background-position:0 -200px}
+
+
+.custom_visual {padding:30px 0; margin-bottom:20px; text-align:center;}
+.custom_visual img {margin-top:0px; max-width: 70%}

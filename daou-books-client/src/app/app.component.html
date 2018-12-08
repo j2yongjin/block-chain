@@ -1,11 +1,60 @@
-<div class="doas">
+<!--<html>
+<body class="user_front" id="bodyPart">
+<p name="description" style="display:none;">로그인이 필요합니다.</p>
+<div id="noticeBanner" style=""></div>-->
+<div class="go_wrap go_skin_default go_intro_wrap mint_theme" *ngIf="!authorized">
+  <div class="go_intro">
+    <form id="loginForm" method="post">
+      <section class="login_box">
+        <div class="sticker">
+          <span class="go" title="groupoffice"></span>
+          <span style="display:none" title="alpha" class="beta"></span>
+          <!-- <span style="display:none" title="TMS 8.1" class="TMS8_1"></span> -->
+        </div>
+
+        <div class="custom_visual">
+          <img src="/assets/images/logo.png">
+        </div>
+        <div class="login_msg" style="display: none;">
+          <span class="ic_error">!</span>
+          <span class="txt"></span>
+        </div>
+        <fieldset>
+          <legend>login</legend>
+          <div class="login_id">
+            <input type="text" id="username" name="username" class="ipt_login login_wide" tabindex="1" placeholder="계정" (keyup)="keyboardEvent($event)" [(ngModel)]="id" value="{{id}}" autocapitalize="off" style="ime-mode:inactive;" onpaste="javascript:trimSpace(event)">
+          </div>
+          <div class="login_pw">
+            <input type="password" name="password" id="password" autocomplete="off" class="ipt_login" tabindex="3" placeholder="비밀번호" (keyup)="keyboardEvent($event)" [(ngModel)]="pw" value="{{pw}}" onpaste="javascript:trimSpace(event)">
+          </div>
+
+          <a id="login_submit" class="btn_login" tabindex="4" (click)="login()">로그인</a>
+        </fieldset>
+
+
+      </section>
+
+      <input type="submit" style="visibility:hidden">
+    </form>
+
+
+  </div>
+</div>
+<!--
+<div id="iframeWrap"></div>
+
+
+</body></html>
+-->
+
+<div class="doas" *ngIf="authorized">
   <div class="side">
     <h1>
       <a>DAOU BOOKS</a>
     </h1>
     <div class="wrap_gnb">
       <ul class="gnb">
-        <li routerLinkActive="on" routerLink="/admin/company/create">
+        <li routerLinkActive="on" routerLink="/admin/company/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">회사 & 관리자</span>
@@ -31,7 +80,7 @@
         </li>
       </ul>
     </div>
-    <!--<div class="wrap_gnb" *ngIf="isAdmin">
+    &lt;!&ndash;<div class="wrap_gnb" *ngIf="isAdmin">
       <div class="tit">DAOU BOOKS ADMIN</div>
       <ul class="gnb">
         <li *ngFor="let groupMenu of adminMenuConfig"  [class.on]="groupMenu.openFlag" routerLinkActive="on">
@@ -52,7 +101,7 @@
           </ul>
         </li>
       </ul>
-    </div>-->
+    </div>&ndash;&gt;
   </div>
   <router-outlet></router-outlet>
 </div>
