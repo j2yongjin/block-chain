@@ -13,13 +13,13 @@ public class UserController {
     @Autowired
     private UserSerivce userSerivce;
 
-    @RequestMapping(value = "/api/users", method = RequestMethod.GET)
+    @GetMapping("/api/users")
     @ResponseBody
     public List<User> getUsers(@PathVariable Long companyId) {
         return userSerivce.getUsers(companyId);
     }
 
-    @RequestMapping(value = "/api/user", method = RequestMethod.GET)
+    @GetMapping("/api/user")
     @ResponseBody
     public User getUser(@PathVariable Long userId) {
         return userSerivce.getUser(userId);

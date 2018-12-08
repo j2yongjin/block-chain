@@ -3,10 +3,7 @@ package com.daou.books.core.controller;
 import com.daou.books.core.domain.User;
 import com.daou.books.core.service.LoginSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginController {
@@ -14,9 +11,9 @@ public class LoginController {
     @Autowired
     private LoginSerivce loginSerivce;
 
-    @GetMapping(name="/api/login")
+    @GetMapping("/api/login")
     @ResponseBody
-    public User login(@PathVariable String id, @PathVariable String pw) {
+    public User login(@RequestParam(required = false) String id, @RequestParam(required = false) String pw) {
         return loginSerivce.login(id, pw);
     }
 }
