@@ -447,3 +447,16 @@ input[type=checkbox]:checked+ label {display: inline-block; margin: 0 0 0 -28px;
 @media screen and (-webkit-min-device-pixel-ratio:0) {
   .key .info .pw input[type="password"] {font-size: 18px}
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: auto;
+  transition: all 500ms;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; }
+.overlay.nsm-overlay-close, .overlay.transparent {
+  background-color: transparent; }

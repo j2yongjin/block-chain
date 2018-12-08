@@ -1,0 +1,77 @@
+<div class="contents">
+  <div class="header">
+    <h2>
+      어드민 등록
+    </h2>
+  </div>
+  <div class="body">
+    <div class="form">
+      <div class="form_body">
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">회사 이름</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input type="text" [(ngModel)]="account.companyName" class=" w_l" value=""/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">회사 코드</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.companyCode"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">관리자 이름</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.adminName"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">관리자 아이디</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="account.adminId"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">관리자 비밀번호</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value=""[(ngModel)]="account.adminPw"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="btn minor l" >취소</button>
+      <button class="btn major l" (click)="createCompany()">저장</button>
+    </div>
+  </div>
+</div>
