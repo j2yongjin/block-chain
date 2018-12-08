@@ -1,4 +1,5 @@
-package com.daou.supplier.service;
+package com.daou.supplier.client;
+
 /******************************************************
  *  Copyright 2018 IBM Corporation
  *  Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -46,11 +46,11 @@ import org.hyperledger.fabric.sdk.exception.ProposalException;
  *
  */
 
-public class ChannelCustomClient {
+public class ChannelClient {
 
     String name;
     Channel channel;
-    ChannelService channelService;
+    FabricClient fabClient;
 
     public String getName() {
         return name;
@@ -60,8 +60,8 @@ public class ChannelCustomClient {
         return channel;
     }
 
-    public ChannelService getChannelService() {
-        return channelService;
+    public FabricClient getFabClient() {
+        return fabClient;
     }
 
     /**
@@ -69,12 +69,12 @@ public class ChannelCustomClient {
      *
      * @param name
      * @param channel
-     * @param channelService
+     * @param fabClient
      */
-    public ChannelCustomClient(String name, Channel channel, ChannelService channelService) {
+    public ChannelClient(String name, Channel channel, FabricClient fabClient) {
         this.name = name;
         this.channel = channel;
-        this.channelService = channelService;
+        this.fabClient = fabClient;
     }
 
     /**
@@ -89,9 +89,9 @@ public class ChannelCustomClient {
      */
     public Collection<ProposalResponse> queryByChainCode(String chaincodeName, String functionName, String[] args)
             throws InvalidArgumentException, ProposalException {
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Querying " + functionName + " on channel " + channel.getName());
-        QueryByChaincodeRequest request = channelService.getInstance().newQueryProposalRequest();
+        QueryByChaincodeRequest request = fabClient.getInstance().newQueryProposalRequest();
         ChaincodeID ccid = ChaincodeID.newBuilder().setName(chaincodeName).build();
         request.setChaincodeID(ccid);
         request.setFcn(functionName);
@@ -112,24 +112,21 @@ public class ChannelCustomClient {
      * @throws InvalidArgumentException
      */
     public Collection<ProposalResponse> sendTransactionProposal(TransactionProposalRequest request)
-            throws ProposalException, InvalidArgumentException, ExecutionException, InterruptedException {
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+            throws ProposalException, InvalidArgumentException {
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Sending transaction proposal on channel " + channel.getName());
 
-        // send to endoser
         Collection<ProposalResponse> response = channel.sendTransactionProposal(request, channel.getPeers());
         for (ProposalResponse pres : response) {
             String stringResponse = new String(pres.getChaincodeActionResponsePayload());
-            Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+            Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                     "Transaction proposal on channel " + channel.getName() + " " + pres.getMessage() + " "
                             + pres.getStatus() + " with transaction id:" + pres.getTransactionID());
-            Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,stringResponse);
+            Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,stringResponse);
         }
 
-        // send to orderer
         CompletableFuture<TransactionEvent> cf = channel.sendTransaction(response);
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,cf.toString());
-
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,cf.toString());
 
         return response;
     }
@@ -154,17 +151,17 @@ public class ChannelCustomClient {
     public Collection<ProposalResponse> instantiateChainCode(String chaincodeName, String version, String chaincodePath,
                                                              String language, String functionName, String[] functionArgs, String policyPath)
             throws InvalidArgumentException, ProposalException, ChaincodeEndorsementPolicyParseException, IOException {
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Instantiate proposal request " + chaincodeName + " on channel " + channel.getName()
-                        + " with Fabric client " + channelService.getInstance().getUserContext().getMspId() + " "
-                        + channelService.getInstance().getUserContext().getName());
-        InstantiateProposalRequest instantiateProposalRequest = channelService.getInstance()
+                        + " with Fabric client " + fabClient.getInstance().getUserContext().getMspId() + " "
+                        + fabClient.getInstance().getUserContext().getName());
+        InstantiateProposalRequest instantiateProposalRequest = fabClient.getInstance()
                 .newInstantiationProposalRequest();
         instantiateProposalRequest.setProposalWaitTime(180000);
         ChaincodeID.Builder chaincodeIDBuilder = ChaincodeID.newBuilder().setName(chaincodeName).setVersion(version)
                 .setPath(chaincodePath);
         ChaincodeID ccid = chaincodeIDBuilder.build();
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Instantiating Chaincode ID " + chaincodeName + " on channel " + channel.getName());
         instantiateProposalRequest.setChaincodeID(ccid);
         if (language.equals(Type.GO_LANG.toString()))
@@ -188,7 +185,7 @@ public class ChannelCustomClient {
         Collection<ProposalResponse> responses = channel.sendInstantiationProposal(instantiateProposalRequest);
         CompletableFuture<TransactionEvent> cf = channel.sendTransaction(responses);
 
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Chaincode " + chaincodeName + " on channel " + channel.getName() + " instantiation " + cf);
         return responses;
     }
@@ -202,7 +199,7 @@ public class ChannelCustomClient {
      * @throws InvalidArgumentException
      */
     public TransactionInfo queryByTransactionId(String txnId) throws ProposalException, InvalidArgumentException {
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,
+        Logger.getLogger(ChannelClient.class.getName()).log(Level.INFO,
                 "Querying by trasaction id " + txnId + " on channel " + channel.getName());
         Collection<Peer> peers = channel.getPeers();
         for (Peer peer : peers) {
@@ -213,4 +210,3 @@ public class ChannelCustomClient {
     }
 
 }
-

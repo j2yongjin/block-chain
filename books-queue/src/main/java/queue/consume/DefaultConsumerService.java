@@ -10,6 +10,8 @@ import queue.network.RabbitChannelFactory;
 import queue.util.JsonConverter;
 
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.TimeoutException;
 import java.util.function.Consumer;
 
@@ -52,25 +54,12 @@ public class DefaultConsumerService implements ConsumerService {
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
 
                 try {
-//                super.handleDelivery(consumerTag, envelope, properties, body);
                     String routingKey = envelope.getRoutingKey();
                     String contentType = properties.getContentType();
                     long deliveryTag = envelope.getDeliveryTag();
 
-//                String recvData = new String(body);
                     QueueDto queueDto = JsonConverter.toObject(body);
-//                    switch (queueDto.getChainFunction()){
-//                        case ADD_BOOK:
-//                            log.info("ADD BOOK {} " , (AddBooksDto)queueDto);
-//                            break;
-//                        case UPDATE_BOOK:
-//                            log.info("UPDATE BOOK {} " , (AddBooksDto)queueDto);
-//                            break;
-//                    }
                     consumer.accept(queueDto);
-//                    log.info("ReceiveData {} ", addBooksDto);
-
-                    // (process the message components here ...)
                     channel.basicAck(deliveryTag, false);
                 }catch (Exception e){
                     throw new ConsumerException("Consumer Exception",e);

@@ -1,6 +1,7 @@
 package queue.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * block-chain
@@ -9,18 +10,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @date : 2018-11-29
  * @desc :
  */
+@Data
 public class UpdateSaleBooksDto extends QueueDto {
 
-//    @JsonProperty
-//    ChainFunction chainFunction = ChainFunction.UPDATE_BOOK;
 
     @JsonProperty
     String isbn;
     @JsonProperty
     Integer salesCount;
 
+    public UpdateSaleBooksDto(){
+        super(ChainFunction.UPDATE_BOOK);
+    };
+
     public UpdateSaleBooksDto(String isbn, Integer salesCount) {
-        super(ChainFunction.ADD_BOOK);
+        super(ChainFunction.UPDATE_BOOK);
         this.isbn = isbn;
         this.salesCount = salesCount;
     }

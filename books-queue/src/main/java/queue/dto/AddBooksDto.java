@@ -1,6 +1,7 @@
 package queue.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
 
 /**
  * block-chain
@@ -9,10 +10,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * @date : 2018-11-29
  * @desc :
  */
+@Data
 public class AddBooksDto extends QueueDto {
-
-//    @JsonProperty
-//    ChainFunction chainFunction = ChainFunction.ADD_BOOK;
 
     @JsonProperty
     String isbn;

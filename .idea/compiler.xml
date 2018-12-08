@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="block-chain-common_main" target="1.8" />
       <module name="block-chain-common_test" target="1.8" />
@@ -16,6 +19,8 @@
       <module name="daou-books_test" target="1.8" />
       <module name="invokeConsumer_main" target="1.8" />
       <module name="invokeConsumer_test" target="1.8" />
+      <module name="queue-consumer_main" target="1.8" />
+      <module name="queue-consumer_test" target="1.8" />
       <module name="queueConsumer_main" target="1.8" />
       <module name="queueConsumer_test" target="1.8" />
     </bytecodeTargetLevel>
