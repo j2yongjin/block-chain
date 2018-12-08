@@ -36,6 +36,8 @@ public class BookServiceImpl implements BookService {
         List<BookModel> newBooks = Lists.newArrayList();
 
         for(Book book : books) {
+            String isbn = generateIsbn();
+            book.setIsbn(isbn);
             newBooks.add(new BookModel(bookRepository.save(book)));
         }
         return books;
@@ -44,6 +46,8 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public Book addBook(Book book) {
+        String isbn = generateIsbn();
+        book.setIsbn(isbn);
         return bookRepository.save(book);
     }
 
@@ -53,4 +57,19 @@ public class BookServiceImpl implements BookService {
         return null;
     }
 
+    private String generateIsbn() {
+        long timeSeed = System.nanoTime(); // to get the current date time value
+        double randSeed = Math.random() * 1000; // random number generation
+        long midSeed = (long) (timeSeed * randSeed); // mixing up the time and
+
+        String s = midSeed + "";
+        String subStr = s.substring(0, 8);
+        int finalSeed = Integer.parseInt(subStr); // integer value
+
+        String num = String.format("%08d", finalSeed);
+        String newIbsn = String.format("1000%s", num);
+        log.info("new ibsn: {}", newIbsn);
+
+        return newIbsn;
+    }
 }

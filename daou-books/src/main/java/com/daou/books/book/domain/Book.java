@@ -18,7 +18,7 @@ public class Book {
     private Long id;
 
     @Column
-    private String code;
+    private String isbn;
 
     @Column
     private String title;
@@ -30,7 +30,7 @@ public class Book {
     private String writer;
 
     @Column
-    private Integer amount;
+    private Integer amount = 0;
 
     @Column
     private String publisher;

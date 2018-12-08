@@ -31,7 +31,7 @@ public class BookModel {
 
     public BookModel(Book book) {
         this.id = book.getId();
-        this.code = book.getCode();
+        this.code = book.getIsbn();
         this.title = book.getTitle();
         this.subtitle = book.getSubtitle();
         this.writer = book.getWriter();
