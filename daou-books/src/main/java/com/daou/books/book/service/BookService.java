@@ -10,5 +10,7 @@ public interface BookService {
 
     List<Book> addBooks(List<Book> books);
 
+    Book addBook(Book book);
+
     Book updateBook(Book book);
 }

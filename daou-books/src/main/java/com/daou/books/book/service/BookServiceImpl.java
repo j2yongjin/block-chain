@@ -43,6 +43,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
+    }
+
+    @Override
+    @Transactional
     public Book updateBook(Book book) {
         return null;
     }
