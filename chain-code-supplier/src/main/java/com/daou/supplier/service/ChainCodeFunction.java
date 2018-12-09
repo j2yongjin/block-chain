@@ -5,7 +5,7 @@ package com.daou.supplier.service;
  */
 public enum ChainCodeFunction {
 
-    ADD_BOOK("add_book"),INCREMENT_SALES_BOOK("increment_sales_book"),FIND_BOOK("getBooksByKey");
+    ADD_BOOK("add_book"),INCREMENT_SALES_BOOK("increment_sales_book"),FIND_BOOK("getBooksByKey"),FIND_ALL("getAllBooks");
 
     String name;
     ChainCodeFunction(String name){

@@ -56,10 +56,44 @@ public class DefaultBookService implements BookService {
         this.peerDomainConfig = peerDomainConfig;
     }
 
+//    @Override
+//    public List<Books> getAllBooks() throws ProposalException, InvalidArgumentException {
     @Override
-    public List<Books> getAllBooks() throws ProposalException, InvalidArgumentException {
-        return null;
+    public List<Books> getAllBooks() throws Exception {
+        DefaultChannelService defaultChannelService = new DefaultChannelService(admin);
+        ChannelCustomClient channelCustomClient = defaultChannelService.createChannelClient(SupplierConfig.CHANNEL_NAME);
+        Channel channel = channelCustomClient.getChannel();
+
+        Peer peer = defaultChannelService.getInstance().newPeer(peerDomainConfig.getPeerOrg(),peerDomainConfig.getPeerOrgUrl());
+        EventHub eventHub = defaultChannelService.getInstance().newEventHub("eventhub01", "grpc://localhost:7053");
+        Orderer orderer = defaultChannelService.getInstance().newOrderer(SupplierConfig.ORDERER_NAME, SupplierConfig.ORDERER_URL);
+
+        channel.addPeer(peer);
+        channel.addEventHub(eventHub);
+        channel.addOrderer(orderer);
+        channel.initialize();
+
+        String[] args = {};
+
+        Collection<ProposalResponse>  responsesQuery = channelCustomClient.queryByChainCode(SupplierConfig.CHAINCODE_NAME, ChainCodeFunction.FIND_ALL.name, args);
+
+        List<Books> allBooks = new ArrayList<Books>();
+        for (ProposalResponse pres : responsesQuery) {
+            String stringResponse = new String(pres.getChaincodeActionResponsePayload());
+            ObjectMapper objectMapper = new ObjectMapper();
+            System.out.println("response "   +  stringResponse);
+
+            String[] allResp = stringResponse.split("\n");
+            for (String resp:allResp) {
+                Books book = objectMapper.readValue(stringResponse,Books.class);
+                allBooks.add(book);
+            }
+        }
+
+        return allBooks;
     }
+
+
 
     @Override
     public Books getByName(String isbn) throws Exception {
