@@ -1,33 +1,42 @@
 package com.daou.books.core.controller;
 
-import com.daou.books.book.domain.Book;
+import com.daou.books.book.service.BookService;
+import com.daou.books.core.ProcessStatus;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
 public class MqEventController {
 
+    @Autowired
+    private BookService bookService;
+
     @PutMapping("/api/event/book/add")
-    public ResponseEntity addBookCompletedEvent(@RequestBody Book book) {
-
+    public ResponseEntity addBookCompletedEvent(@RequestParam(required = false) String isbn,
+                                                @RequestParam(required = false) ProcessStatus status) {
         // logic
-        log.info("add ibsn: {},  status: {}", book.getIsbn(), book.getStatus());
+        log.info("add ibsn: {}, status: {}", isbn, status);
 
-        return new ResponseEntity(book.getIsbn(), HttpStatus.OK);
+        bookService.updateBookStatus(isbn, status);
+
+        return new ResponseEntity(isbn, HttpStatus.OK);
     }
 
     @PutMapping("/api/event/book/update")
-    public ResponseEntity updateBookCompletedEvent(@RequestBody Book book) {
-
+    public ResponseEntity updateBookCompletedEvent(@RequestParam(required = false) String isbn,
+                                                   @RequestParam(required = false) Integer newAmount) {
         // logic
-        log.info("uodate ibsn: {},  status: {}", book.getIsbn(), book.getStatus());
+        log.info("uodate ibsn: {}, newAmount: {}", isbn, newAmount);
 
-        return new ResponseEntity(book.getIsbn(), HttpStatus.OK);
+        bookService.updateAmount(isbn, newAmount);
+
+        return new ResponseEntity(isbn, HttpStatus.OK);
     }
 
 }

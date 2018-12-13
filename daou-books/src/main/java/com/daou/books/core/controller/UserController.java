@@ -1,11 +1,14 @@
 package com.daou.books.core.controller;
 
 import com.daou.books.core.domain.User;
+import com.daou.books.core.domain.model.PageModel;
+import com.daou.books.core.domain.model.UserModel;
 import com.daou.books.core.service.UserSerivce;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class UserController {
@@ -15,28 +18,34 @@ public class UserController {
 
     @GetMapping("/api/users")
     @ResponseBody
-    public List<User> getUsers(@PathVariable Long companyId) {
-        return userSerivce.getUsers(companyId);
+    public PageModel<UserModel> getUsers(
+            @PathVariable Long companyId,
+            @RequestParam(value = "page", required = false, defaultValue = "0") int page,
+            @RequestParam(value = "offset", required = false, defaultValue = "20") int offset,
+            @RequestParam(value = "direction", required = false, defaultValue = "desc") String direction,
+            @RequestParam(value = "property", required = false, defaultValue = "id") String property) {
+        Pageable pageable = new PageRequest(page, offset, new Sort(Sort.Direction.fromString(direction), property));
+        return userSerivce.getUsers(pageable, companyId);
     }
 
     @GetMapping("/api/user")
     @ResponseBody
-    public User getUser(@PathVariable Long userId) {
+    public UserModel getUser(@PathVariable Long userId) {
         return userSerivce.getUser(userId);
     }
 
     @PostMapping("/api/user")
-    public User addUser(@RequestBody User user) {
+    public UserModel addUser(@RequestBody User user) {
         return userSerivce.addUser(user, User.UserRole.USER);
     }
 
     @PostMapping("/api/admin")
-    public User addAdmin(@RequestBody User user) {
+    public UserModel addAdmin(@RequestBody User user) {
         return userSerivce.addUser(user, User.UserRole.ADMIN);
     }
 
     @PostMapping("/api/admin/super")
-    public User addSuperAdmin(@RequestBody User user) {
+    public UserModel addSuperAdmin(@RequestBody User user) {
         return userSerivce.addUser(user, User.UserRole.SUPERADMIN);
     }
 

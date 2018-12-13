@@ -1,25 +1,24 @@
 package com.daou.books.core.service;
 
 import com.daou.books.core.domain.User;
-
-import java.util.List;
+import com.daou.books.core.domain.model.PageModel;
+import com.daou.books.core.domain.model.UserModel;
+import org.springframework.data.domain.Pageable;
 
 public interface UserSerivce {
 
-    List<User> getAllUsers(Long companyId);
+    PageModel<UserModel> getAllUsers(Pageable pageable, Long companyId);
 
-    List<User> getUsers(Long companyId);
+    PageModel<UserModel> getAllAdmins(Pageable pageable);
 
-    List<User> getAdmins(Long companyId);
+    PageModel<UserModel> getUsers(Pageable pageable, Long companyId);
 
-    List<User> getSuperAdmin(Long companyId);
+    PageModel<UserModel> getAdmins(Pageable pageable, Long companyId);
 
-    User getUser(Long userId);
+    UserModel getUser(Long userId);
 
-    User addUser(User user, User.UserRole role);
+    UserModel addUser(User user, User.UserRole role);
 
-//    User addAdmin(User user);
-
-//    User addSuperAdmin(User user);
+//    UserModel addSuperAdmin(User user);
 
 }

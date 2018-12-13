@@ -7,17 +7,15 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    List<User> findByCompany(Company company);
+    Page<User> findByRole(User.UserRole role, Pageable pageable);
 
-    List<User> findByCompanyAndRole(Company company, User.UserRole role);
+    Page<User> findByCompany(Company company, Pageable pageable);
+
+    Page<User> findByCompanyAndRole(Company company, User.UserRole role, Pageable pageable);
 
     User findByLoginId(String loginId);
-
-    Page<User> findByRole(User.UserRole role, Pageable pageable);
 
 }

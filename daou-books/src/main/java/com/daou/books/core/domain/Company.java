@@ -1,11 +1,11 @@
 package com.daou.books.core.domain;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "companies")
@@ -24,9 +24,31 @@ public class Company {
     @Column
     private String name;
 
+    @Column
+    private Date createdAt;
+
+    @Column
+    private Date updatedAt;
+
     public Company(String code, String name) {
         this.code = code;
         this.name = name;
+    }
+
+    @PrePersist
+    public void onPrePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = new Date();
+        }
+
+        if (this.updatedAt == null) {
+            this.updatedAt = this.createdAt;
+        }
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.updatedAt = new Date();
     }
 
 }

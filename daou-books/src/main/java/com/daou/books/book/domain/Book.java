@@ -39,7 +39,29 @@ public class Book {
     private Date issueDate;
 
     @Column
+    private Date createdAt;
+
+    @Column
+    private Date updatedAt;
+
+    @Column
     @Enumerated(EnumType.STRING)
     private ProcessStatus status;
+
+    @PrePersist
+    public void onPrePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = new Date();
+        }
+
+        if (this.updatedAt == null) {
+            this.updatedAt = this.createdAt;
+        }
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.updatedAt = new Date();
+    }
 
 }

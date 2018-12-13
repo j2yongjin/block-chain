@@ -1,13 +1,12 @@
 package com.daou.books.core.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "users")
@@ -33,9 +32,18 @@ public class User {
     @JsonIgnore
     private Company company;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private BlockchainInfo blockchainInfo;
+
     @Column
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+    @Column
+    private Date createdAt;
+
+    @Column
+    private Date updatedAt;
 
     public enum UserRole {
         SUPERADMIN, ADMIN, USER
@@ -47,6 +55,22 @@ public class User {
         this.loginId = adminId;
         this.password = adminPw;
         this.role = superAdmin;
+    }
+
+    @PrePersist
+    public void onPrePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = new Date();
+        }
+
+        if (this.updatedAt == null) {
+            this.updatedAt = this.createdAt;
+        }
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.updatedAt = new Date();
     }
 
 }

@@ -29,6 +29,10 @@ public class BookModel {
 
     private ProcessStatus status;
 
+    private Date createdAt;
+
+    private Date updatedAt;
+
     public BookModel(Book book) {
         this.id = book.getId();
         this.code = book.getIsbn();
@@ -39,5 +43,7 @@ public class BookModel {
         this.publisher = book.getPublisher();
         this.issueDate = book.getIssueDate();
         this.status = book.getStatus();
+        this.createdAt = book.getCreatedAt();
+        this.updatedAt = book.getUpdatedAt();
     }
 }

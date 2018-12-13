@@ -3,11 +3,18 @@ package com.daou.books.book.service;
 import com.daou.books.book.domain.Book;
 import com.daou.books.book.domain.model.BookModel;
 import com.daou.books.book.repository.BookRepository;
+import com.daou.books.core.ProcessStatus;
+import com.daou.books.core.domain.model.PageModel;
+import com.daou.books.core.service.MqPublish;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import queue.network.RabbitChannelFactory;
 
 import java.util.List;
 
@@ -20,41 +27,80 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Book> getBookList() {
-        List<Book> books = bookRepository.findAll();
-        List<BookModel> newBooks = Lists.newArrayList();
+    public PageModel<BookModel> getBookList(Pageable pageable) {
+        Page<Book> books = bookRepository.findAll(pageable);
 
-        for(Book book : books) {
-            newBooks.add(new BookModel(book));
+        List<BookModel> models = Lists.newArrayList();
+        for (Book book : books) {
+            models.add(new BookModel(book));
         }
-        return books;
+        return new PageModel(models, books);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Book getBook(String isbn) {
+        return bookRepository.findByIsbn(isbn);
     }
 
     @Override
     @Transactional
-    public List<Book> addBooks(List<Book> books) {
-        List<BookModel> newBooks = Lists.newArrayList();
-
+    public List<BookModel> addBooks(List<Book> books) {
+        List<BookModel> models = Lists.newArrayList();
         for(Book book : books) {
-            String isbn = generateIsbn();
-            book.setIsbn(isbn);
-            newBooks.add(new BookModel(bookRepository.save(book)));
+            models.add(addBook(book));
         }
-        return books;
+        return models;
     }
 
     @Override
     @Transactional
-    public Book addBook(Book book) {
+    public BookModel addBook(Book book) {
         String isbn = generateIsbn();
         book.setIsbn(isbn);
-        return bookRepository.save(book);
+
+        // 1. DB insert
+        Book newBook = bookRepository.save(book);
+
+        // 2. chaincode에 등록
+        pushQueueForBook(newBook);
+
+        return new BookModel(newBook);
     }
 
     @Override
     @Transactional
-    public Book updateBook(Book book) {
-        return null;
+    public BookModel updateBook(Book book) {
+        return new BookModel(bookRepository.save(book));
+    }
+
+    @Override
+    @Transactional
+    public BookModel updateAmount(String isbn, Integer newAmount) {
+        Book book = getBook(isbn);
+        book.setAmount(newAmount);
+        return updateBook(book);
+    }
+
+    @Override
+    @Transactional
+    public BookModel updateBookStatus(String isbn, ProcessStatus status) {
+        Book book = getBook(isbn);
+        book.setStatus(status);
+        return updateBook(book);
+    }
+
+    @Async
+    @Override
+    public void pushQueueForBook(Book book) {
+        try {
+            RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
+            MqPublish mqPublish = new MqPublish(rabbitChannelFactory,"books-queue","book");
+            mqPublish.basicPublish(book);
+        } catch (Exception e) {
+            log.error("push queue error: {}, {}", book.getIsbn(), e);
+        }
+
     }
 
     private String generateIsbn() {
