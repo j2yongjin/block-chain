@@ -10,8 +10,11 @@ import org.hyperledger.fabric.shim.ChaincodeBase;
 import org.hyperledger.fabric.shim.ChaincodeStub;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import io.netty.handler.ssl.OpenSsl;
+import org.hyperledger.fabric.shim.ledger.KeyValue;
+import org.hyperledger.fabric.shim.ledger.QueryResultsIterator;
 
 import static com.daou.fabric.chaincode.ChainCodeFunction.*;
 import static java.nio.charset.StandardCharsets.UTF_8;
@@ -60,10 +63,10 @@ public class DefaultChaincode extends ChaincodeBase{
                     return newBooks(stub,params);
                 case DELETE_BOOK:
                     delete(stub,params);
-
                 case FIND_BOOK:
                     return findOneByKey(stub,params);
-
+                case FIND_ALL:
+                    return findAllBooks(stub);
                 case INCREMENT_SALES_BOOK:
                     return updateSaleCountByKey(stub,params);
                 default:
@@ -109,11 +112,28 @@ public class DefaultChaincode extends ChaincodeBase{
         return newSuccessResponse();
     }
 
+    private Response findAllBooks(ChaincodeStub stub){
+        QueryResultsIterator<KeyValue> rangeResult = stub.getStateByRange("0", "9999-9999-9999");
+        StringBuilder allData = new StringBuilder();
+        for (KeyValue keyval: rangeResult) {
+            String key = keyval.getKey();
+            String data = stub.getStringState(key);
+            allData.append(data);
+            allData.append("\n");
+        }
+        allData.deleteCharAt(allData.length()-1);
+
+        String allDataStr = allData.toString();
+        return newSuccessResponse(allDataStr, ByteString.copyFrom(allDataStr, UTF_8).toByteArray());
+
+    }
+
     private Response findOneByKey(ChaincodeStub stub,List<String> args){
         if (args.size() != 1) {
             return newErrorResponse("Incorrect number of arguments. Expecting name of the person to query");
         }
         String key = args.get(0);
+
         String data = stub.getStringState(key);
 
         logger.info(String.format("Query Response:\nName: %s, data: %s\n", key, data));

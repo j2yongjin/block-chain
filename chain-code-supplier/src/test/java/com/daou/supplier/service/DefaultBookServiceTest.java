@@ -17,6 +17,7 @@ import org.junit.Test;
 import java.lang.reflect.InvocationTargetException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -33,6 +34,30 @@ public class DefaultBookServiceTest {
     }
 
     @Test
+    public void givenORG1_whenGetAllBooks() throws Exception {
+
+        String adminName = "admin";
+        String adminPw = "adminpw";
+        BlockchainUser admin = new BlockchainUser();
+        admin.setAffiliation(SupplierConfig.ORG1);
+        admin.setMspId(SupplierConfig.ORG1_MSP);
+        admin.setName(adminName);
+
+        UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
+        admin = userService.enrollAdminUser(admin,adminName,adminPw);
+
+        PeerDomainConfig peerDomainConfig = new PeerDomainConfig(SupplierConfig.ORG1,SupplierConfig.ORG1_MSP
+                ,SupplierConfig.ORG1_PEER_0,SupplierConfig.ORG1_PEER_0_URL,SupplierConfig.CA_ORG1_URL);
+        String isbn = "112-33-221";
+        defaultBookService = new DefaultBookService(admin,peerDomainConfig);
+        List<Books> books = defaultBookService.getAllBooks();
+
+        for (Books b:books) {
+            System.out.println("book name:" + b.getName());
+        }
+    }
+
+    @Test
     public void givenBooks_whenAddBooks_thenSuccess() throws Exception {
 
         String adminName = "admin";
@@ -45,7 +70,8 @@ public class DefaultBookServiceTest {
         UserService userService = new DefaultUserService(SupplierConfig.CA_ORG1_URL);
         admin = userService.enrollAdminUser(admin,adminName,adminPw);
 
-        String isbn = "112-3334-121";
+//        String isbn = "112-33-221";
+        String isbn = "775-993-9872";
         String bookName="hello blockchain";
         String writer = "tom";
         Integer amount = 12000;

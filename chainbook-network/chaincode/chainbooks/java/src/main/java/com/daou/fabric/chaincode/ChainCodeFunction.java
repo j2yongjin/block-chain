@@ -7,7 +7,8 @@ import java.util.Arrays;
  */
 public enum ChainCodeFunction {
 
-    ADD_BOOK("add_book"),INCREMENT_SALES_BOOK("increment_sales_book"),FIND_BOOK("getBooksByKey"),DELETE_BOOK("delete_book");
+    ADD_BOOK("add_book"),INCREMENT_SALES_BOOK("increment_sales_book"),
+    FIND_BOOK("getBooksByKey"),FIND_ALL("getAllBooks"),DELETE_BOOK("delete_book");
 
     String name;
     ChainCodeFunction(String name){

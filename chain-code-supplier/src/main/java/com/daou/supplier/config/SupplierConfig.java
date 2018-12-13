@@ -10,16 +10,21 @@ public class SupplierConfig {
     public static final String ORG2_MSP = "Org2MSP";
     public static final String ORG2 = "org2";
 
-    public static final String CA_ORG1_URL = "http://localhost:7054";
-    public static final String ORDERER_URL = "grpc://localhost:7050";
+//    public static final String ADDR = "192.168.56.102";
+//    public static final String GRPC_ADDR = ADDR;
+    public static final String ADDR = "localhost";
+    public static final String GRPC_ADDR = "127.0.0.1";
+
+    public static final String CA_ORG1_URL = "http://" + ADDR + ":7054";
+    public static final String ORDERER_URL = "grpc://" + ADDR + ":7050";
 
     public static final String ORDERER_NAME = "orderer.chainbooks.com";
     public static final String CHANNEL_NAME = "mychannel";
 
     public static final String ORG1_PEER_0 = "peer0.org1.chainbooks.com";
-    public static final String ORG1_PEER_0_URL = "grpc://127.0.0.1:7051";
+    public static final String ORG1_PEER_0_URL = "grpc://" + GRPC_ADDR + ":7051";
     public static final String ORG2_PEER_0 = "peer0.org2.chainbooks.com";
-    public static final String ORG2_PEER_0_URL = "grpc://127.0.0.1:8051";
+    public static final String ORG2_PEER_0_URL = "grpc://" + GRPC_ADDR + ":8051";
 
 //    public static final String ORG1_PEER_1 = "peer1.org1.chainbooks.com";
 //    public static final String ORG1_PEER_1_URL = "grpc://127.0.0.1:7051";
