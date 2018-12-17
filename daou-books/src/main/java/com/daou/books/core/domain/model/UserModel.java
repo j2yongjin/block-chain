@@ -1,7 +1,13 @@
 package com.daou.books.core.domain.model;
 
 import com.daou.books.core.domain.User;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class UserModel {
 
     private Long id;
@@ -22,5 +28,9 @@ public class UserModel {
         this.loginId = user.getLoginId();
         this.role = user.getRole();
         this.company = new CompanyModel(user.getCompany());
+    }
+
+    public Long getCompanyId() {
+        return this.company.getId();
     }
 }

@@ -34,18 +34,19 @@ public class UserController {
         return userSerivce.getUser(userId);
     }
 
+    // 회사 별 일반 유저 생성
     @PostMapping("/api/user")
-    public UserModel addUser(@RequestBody User user) {
+    public UserModel addUser(@RequestBody UserModel user) {
         return userSerivce.addUser(user, User.UserRole.USER);
     }
 
     @PostMapping("/api/admin")
-    public UserModel addAdmin(@RequestBody User user) {
+    public UserModel addAdmin(@RequestBody UserModel user) {
         return userSerivce.addUser(user, User.UserRole.ADMIN);
     }
 
     @PostMapping("/api/admin/super")
-    public UserModel addSuperAdmin(@RequestBody User user) {
+    public UserModel addSuperAdmin(@RequestBody UserModel user) {
         return userSerivce.addUser(user, User.UserRole.SUPERADMIN);
     }
 

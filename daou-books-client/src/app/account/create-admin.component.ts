@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {AccountService} from "./account.service.component";
-import {Account} from "./Account";
+import {CompanyAdmin} from "./CompanyAdmin";
 
 @Component({
   selector: 'create-admin',
@@ -9,13 +9,13 @@ import {Account} from "./Account";
 
 export class CreateAdminComponent {
 
-  account: Account = new Account();
+  company: CompanyAdmin = new CompanyAdmin();
 
   constructor(
     private accountService: AccountService
   ) {}
 
   createCompany(): void {
-    this.accountService.createCompany(this.account).subscribe(res =>{this.account = res as Account});
+    this.accountService.createCompany(this.company).subscribe(res =>{this.company = res as CompanyAdmin});
   }
 }

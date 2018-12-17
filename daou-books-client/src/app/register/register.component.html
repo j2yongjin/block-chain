@@ -26,7 +26,7 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value=""/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.title"/>
 						  </span>
             </div>
           </div>
@@ -38,7 +38,7 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value=""/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.subtitle"/>
 						  </span>
             </div>
           </div>
@@ -50,7 +50,7 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value=""/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.writer"/>
 						  </span>
             </div>
           </div>
@@ -62,7 +62,7 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value=""/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.amount"/>
 						  </span>
             </div>
           </div>
@@ -74,7 +74,19 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value=""/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.publisher"/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">출간일</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.issueDate"/>
 						  </span>
             </div>
           </div>
@@ -83,7 +95,7 @@
     </div>
     <div class="footer">
       <button class="btn minor l" >취소</button>
-      <button class="btn major l" >저장</button>
+      <button class="btn major l" (click)="createBook()" >저장</button>
     </div>
   </div>
 </div>

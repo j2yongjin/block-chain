@@ -1,19 +1,16 @@
+import {Company} from "./Company";
+
 export class Account {
 
-  companyCode: string;
+  company: Company;
 
-  companyName: string;
+  id: number;
 
-  adminName: string;
+  loginId: string;
 
-  adminId: string;
+  password: string;
 
-  adminPw: boolean;
+  name: string;
 
-  userName: string;
-
-  userId: string;
-
-  userPw: string;
-
+  role: string;
 }

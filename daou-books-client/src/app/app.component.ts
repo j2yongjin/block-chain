@@ -58,6 +58,9 @@ export class AppComponent implements OnInit {
   redirect(): void {
     this.userInfo = JSON.parse(this.cookieService.get(AuthService.COOKIE_KEY));
     console.log(this.userInfo);
+    /*if (this.router.url != '/' && this.router.url != '/error') {
+      return;
+    }*/
     if (this.userInfo.role == 'SUPERADMIN') {
       this.router.navigate(['admin/company/list']);
       return;

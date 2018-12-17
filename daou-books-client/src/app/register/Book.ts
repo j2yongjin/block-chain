@@ -16,4 +16,8 @@ export class Book {
   issueDate: string;
 
   status: string;
+
+  createdAt: Date;
+
+  updatedAt: Date;
 }

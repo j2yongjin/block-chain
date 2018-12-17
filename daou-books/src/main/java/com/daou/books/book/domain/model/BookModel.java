@@ -3,12 +3,14 @@ package com.daou.books.book.domain.model;
 import com.daou.books.book.domain.Book;
 import com.daou.books.core.ProcessStatus;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class BookModel {
 
     private Long id;

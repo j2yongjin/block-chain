@@ -15,6 +15,7 @@ import {LayoutComponent} from "./common/layout/layout.component";
 import {AuthService} from "./auth.service";
 import { CookieService } from 'ngx-cookie-service';
 import {AdminListComponent} from "./account/admin-list.component";
+import {RegisterService, RegisterServiceComponent} from "./register/register.service.component";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {AdminListComponent} from "./account/admin-list.component";
     PaginationService,
     AccountService,
     AuthService,
-    CookieService
+    CookieService,
+    RegisterService
   ],
   bootstrap: [AppComponent]
 })
