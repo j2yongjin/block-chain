@@ -1,0 +1,101 @@
+<div class="contents">
+  <div class="header">
+    <h2>
+      주문하기
+    </h2>
+  </div>
+  <div class="body">
+    <div class="form">
+      <div class="form_body">
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">책코드(ISBN)</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.isbn" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">책제목</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.title" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">부제</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.subtitle" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">저자</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.writer" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">정가</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.amount" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">출판사</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.publisher" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+        <div class="form_tr">
+          <div class="form_th">
+            <span class="txt">출판일</span>
+          </div>
+          <div class="form_td">
+            <div class="wrap_v">
+						  <span class="form_ipt">
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.issueDate" disabled/>
+						  </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <button class="btn minor l" (click)="moveToList()">목록으로</button>
+      <button class="btn major l" (click)="orderBook()" >주문하기</button>
+    </div>
+  </div>
+</div>

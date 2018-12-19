@@ -6,7 +6,7 @@ import * as moment from 'moment';
   templateUrl: './book-list.component.html'
 })
 
-export class AdminBookListComponent {
+export class BookListComponent {
   @ViewChild(PaginationComponent) paginationComponent: PaginationComponent;
 
   companyAdmin;
@@ -29,11 +29,13 @@ export class AdminBookListComponent {
         }},
       {dataName:"출판일", thClass:"state", dataCode:"issueDate", sortable:false, convertData: function(data){
           return data.issueDate ? moment(data.issueDate).format('YYYY-MM-DD') : '-';
+        }},
+      {dataName:"구매", thClass:"state", dataCode:"", sortable:false, convertData: function(data){
+          return "<a class='btn critical'>구매</a>";
         }, clickCallBack: function(pageThis, data){
-          //let url = "/alliance/appr/log/detail/"+data.id;
-          //pageThis.router.navigate([url]);
-      }
-      }]
+          let url = "/book/"+data.id+"/order";
+          pageThis.router.navigate([url]);
+        }}]
   };
 
   constructor(

@@ -16,7 +16,7 @@ export class AdminListComponent {
   pageOptions = {
     url:"api/companies",
     defaultSorting:[[1, "desc"]],
-    params:{apitype:"APPR"},
+    params:{},
     columns:[{dataName:"회사이름", thClass:"date", dataCode:"companyName", sortable:true, convertData: function(data){
         return data.companyName ? data.companyName : "-";
       }},

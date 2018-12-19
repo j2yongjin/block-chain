@@ -5,7 +5,7 @@ import { environment } from 'environments/environment';
 import {Book} from "./Book";
 
 @Injectable()
-export class bookService {
+export class BookService {
 
   host: string;
 
@@ -15,10 +15,10 @@ export class bookService {
     this.host = environment.host
   }
 
-  // getAdminLists(): Observable<any> {
-  //   const url = `${this.host}/${this.getAdminLists}`;
-  //   return this.http.get<Array<CompanyAdmin>>(url)
-  // }
+  getBook(bookId: string): Observable<any> {
+    const url = `${this.host}/${this.createBookUrl}/${bookId}`;
+    return this.http.get<Book>(url)
+  }
 
   createBook (book: Book): Observable<any> {
     const url = `${this.host}/${this.createBookUrl}`;

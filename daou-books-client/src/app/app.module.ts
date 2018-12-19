@@ -11,12 +11,15 @@ import { PaginationService } from './common/pagination/pagination.service.compon
 import { CreateAdminComponent } from "./account/create-admin.component";
 import { CreateUserComponent } from "./account/create-user.component";
 import { AccountService } from "./account/account.service.component";
-import {LayoutComponent} from "./common/layout/layout.component";
 import {AuthService} from "./auth.service";
 import { CookieService } from 'ngx-cookie-service';
 import {AdminListComponent} from "./account/admin-list.component";
-import {bookService} from "./book/book.service.component";
-import {BookListComponent} from "./book/book-list.component";
+import {BookService} from "./book/Book.service.component";
+import {AdminBookListComponent} from "./book/book-list.component";
+import {AccountListComponent} from "./account/account-list.component";
+import {BookListComponent} from "./order/book-list.component";
+import {OrderBookComponent} from "./order/order-book.component";
+import {OrderService} from "./order/order.service.component";
 
 
 @NgModule({
@@ -27,9 +30,11 @@ import {BookListComponent} from "./book/book-list.component";
     ModalComponent,
     CreateAdminComponent,
     CreateUserComponent,
-    LayoutComponent,
     AdminListComponent,
-    BookListComponent
+    AdminBookListComponent,
+    BookListComponent,
+    AccountListComponent,
+    OrderBookComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,8 @@ import {BookListComponent} from "./book/book-list.component";
     AccountService,
     AuthService,
     CookieService,
-    bookService
+    BookService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

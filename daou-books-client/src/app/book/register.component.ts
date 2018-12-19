@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Book} from "./Book";
-import {bookService} from "./book.service.component";
+import {BookService} from "./Book.service.component";
 
 @Component({
   selector: 'register',
@@ -11,7 +11,7 @@ export class RegisterComponent {
 
   book: Book = new Book();
 
-  constructor( private registerService: bookService
+  constructor( private registerService: BookService
   ) {}
 
   createBook(): void {

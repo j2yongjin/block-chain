@@ -19,7 +19,7 @@ public class UserController {
     @GetMapping("/api/users")
     @ResponseBody
     public PageModel<UserModel> getUsers(
-            @PathVariable Long companyId,
+            @RequestParam (value = "companyId", required = true) Long companyId,
             @RequestParam(value = "page", required = false, defaultValue = "0") int page,
             @RequestParam(value = "offset", required = false, defaultValue = "20") int offset,
             @RequestParam(value = "direction", required = false, defaultValue = "desc") String direction,

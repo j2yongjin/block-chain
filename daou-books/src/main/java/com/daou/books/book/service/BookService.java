@@ -14,6 +14,8 @@ public interface BookService {
 
     Book getBook(String isbn);
 
+    BookModel getBook(Long id);
+
     List<BookModel> addBooks(List<Book> books);
 
     BookModel addBook(Book book);
