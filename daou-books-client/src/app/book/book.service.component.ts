@@ -5,7 +5,7 @@ import { environment } from 'environments/environment';
 import {Book} from "./Book";
 
 @Injectable()
-export class RegisterService {
+export class bookService {
 
   host: string;
 

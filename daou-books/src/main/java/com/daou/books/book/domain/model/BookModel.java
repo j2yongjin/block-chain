@@ -15,7 +15,7 @@ public class BookModel {
 
     private Long id;
 
-    private String code;
+    private String isbn;
 
     private String title;
 
@@ -37,7 +37,7 @@ public class BookModel {
 
     public BookModel(Book book) {
         this.id = book.getId();
-        this.code = book.getIsbn();
+        this.isbn = book.getIsbn();
         this.title = book.getTitle();
         this.subtitle = book.getSubtitle();
         this.writer = book.getWriter();

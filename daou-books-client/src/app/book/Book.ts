@@ -1,8 +1,6 @@
 export class Book {
   id: number;
 
-  code: string;
-
   title: string;
 
   subtitle: string;

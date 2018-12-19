@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from "./register/register.component";
+import { RegisterComponent } from "./book/register.component";
 import { PaginationComponent } from './common/pagination/pagination.component';
 import { ModalComponent } from './common/modal/modal.component';
 import { PaginationService } from './common/pagination/pagination.service.component';
@@ -15,7 +15,8 @@ import {LayoutComponent} from "./common/layout/layout.component";
 import {AuthService} from "./auth.service";
 import { CookieService } from 'ngx-cookie-service';
 import {AdminListComponent} from "./account/admin-list.component";
-import {RegisterService, RegisterServiceComponent} from "./register/register.service.component";
+import {bookService} from "./book/book.service.component";
+import {BookListComponent} from "./book/book-list.component";
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import {RegisterService, RegisterServiceComponent} from "./register/register.ser
     CreateAdminComponent,
     CreateUserComponent,
     LayoutComponent,
-    AdminListComponent
+    AdminListComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +43,7 @@ import {RegisterService, RegisterServiceComponent} from "./register/register.ser
     AccountService,
     AuthService,
     CookieService,
-    RegisterService
+    bookService
   ],
   bootstrap: [AppComponent]
 })

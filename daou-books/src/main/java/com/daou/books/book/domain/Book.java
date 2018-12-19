@@ -1,5 +1,6 @@
 package com.daou.books.book.domain;
 
+import com.daou.books.book.domain.model.BookModel;
 import com.daou.books.core.ProcessStatus;
 import lombok.Getter;
 import lombok.Setter;
@@ -47,6 +48,20 @@ public class Book {
     @Column
     @Enumerated(EnumType.STRING)
     private ProcessStatus status;
+
+    public Book() {
+    }
+
+    public Book(BookModel model) {
+        this.id = model.getId();
+        this.isbn = model.getIsbn();
+        this.title = model.getTitle();
+        this.subtitle = model.getSubtitle();
+        this.writer = model.getWriter();
+        this.amount = model.getAmount();
+        this.publisher = model.getPublisher();
+        this.issueDate = model.getIssueDate();
+    }
 
     @PrePersist
     public void onPrePersist() {

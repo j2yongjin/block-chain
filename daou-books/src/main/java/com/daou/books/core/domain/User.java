@@ -46,7 +46,7 @@ public class User {
     @Column
     private Date updatedAt;
 
-    public enum UserRole {
+        public enum UserRole {
         SUPERADMIN, ADMIN, USER
     }
 
@@ -58,8 +58,17 @@ public class User {
         this.role = superAdmin;
     }
 
-    public User(Company company, UserModel model ) {
+    public User(Company company, UserModel model) {
         this.company = company;
+        this.name = model.getName();
+        this.loginId = model.getLoginId();
+        this.password = model.getPassword();
+        this.role = model.getRole();
+    }
+
+
+    public User(UserModel model) {
+        this.company = new Company(model.getCompany());
         this.name = model.getName();
         this.loginId = model.getLoginId();
         this.password = model.getPassword();
