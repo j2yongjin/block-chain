@@ -1,5 +1,6 @@
 package com.daou.books.core.domain;
 
+import com.daou.books.core.domain.model.UserModel;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +46,7 @@ public class User {
     @Column
     private Date updatedAt;
 
-    public enum UserRole {
+        public enum UserRole {
         SUPERADMIN, ADMIN, USER
     }
 
@@ -55,6 +56,23 @@ public class User {
         this.loginId = adminId;
         this.password = adminPw;
         this.role = superAdmin;
+    }
+
+    public User(Company company, UserModel model) {
+        this.company = company;
+        this.name = model.getName();
+        this.loginId = model.getLoginId();
+        this.password = model.getPassword();
+        this.role = model.getRole();
+    }
+
+
+    public User(UserModel model) {
+        this.company = new Company(model.getCompany());
+        this.name = model.getName();
+        this.loginId = model.getLoginId();
+        this.password = model.getPassword();
+        this.role = model.getRole();
     }
 
     @PrePersist

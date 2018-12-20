@@ -92,10 +92,13 @@ public class UserSerivceImpl implements UserSerivce {
 
     @Override
     @Transactional
-    public UserModel addUser(User user, User.UserRole role) {
+    public UserModel addUser(UserModel userModel, User.UserRole role) {
 
         // 1. DB insert
-        user.setRole(role);
+        Company company = companyRepository.findOne(userModel.getCompanyId());
+        userModel.setRole(role);
+
+        User user = new User(company, userModel);
         UserModel model =  new UserModel(userRepository.save(user));
 
         // 2. chaincode에 user 등록

@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,10 +23,20 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Book> book;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Book book;
+
+    @Column
+    private Date createdAt;
+
+    @Column
+    private Date updatedAt;
 
     @Column
     private ProcessStatus status;
 
+    public Order(OrderModel model) {
+        this.user = new User(model.getUser());
+        this.book = new Book(model.getBook());
+    }
 }

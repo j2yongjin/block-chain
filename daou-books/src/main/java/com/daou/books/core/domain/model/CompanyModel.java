@@ -1,7 +1,13 @@
 package com.daou.books.core.domain.model;
 
 import com.daou.books.core.domain.Company;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 public class CompanyModel {
 
     private Long id;

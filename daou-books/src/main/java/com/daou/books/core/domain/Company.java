@@ -1,5 +1,6 @@
 package com.daou.books.core.domain;
 
+import com.daou.books.core.domain.model.CompanyModel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -29,6 +30,13 @@ public class Company {
 
     @Column
     private Date updatedAt;
+
+
+    public Company(CompanyModel company) {
+        this.id = company.getId();
+        this.code = company.getCode();
+        this.name = company.getName();
+    }
 
     public Company(String code, String name) {
         this.code = code;

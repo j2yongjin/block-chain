@@ -44,6 +44,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public BookModel getBook(Long id) {
+        return new BookModel(bookRepository.getOne(id));
+    }
+
+    @Override
     @Transactional
     public List<BookModel> addBooks(List<Book> books) {
         List<BookModel> models = Lists.newArrayList();

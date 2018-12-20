@@ -1,7 +1,7 @@
 export class Book {
   id: number;
 
-  code: string;
+  isbn: string;
 
   title: string;
 
@@ -16,4 +16,8 @@ export class Book {
   issueDate: string;
 
   status: string;
+
+  createdAt: Date;
+
+  updatedAt: Date;
 }

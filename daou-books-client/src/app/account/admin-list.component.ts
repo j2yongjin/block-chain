@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {AccountService} from "./account.service.component";
-import {Account} from "./Account";
+import {CompanyAdmin} from "./CompanyAdmin";
 import {PaginationComponent} from "../common/pagination/pagination.component";
 import * as moment from 'moment';
 
@@ -11,10 +11,12 @@ import * as moment from 'moment';
 export class AdminListComponent {
   @ViewChild(PaginationComponent) paginationComponent: PaginationComponent;
 
+  companyAdmin;
+
   pageOptions = {
     url:"api/companies",
     defaultSorting:[[1, "desc"]],
-    params:{apitype:"APPR"},
+    params:{},
     columns:[{dataName:"회사이름", thClass:"date", dataCode:"companyName", sortable:true, convertData: function(data){
         return data.companyName ? data.companyName : "-";
       }},
@@ -39,6 +41,10 @@ export class AdminListComponent {
   ) {}
 
   createCompany(): void {
-    this.accountService.createCompany(this.account).subscribe(res =>{this.account = res as Account});
+    this.accountService.createCompany(this.companyAdmin).subscribe(res =>{this.companyAdmin = res as CompanyAdmin});
+  }
+
+  onSearchEvent(): void {
+
   }
 }
