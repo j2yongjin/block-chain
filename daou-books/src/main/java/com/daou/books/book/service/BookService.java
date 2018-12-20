@@ -14,7 +14,7 @@ public interface BookService {
 
     Book getBook(String isbn);
 
-    BookModel getBook(Long id);
+    Book getBook(Long id);
 
     List<BookModel> addBooks(List<Book> books);
 
@@ -22,10 +22,9 @@ public interface BookService {
 
     BookModel updateBook(Book book);
 
-    BookModel updateAmount(String isbn, Integer newAmount);
-
     BookModel updateBookStatus(String isbn, ProcessStatus status);
 
     void pushQueueForBook(Book book);
 
+    BookModel updateSalesCount(String isbn);
 }

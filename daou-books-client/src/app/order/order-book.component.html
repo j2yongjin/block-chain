@@ -95,7 +95,23 @@
     </div>
     <div class="footer">
       <button class="btn minor l" (click)="moveToList()">목록으로</button>
-      <button class="btn major l" (click)="orderBook()" >주문하기</button>
+      <button class="btn major l" (click)="modalService.getModal('orderBook').openConfirm();" >주문하기</button>
     </div>
   </div>
+  <modal #orderBook identifier="orderBook"
+         title="선택하신 책을 주문하시겠습니까?"
+         content=""
+         [buttons]="[{
+                  bid: 'confirm',
+                  btype : 'major',
+                  btext: '확인',
+                  autoclose : true
+                  }, {
+                  bid: 'cancel',
+                  btype : '',
+                  btext: '취소',
+                  autoclose : true}]"
+         (onButtonClicked)="order($event)"
+  >
+  </modal>
 </div>

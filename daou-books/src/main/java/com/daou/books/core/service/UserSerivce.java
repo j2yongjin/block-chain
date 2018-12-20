@@ -15,7 +15,7 @@ public interface UserSerivce {
 
     PageModel<UserModel> getAdmins(Pageable pageable, Long companyId);
 
-    UserModel getUser(Long userId);
+    User getUser(Long userId);
 
     UserModel addUser(UserModel model, User.UserRole role);
 

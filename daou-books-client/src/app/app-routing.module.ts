@@ -4,10 +4,11 @@ import {RegisterComponent} from "./book/register.component";
 import {CreateAdminComponent} from "./account/create-admin.component";
 import {CreateUserComponent} from "./account/create-user.component";
 import {AdminListComponent} from "./account/admin-list.component";
-import {AdminBookListComponent} from "./book/book-list.component";
 import {AccountListComponent} from "./account/account-list.component";
 import {BookListComponent} from "./order/book-list.component";
 import {OrderBookComponent} from "./order/order-book.component";
+import {OrderListComponent} from "./order/order-list.component";
+import {AdminBookListComponent} from "./book/book-list.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
@@ -15,7 +16,7 @@ const routes: Routes = [
       { path : 'register', component: RegisterComponent },
       { path : 'list', component: BookListComponent },
       { path : ':bookId/order', component: OrderBookComponent },
-      { path : 'order/list', component: OrderBookComponent }
+      { path : 'order/list', component: OrderListComponent }
     ]},
   { path: 'admin', children : [
       { path : 'user/create', component: CreateUserComponent },

@@ -29,4 +29,12 @@ public class OrderModel {
                 this.book = new BookModel(order.getBook());
                 this.status = order.getStatus();
         }
+
+        public Long getUserId() {
+                return this.user.getId();
+        }
+
+        public Long getBookId() {
+                return this.book.getId();
+        }
 }

@@ -34,6 +34,9 @@ public class Book {
     private Integer amount = 0;
 
     @Column
+    private Long salesCount = 0L;
+
+    @Column
     private String publisher;
 
     @Column

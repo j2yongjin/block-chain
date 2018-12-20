@@ -17,6 +17,7 @@ public class MqEventController {
     @Autowired
     private BookService bookService;
 
+    // 책 등록 완료
     @PutMapping("/api/event/book/add")
     public ResponseEntity addBookCompletedEvent(@RequestParam(required = false) String isbn,
                                                 @RequestParam(required = false) ProcessStatus status) {
@@ -28,13 +29,14 @@ public class MqEventController {
         return new ResponseEntity(isbn, HttpStatus.OK);
     }
 
-    @PutMapping("/api/event/book/update")
+    // 판매부수 업데이트 완료
+    @PutMapping("/api/event/order/update")
     public ResponseEntity updateBookCompletedEvent(@RequestParam(required = false) String isbn,
-                                                   @RequestParam(required = false) Integer newAmount) {
+                                                   @RequestParam(required = false) Long salesCount) {
         // logic
-        log.info("uodate ibsn: {}, newAmount: {}", isbn, newAmount);
+        log.info("uodate ibsn: {}, salesCount: {}", isbn, salesCount);
 
-        bookService.updateAmount(isbn, newAmount);
+        bookService.updateSalesCount(isbn);
 
         return new ResponseEntity(isbn, HttpStatus.OK);
     }

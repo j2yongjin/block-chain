@@ -20,6 +20,8 @@ import {AccountListComponent} from "./account/account-list.component";
 import {BookListComponent} from "./order/book-list.component";
 import {OrderBookComponent} from "./order/order-book.component";
 import {OrderService} from "./order/order.service.component";
+import {ModalService} from "./common/modal/modal.service";
+import {OrderListComponent} from "./order/order-list.component";
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import {OrderService} from "./order/order.service.component";
     AdminBookListComponent,
     BookListComponent,
     AccountListComponent,
-    OrderBookComponent
+    OrderBookComponent,
+    OrderListComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +52,8 @@ import {OrderService} from "./order/order.service.component";
     AuthService,
     CookieService,
     BookService,
-    OrderService
+    OrderService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })

@@ -45,8 +45,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional(readOnly = true)
-    public BookModel getBook(Long id) {
-        return new BookModel(bookRepository.getOne(id));
+    public Book getBook(Long id) {
+        return bookRepository.getOne(id);
     }
 
     @Override
@@ -82,9 +82,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookModel updateAmount(String isbn, Integer newAmount) {
+    public BookModel updateSalesCount(String isbn) {
         Book book = getBook(isbn);
-        book.setAmount(newAmount);
+        book.setSalesCount(book.getSalesCount()+1);
         return updateBook(book);
     }
 
@@ -104,7 +104,7 @@ public class BookServiceImpl implements BookService {
             MqPublish mqPublish = new MqPublish(rabbitChannelFactory,"books-queue","book");
             mqPublish.basicPublish(book);
         } catch (Exception e) {
-            log.error("push queue error: {}, {}", book.getIsbn(), e);
+            log.error("book push queue error: {}, {}", book.getIsbn(), e);
         }
 
     }

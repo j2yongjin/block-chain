@@ -31,7 +31,7 @@ public class UserController {
     @GetMapping("/api/user")
     @ResponseBody
     public UserModel getUser(@PathVariable Long userId) {
-        return userSerivce.getUser(userId);
+        return new UserModel(userSerivce.getUser(userId));
     }
 
     // 회사 별 일반 유저 생성

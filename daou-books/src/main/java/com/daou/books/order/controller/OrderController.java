@@ -18,7 +18,7 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping("/api/orders/{}")
+    @GetMapping("/api/orders/{userId}")
     @ResponseBody
     public PageModel<OrderModel> getOrders(@PathVariable Long userId,
             @RequestParam(value = "page", required = false, defaultValue = "0") int page,

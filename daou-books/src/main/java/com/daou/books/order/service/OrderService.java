@@ -13,4 +13,6 @@ public interface OrderService {
 
     OrderModel addOrder(OrderModel model);
 
+    void pushQueueForOrder(Order order);
+
 }
