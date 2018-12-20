@@ -35,8 +35,19 @@ public class Order {
     @Column
     private ProcessStatus status;
 
-    public Order(OrderModel model) {
-        this.user = new User(model.getUser());
-        this.book = new Book(model.getBook());
+    @PrePersist
+    public void onPrePersist() {
+        if (this.createdAt == null) {
+            this.createdAt = new Date();
+        }
+
+        if (this.updatedAt == null) {
+            this.updatedAt = this.createdAt;
+        }
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.updatedAt = new Date();
     }
 }

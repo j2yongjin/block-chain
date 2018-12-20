@@ -86,8 +86,8 @@ public class UserSerivceImpl implements UserSerivce {
 
     @Override
     @Transactional(readOnly = true)
-    public UserModel getUser(Long userId) {
-        return new UserModel(userRepository.findOne(userId));
+    public User getUser(Long userId) {
+        return userRepository.findOne(userId);
     }
 
     @Override

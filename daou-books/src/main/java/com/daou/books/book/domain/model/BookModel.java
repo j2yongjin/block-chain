@@ -25,6 +25,8 @@ public class BookModel {
 
     private Integer amount;
 
+    private Long salesCount;
+
     private String publisher;
 
     private Date issueDate;

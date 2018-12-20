@@ -44,7 +44,7 @@ public class BooksController {
     @GetMapping("/api/book/{bookId}")
     @ResponseBody
     public BookModel getBook(@PathVariable Long bookId) {
-        return bookService.getBook(bookId);
+        return new BookModel(bookService.getBook(bookId));
     }
 
     @PostMapping("/api/books")
