@@ -1,6 +1,5 @@
 package com.daou.books.order.service;
 
-import com.daou.books.book.domain.Book;
 import com.daou.books.book.service.BookService;
 import com.daou.books.core.ProcessStatus;
 import com.daou.books.core.domain.model.PageModel;
@@ -9,6 +8,7 @@ import com.daou.books.core.service.UserSerivce;
 import com.daou.books.order.domain.Order;
 import com.daou.books.order.domain.OrderModel;
 import com.daou.books.order.repository.OrderRepository;
+import com.daou.books.queue.RabbitChannelFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
-import queue.network.RabbitChannelFactory;
 
 import java.util.List;
 

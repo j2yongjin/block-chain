@@ -6,6 +6,7 @@ import com.daou.books.book.repository.BookRepository;
 import com.daou.books.core.ProcessStatus;
 import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.service.MqPublish;
+import com.daou.books.queue.RabbitChannelFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import queue.network.RabbitChannelFactory;
 
 import java.util.List;
 
@@ -82,9 +82,14 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookModel updateSalesCount(String isbn) {
+    public BookModel updateSalesCount(String isbn, Long count) {
         Book book = getBook(isbn);
-        book.setSalesCount(book.getSalesCount()+1);
+        Long salesCount = book.getSalesCount();
+        if(null == count || count == 0L) {
+            book.setSalesCount(salesCount + 1);
+        } else {
+            book.setSalesCount(salesCount + count);
+        }
         return updateBook(book);
     }
 
@@ -92,7 +97,13 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public BookModel updateBookStatus(String isbn, ProcessStatus status) {
         Book book = getBook(isbn);
-        book.setStatus(status);
+
+        if(null == status) {
+            book.setStatus(ProcessStatus.COMPLETED);
+        } else {
+            book.setStatus(status);
+        }
+
         return updateBook(book);
     }
 

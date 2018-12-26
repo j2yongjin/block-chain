@@ -36,7 +36,7 @@ public class MqEventController {
         // logic
         log.info("uodate ibsn: {}, salesCount: {}", isbn, salesCount);
 
-        bookService.updateSalesCount(isbn);
+        bookService.updateSalesCount(isbn, salesCount);
 
         return new ResponseEntity(isbn, HttpStatus.OK);
     }

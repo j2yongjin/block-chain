@@ -50,5 +50,8 @@ public class UserController {
         return userSerivce.addUser(user, User.UserRole.SUPERADMIN);
     }
 
-
+    @PutMapping("/api/user")
+    public UserModel updateUser(@RequestBody UserModel user) {
+        return userSerivce.updateUser(user);
+    }
 }

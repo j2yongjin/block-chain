@@ -2,6 +2,7 @@ package com.daou.books.core.service;
 
 import com.daou.books.core.domain.Company;
 import com.daou.books.core.domain.User;
+import com.daou.books.core.domain.model.CompanyModel;
 import com.daou.books.core.domain.model.CreateCompanyModel;
 import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.repository.CompanyRepository;
@@ -14,6 +15,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -28,19 +30,7 @@ public class CompanyServiceImpl implements CompanyService {
     private UserRepository userRepository;
 
     @Override
-    public CreateCompanyModel addCompany(CreateCompanyModel model) {
-//        CreateCompanyModel model = new CreateCompanyModel();
-
-        // 1. db save
-        Company company = companyRepository.save(new Company(model.getCompanyCode(), model.getCompanyName()));
-        User superAdmin = userRepository.save(new User(company, model.getAdminName(), model.getAdminId(), model.getAdminPw(), User.UserRole.ADMIN));
-
-        // 2. chaincode create
-
-        return model;
-    }
-
-    @Override
+    @Transactional
     public PageModel<CreateCompanyModel> getCompanies(int page, int offset, String direction, String property) {
 
         Pageable pageable = new PageRequest(page, offset, new Sort(Sort.Direction.fromString(direction), property));
@@ -49,6 +39,7 @@ public class CompanyServiceImpl implements CompanyService {
         List<CreateCompanyModel> models = Lists.newArrayList();
         for(User user: users){
             CreateCompanyModel model = new CreateCompanyModel();
+            model.setCompanyId(user.getCompany().getId());
             model.setCompanyCode(user.getCompany().getCode());
             model.setCompanyName(user.getCompany().getName());
             model.setAdminId(user.getLoginId());
@@ -56,5 +47,32 @@ public class CompanyServiceImpl implements CompanyService {
             models.add(model);
         }
         return new PageModel(models, users);
+    }
+
+    @Override
+    @Transactional
+    public CreateCompanyModel addCompany(CreateCompanyModel model) {
+//        CreateCompanyModel model = new CreateCompanyModel();
+
+        // 1. db save
+        Company company = companyRepository.save(new Company(model.getCompanyCode(), model.getCompanyName()));
+        model.setCompanyId(company.getId());
+        User superAdmin = userRepository.save(new User(company, model.getAdminName(), model.getAdminId(), model.getAdminPw(), User.UserRole.ADMIN));
+
+        // 2. chaincode create
+
+        return model;
+    }
+
+    @Override
+    @Transactional
+    public CompanyModel updateCompany(CompanyModel model) {
+
+        Company company = companyRepository.findOne(model.getId());
+        company.setCode(model.getCode());
+        company.setName(model.getName());
+        companyRepository.save(company);
+
+        return new CompanyModel(companyRepository.save(company));
     }
 }
