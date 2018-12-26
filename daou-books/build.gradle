@@ -29,7 +29,7 @@ dependencies {
     compile group: 'postgresql', name: 'postgresql', version: '9.1-901-1.jdbc4'
     compile group: 'org.apache.commons', name: 'commons-compress', version: '1.18'
     compile group: 'org.hyperledger.fabric-sdk-java', name: 'fabric-sdk-java', version: '1.2.2'
-    compile 'com.rabbitmq:amqp-client:5.5.1'
+    compile group: 'com.rabbitmq', name: 'amqp-client', version: '5.5.1'
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-data-jpa:1.5.2.RELEASE")
     testCompile('org.springframework.boot:spring-boot-starter-test')

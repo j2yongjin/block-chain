@@ -19,6 +19,8 @@ public interface UserSerivce {
 
     UserModel addUser(UserModel model, User.UserRole role);
 
+    UserModel updateUser(UserModel user);
+
 //    UserModel addSuperAdmin(User user);
 
 }

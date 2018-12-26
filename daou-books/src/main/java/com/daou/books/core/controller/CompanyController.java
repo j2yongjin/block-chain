@@ -1,12 +1,11 @@
 package com.daou.books.core.controller;
 
+import com.daou.books.core.domain.model.CompanyModel;
 import com.daou.books.core.domain.model.CreateCompanyModel;
 import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.service.CompanyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class CompanyController {
@@ -26,5 +25,10 @@ public class CompanyController {
             @RequestParam(value = "direction", required = false, defaultValue = "desc") String direction,
             @RequestParam(value = "property", required = false, defaultValue = "id") String property) {
         return companyService.getCompanies(page, offset, direction, property);
+    }
+
+    @PutMapping("/api/company")
+    public CompanyModel updateCompany(@RequestBody CompanyModel model) {
+        return companyService.updateCompany(model);
     }
 }

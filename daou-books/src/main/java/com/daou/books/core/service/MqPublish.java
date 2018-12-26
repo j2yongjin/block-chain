@@ -1,10 +1,10 @@
 package com.daou.books.core.service;
 
+import com.daou.books.queue.RabbitChannelFactory;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.GetResponse;
 import lombok.extern.slf4j.Slf4j;
-import queue.network.RabbitChannelFactory;
 import queue.util.JsonConverter;
 
 import java.io.IOException;

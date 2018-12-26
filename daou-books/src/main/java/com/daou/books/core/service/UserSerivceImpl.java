@@ -141,7 +141,15 @@ public class UserSerivceImpl implements UserSerivce {
         return model;
     }
 
-//    @Override
+    @Override
+    @Transactional
+    public UserModel updateUser(UserModel model) {
+        User user = userRepository.findOne(model.getId());
+        user.setName(model.getName());
+        return new UserModel(userRepository.save(user));
+    }
+
+    //    @Override
 //    @Transactional
 //    public UserModel addUser(User user, User.UserRole role) {
 //
