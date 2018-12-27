@@ -65,10 +65,11 @@ export class AppComponent implements OnInit {
       this.router.navigate(['admin/company/list']);
       return;
     } else if (this.userInfo.role == 'ADMIN') {
-      this.router.navigate(['admin/user/create']);
+      this.router.navigate(['admin/user/list']);
       return;
     } else {
-      // this.router.navigate([`/alliance/oauth/history`]);
+      this.router.navigate(['book/list']);
+      return;
     }
   }
 

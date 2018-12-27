@@ -54,49 +54,49 @@
     </h1>
     <div class="wrap_gnb">
       <ul class="gnb">
-        <li routerLinkActive="on" routerLink="/admin/company/list">
+        <li *ngIf="userInfo.role == 'SUPERADMIN'" routerLinkActive="on" routerLink="/admin/company/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">회사 & 관리자</span>
           </a>
         </li>
-        <li routerLinkActive="on" routerLink="/admin/company/create">
+        <!--<li routerLinkActive="on" routerLink="/admin/company/create">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">회사 & 관리자 생성</span>
           </a>
-        </li>
-        <li routerLinkActive="on" routerLink="/admin/user/list">
+        </li>-->
+        <li *ngIf="userInfo.role == 'ADMIN'" routerLinkActive="on" routerLink="/admin/user/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">계정 리스트</span>
           </a>
         </li>
-        <li routerLinkActive="on" routerLink="/admin/user/create">
+        <!--<li routerLinkActive="on" routerLink="/admin/user/create">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">계정</span>
           </a>
-        </li>
-        <li routerLinkActive="on" routerLink="/admin/book/list">
+        </li>-->
+        <li *ngIf="userInfo.role == 'ADMIN'" routerLinkActive="on" routerLink="/admin/book/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">책 조회</span>
           </a>
         </li>
-        <li routerLinkActive="on" routerLink="/book/register">
+        <!--<li routerLinkActive="on" routerLink="/book/register">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">책등록</span>
           </a>
-        </li>
-        <li routerLinkActive="on" routerLink="/book/list">
+        </li>-->
+        <li *ngIf="userInfo.role == 'USER'" routerLinkActive="on" routerLink="/book/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">책 조회</span>
           </a>
         </li>
-        <li routerLinkActive="on" routerLink="/book/order/list">
+        <li *ngIf="userInfo.role == 'USER'" routerLinkActive="on" routerLink="/book/order/list">
           <a class="menu" >
             <span class="ic log"></span>
             <span class="txt">주문 조회</span>

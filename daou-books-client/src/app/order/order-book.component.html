@@ -3,6 +3,7 @@
     <h2>
       주문하기
     </h2>
+    <login-info></login-info>
   </div>
   <div class="body">
     <div class="form">
@@ -114,4 +115,5 @@
          (onButtonClicked)="order($event)"
   >
   </modal>
+  <modal #notiMessage identifier="notiMessage" title="{{message}}"></modal>
 </div>

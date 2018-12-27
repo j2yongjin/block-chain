@@ -3,6 +3,7 @@
     <h2>
       책등록
     </h2>
+    <login-info></login-info>
   </div>
   <div class="body">
     <div class="form">
@@ -14,7 +15,7 @@
           <div class="form_td">
             <div class="wrap_v">
 						  <span class="form_ipt">
-							  <input class=" w_l" type="text" value="" [(ngModel)]="book.code"/>
+							  <input class=" w_l" type="text" value="" [(ngModel)]="book.isbn" disabled/>
 						  </span>
             </div>
           </div>
@@ -94,8 +95,9 @@
       </div>
     </div>
     <div class="footer">
-      <button class="btn minor l" >취소</button>
+      <button class="btn minor l" routerLink="/admin/book/list">취소</button>
       <button class="btn major l" (click)="createBook()" >저장</button>
     </div>
   </div>
+  <modal #notiMessage identifier="notiMessage" title="{{message}}"></modal>
 </div>

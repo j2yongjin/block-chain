@@ -22,6 +22,7 @@ import {OrderBookComponent} from "./order/order-book.component";
 import {OrderService} from "./order/order.service.component";
 import {ModalService} from "./common/modal/modal.service";
 import {OrderListComponent} from "./order/order-list.component";
+import {LoginInfoComponent} from "./common/logininfo/login-info.component";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {OrderListComponent} from "./order/order-list.component";
     BookListComponent,
     AccountListComponent,
     OrderBookComponent,
-    OrderListComponent
+    OrderListComponent,
+    LoginInfoComponent
   ],
   imports: [
     BrowserModule,
