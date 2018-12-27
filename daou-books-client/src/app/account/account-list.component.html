@@ -3,6 +3,10 @@
     <h2>
       계정 목록
     </h2>
+    <login-info></login-info>
+  </div>
+  <div class="toolbar" routerLink="/admin/user/create">
+    <a class="btn major">계정 추가</a>
   </div>
   <app-pagination [pageOptions]="pageOptions" (onSearchEvent)="onSearchEvent($event)">
   </app-pagination>

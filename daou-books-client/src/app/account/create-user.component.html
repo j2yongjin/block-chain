@@ -3,6 +3,7 @@
     <h2>
       계정 등록
     </h2>
+    <login-info></login-info>
   </div>
   <div class="body">
     <div class="form">
@@ -46,8 +47,9 @@
       </div>
     </div>
     <div class="footer">
-      <button class="btn minor l" >취소</button>
+      <button class="btn minor l" routerLink="/admin/user/list">취소</button>
       <button class="btn major l" (click)="createUser()">저장</button>
     </div>
   </div>
+  <modal #notiMessage identifier="notiMessage" title="{{message}}"></modal>
 </div>

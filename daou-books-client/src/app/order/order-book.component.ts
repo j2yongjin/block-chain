@@ -16,6 +16,7 @@ import {AuthService} from "../auth.service";
 export class OrderBookComponent {
 
   bookId: string;
+  message = '';
   book: Book = new Book();
 
   constructor(
@@ -41,7 +42,10 @@ export class OrderBookComponent {
       orderBook.book = this.book;
       let userInfo = JSON.parse(this.cookieService.get(AuthService.COOKIE_KEY));
       orderBook.user = userInfo;
-      this.orderService.orderBook(orderBook).subscribe();
+      this.orderService.orderBook(orderBook).subscribe(res => {
+        this.message = '주문되었습니다.';
+        this.modalService.getModal('notiMessage').openNoti();
+      });
     }
   }
 }
