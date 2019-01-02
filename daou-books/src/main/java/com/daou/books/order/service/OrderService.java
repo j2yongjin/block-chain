@@ -16,4 +16,5 @@ public interface OrderService {
 
     void updateOrderStatus(Long orderId, ProcessStatus status);
 
+    Order getOrder(Long orderId);
 }

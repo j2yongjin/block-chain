@@ -6,7 +6,10 @@ import com.daou.books.book.repository.BookRepository;
 import com.daou.books.core.ProcessStatus;
 import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.core.service.MqPublish;
+import com.daou.books.order.domain.Order;
+import com.daou.books.order.service.OrderService;
 import com.daou.books.queue.RabbitChannelFactory;
+import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.compress.utils.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +24,9 @@ import java.util.List;
 @Slf4j
 @Service
 public class BookServiceImpl implements BookService {
+
+    @Autowired
+    private OrderService orderService;
 
     @Autowired
     private BookRepository bookRepository;
@@ -83,7 +89,16 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public BookModel updateSalesCount(Long orderId, String isbn) {
-        Book book = getBook(isbn);
+        Order order = orderService.getOrder(orderId);
+        if(null == order) {
+            return null;
+        }
+
+        Book book = order.getBook();
+        if(Strings.isNullOrEmpty(isbn) || isbn.equals(book.getIsbn())) {
+            return null;
+        }
+
         Long salesCount = book.getSalesCount();
         book.setSalesCount(salesCount + 1);
         return updateBook(book);
@@ -93,6 +108,10 @@ public class BookServiceImpl implements BookService {
     @Transactional
     public BookModel updateBookStatus(String isbn, ProcessStatus status) {
         Book book = getBook(isbn);
+
+        if(null == book) {
+            return null;
+        }
 
         if(null == status) {
             book.setStatus(ProcessStatus.COMPLETED);

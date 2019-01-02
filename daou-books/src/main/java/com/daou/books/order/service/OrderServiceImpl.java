@@ -34,6 +34,11 @@ public class OrderServiceImpl implements OrderService {
     private BookService bookService;
 
     @Override
+    public Order getOrder(Long orderId) {
+        return orderRepository.findOne(orderId);
+    }
+
+    @Override
     public PageModel<OrderModel> getOrders(Pageable pageable, Long userId) {
 
         Page<Order> orders = orderRepository.findByUserId(userId, pageable);
