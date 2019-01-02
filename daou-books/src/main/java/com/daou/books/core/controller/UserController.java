@@ -28,7 +28,7 @@ public class UserController {
         return userSerivce.getUsers(pageable, companyId);
     }
 
-    @GetMapping("/api/user")
+    @GetMapping("/api/user/{userId}")
     @ResponseBody
     public UserModel getUser(@PathVariable Long userId) {
         return new UserModel(userSerivce.getUser(userId));

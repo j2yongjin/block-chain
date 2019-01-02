@@ -26,5 +26,5 @@ public interface BookService {
 
     void pushQueueForBook(Book book);
 
-    BookModel updateSalesCount(String isbn, Long count);
+    BookModel updateSalesCount(Long orderId, String isbn);
 }

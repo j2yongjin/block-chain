@@ -16,6 +16,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -61,6 +62,14 @@ public class OrderServiceImpl implements OrderService {
         order.setStatus(ProcessStatus.WAITING_BLOCKCHAIN);
 
         return new OrderModel(orderRepository.save(order));
+    }
+
+    @Override
+    @Transactional
+    public void updateOrderStatus(Long orderId, ProcessStatus status) {
+        Order order = orderRepository.findOne(orderId);
+        order.setStatus(status);
+        orderRepository.save(order);
     }
 
     @Async

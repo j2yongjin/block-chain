@@ -1,11 +1,10 @@
 package com.daou.books.order.service;
 
+import com.daou.books.core.ProcessStatus;
 import com.daou.books.core.domain.model.PageModel;
 import com.daou.books.order.domain.Order;
 import com.daou.books.order.domain.OrderModel;
 import org.springframework.data.domain.Pageable;
-
-import java.util.List;
 
 public interface OrderService {
 
@@ -14,5 +13,7 @@ public interface OrderService {
     OrderModel addOrder(OrderModel model);
 
     void pushQueueForOrder(Order order);
+
+    void updateOrderStatus(Long orderId, ProcessStatus status);
 
 }

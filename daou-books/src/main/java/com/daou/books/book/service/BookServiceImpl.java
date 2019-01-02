@@ -82,14 +82,10 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public BookModel updateSalesCount(String isbn, Long count) {
+    public BookModel updateSalesCount(Long orderId, String isbn) {
         Book book = getBook(isbn);
         Long salesCount = book.getSalesCount();
-        if(null == count || count == 0L) {
-            book.setSalesCount(salesCount + 1);
-        } else {
-            book.setSalesCount(salesCount + count);
-        }
+        book.setSalesCount(salesCount + 1);
         return updateBook(book);
     }
 
