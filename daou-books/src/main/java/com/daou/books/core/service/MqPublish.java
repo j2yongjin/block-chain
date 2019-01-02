@@ -1,11 +1,11 @@
 package com.daou.books.core.service;
 
+import com.daou.books.common.util.JsonConverter;
 import com.daou.books.queue.RabbitChannelFactory;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.GetResponse;
 import lombok.extern.slf4j.Slf4j;
-import queue.util.JsonConverter;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
