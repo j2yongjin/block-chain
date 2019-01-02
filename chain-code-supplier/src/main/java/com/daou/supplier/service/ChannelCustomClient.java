@@ -128,8 +128,10 @@ public class ChannelCustomClient {
 
         // send to orderer
         CompletableFuture<TransactionEvent> cf = channel.sendTransaction(response);
-        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,cf.toString());
 
+        // waiting
+        cf.get();
+        Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,cf.toString());
 
         return response;
     }

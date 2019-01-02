@@ -67,11 +67,11 @@ public class MainApplication {
             byte[] channelConfigurationSignatures = fabClient.getInstance()
                     .getChannelConfigurationSignature(channelConfiguration, org1Admin);
 
-            // 채널 인스턴스 생성 (org1Admin)
+            // channel instance create (org1Admin)
             Channel mychannel = fabClient.getInstance().newChannel(SupplierConfig.CHANNEL_NAME, orderer, channelConfiguration,
                     channelConfigurationSignatures);
 
-            // 피어들의 인스턴스 생성
+            // peer
             Peer peer0_org1 = fabClient.getInstance().newPeer(SupplierConfig.ORG1_PEER_0, SupplierConfig.ORG1_PEER_0_URL);
 //            Peer peer1_org1 = fabClient.getInstance().newPeer(SupplierConfig.ORG1_PEER_1, SupplierConfig.ORG1_PEER_1_URL);
             Peer peer0_org2 = fabClient.getInstance().newPeer(SupplierConfig.ORG2_PEER_0, SupplierConfig.ORG2_PEER_0_URL);

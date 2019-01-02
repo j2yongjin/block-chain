@@ -2,6 +2,7 @@ package queue.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 /**
  * block-chain
@@ -11,6 +12,7 @@ import lombok.Data;
  * @desc :
  */
 @Data
+@EqualsAndHashCode(callSuper = false)
 public class UpdateSaleBooksDto extends QueueDto {
 
 

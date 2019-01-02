@@ -1,0 +1,8 @@
+rabbitmq:
+  username: guest
+  password: quest
+  ip: localhost
+  port:
+
+spring:
+  profiles: dev

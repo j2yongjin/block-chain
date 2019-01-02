@@ -1,8 +1,9 @@
 package consumer.task;
 
+import consumer.service.ChainCodeConsumer;
+import consumer.service.DefaultConsumerService;
 import lombok.extern.slf4j.Slf4j;
 import queue.config.QueueConfig;
-import queue.consume.DefaultConsumerService;
 import queue.dto.QueueDto;
 import queue.network.RabbitChannelFactory;
 
@@ -24,7 +25,7 @@ public class ConsumerTask implements Runnable {
     public void run() {
         try {
             DefaultConsumerService defaultConsumerService = new DefaultConsumerService(rabbitChannelFactory, QueueConfig.EXCHANGE_NAME, QueueConfig.QUEUE);
-            Consumer<QueueDto> consumer = queue.consume.ConsumerTask.getConsumer();
+            Consumer<QueueDto> consumer = ChainCodeConsumer.getConsumer();
             defaultConsumerService.consume(consumer);
         }catch (Exception e){
             log.error("Consumer task Error" ,e);

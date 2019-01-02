@@ -1,4 +1,17 @@
-sourceCompatibility = 1.8
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.2.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
 
 repositories {
     mavenCentral()
@@ -6,6 +19,8 @@ repositories {
 
 dependencies{
 
+    compile("org.springframework.boot:spring-boot-starter-web")
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     compile project(":books-queue")
     compile project(":chain-code-supplier")
 
