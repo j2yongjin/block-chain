@@ -56,6 +56,7 @@ public class DefaultConsumerService implements ConsumerService {
                     long deliveryTag = envelope.getDeliveryTag();
 
                     QueueDto queueDto = JsonConverter.toObject(body);
+                    log.info("Consumer queueDto {} " , queueDto);
                     consumer.accept(queueDto);
                     channel.basicAck(deliveryTag, false);
                 }catch (Exception e){

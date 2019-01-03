@@ -130,7 +130,7 @@ public class ChannelCustomClient {
         CompletableFuture<TransactionEvent> cf = channel.sendTransaction(response);
 
         // waiting
-        cf.get();
+//        cf.get();
         Logger.getLogger(ChannelCustomClient.class.getName()).log(Level.INFO,cf.toString());
 
         return response;
