@@ -18,6 +18,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import queue.dto.AddBooksDto;
 
 import java.util.List;
 
@@ -129,7 +130,8 @@ public class BookServiceImpl implements BookService {
         try {
             RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
             MqPublish mqPublish = new MqPublish(rabbitChannelFactory,"books-queue","book");
-            mqPublish.basicPublish(book);
+            AddBooksDto addBooksDto = new AddBooksDto(book.getIsbn(),book.getTitle(),book.getWriter(),book.getAmount(),book.getIssueDate().toString(), (int) (long)(book.getSalesCount()));
+            mqPublish.basicPublish(addBooksDto);
         } catch (Exception e) {
             log.error("book push queue error: {}, {}", book.getIsbn(), e);
         }
