@@ -35,6 +35,9 @@ export class AdminBookListComponent {
       }},
       {dataName:"판매부수", thClass:"state", dataCode:"salesCount", sortable:true, convertData: function(data){
           return data.salesCount ? data.salesCount : "-";
+        }},
+      {dataName:"주문상태", thClass:"state", dataCode:"status", sortable:false, convertData: function(data){
+          return data.status ? data.status : "-";
         }}]
   };
 

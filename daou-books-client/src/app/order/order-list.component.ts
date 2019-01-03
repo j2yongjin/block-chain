@@ -29,6 +29,9 @@ export class OrderListComponent {
         }},
       {dataName:"출판사", thClass:"name", dataCode:"book.publisher", sortable:true, convertData: function(data){
           return data.book.publisher ? data.book.publisher : "-";
+        }},
+      {dataName:"주문상태", thClass:"state", dataCode:"status", sortable:false, convertData: function(data){
+          return data.status ? data.status : "-";
         }}]
   };
 
