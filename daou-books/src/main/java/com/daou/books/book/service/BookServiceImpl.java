@@ -70,6 +70,7 @@ public class BookServiceImpl implements BookService {
     public BookModel addBook(Book book) {
         String isbn = generateIsbn();
         book.setIsbn(isbn);
+        book.setSalesCount(0L);
 
         // 1. DB insert
         Book newBook = bookRepository.save(book);
