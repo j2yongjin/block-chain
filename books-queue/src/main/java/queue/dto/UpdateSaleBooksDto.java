@@ -15,9 +15,10 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = false)
 public class UpdateSaleBooksDto extends QueueDto {
 
-
     @JsonProperty
     String isbn;
+    @JsonProperty
+    Long orderId;
     @JsonProperty
     Integer salesCount;
 
@@ -25,9 +26,10 @@ public class UpdateSaleBooksDto extends QueueDto {
         super(ChainFunction.UPDATE_BOOK);
     };
 
-    public UpdateSaleBooksDto(String isbn, Integer salesCount) {
+    public UpdateSaleBooksDto(String isbn, Long orderId, Integer salesCount) {
         super(ChainFunction.UPDATE_BOOK);
         this.isbn = isbn;
+        this.orderId = orderId;
         this.salesCount = salesCount;
     }
 

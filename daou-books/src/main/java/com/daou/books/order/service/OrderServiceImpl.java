@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import queue.dto.UpdateSaleBooksDto;
 
 import java.util.List;
 
@@ -82,12 +83,13 @@ public class OrderServiceImpl implements OrderService {
     public void pushQueueForOrder(Order order) {
         try {
             RabbitChannelFactory rabbitChannelFactory = new RabbitChannelFactory("localhost");
-            MqPublish mqPublish = new MqPublish(rabbitChannelFactory,"books-queue","order");
-            mqPublish.basicPublish(order);
+            MqPublish mqPublish = new MqPublish(rabbitChannelFactory,"books-queue","book");
+            UpdateSaleBooksDto updateSaleBooksDto = new UpdateSaleBooksDto(order.getBook().getIsbn(), order.getId(), 1);
+            mqPublish.basicPublish(updateSaleBooksDto);
         } catch (Exception e) {
             log.error("order push queue error: {}, {}", order.getId(), e);
         }
-
     }
+
 
 }

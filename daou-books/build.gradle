@@ -33,4 +33,6 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework.boot:spring-boot-starter-data-jpa:1.5.2.RELEASE")
     testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile project(":books-queue")
+    compile project(":chain-code-supplier")
 }
