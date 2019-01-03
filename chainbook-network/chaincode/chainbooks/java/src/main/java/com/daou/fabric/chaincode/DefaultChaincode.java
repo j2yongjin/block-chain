@@ -89,6 +89,8 @@ public class DefaultChaincode extends ChaincodeBase{
         String booksJsonResult = objectMapper.writeValueAsString(booksResult);
         stub.putStringState(isbn,booksJsonResult);
 
+        logger.info(String.format(">>> Updated Sales Count:\n-ISBN : %s\n-IssueDate : %s\n-Amount : %d\n-SalesCount : %d", booksResult.getIsbn(), booksResult.getIssueDate(), booksResult.getAmount(), booksResult.getSalesCount()));
+
         return newSuccessResponse("invoke finished successfully", ByteString.copyFrom(isbn + ": " + isbn + " " + updateCount + ": " + updateCount, UTF_8).toByteArray());
     }
 
@@ -97,6 +99,8 @@ public class DefaultChaincode extends ChaincodeBase{
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonString = objectMapper.writeValueAsString(books);
         stub.putStringState(books.getIsbn(),jsonString);
+
+        logger.info(String.format(">>> Added New Book:\n-ISBN: %s\n-IssueDate : %s\n-Amount : %d\n-SalesCount : %d", books.getIsbn(), books.getIssueDate(), books.getAmount(), books.getSalesCount()));
 
         return newSuccessResponse("invoke finished successfully", ByteString.copyFrom("isbn" + ": " + books.getIsbn() + " " + "saleCount " + ": " + books.getSalesCount(), UTF_8).toByteArray());
     }
