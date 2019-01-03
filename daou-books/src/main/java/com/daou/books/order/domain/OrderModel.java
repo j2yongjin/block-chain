@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.compress.utils.Lists;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -23,8 +24,11 @@ public class OrderModel {
 
         private ProcessStatus status;
 
+        private Date createdAt;
+
         public OrderModel(Order order) {
                 this.id = order.getId();
+                this.createdAt = order.getCreatedAt();
                 this.user = new UserModel(order.getUser());
                 this.book = new BookModel(order.getBook());
                 this.status = order.getStatus();
