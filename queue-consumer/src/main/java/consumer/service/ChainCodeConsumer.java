@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 @Slf4j
 public class ChainCodeConsumer {
 
-    static final String COMMIT_COMPLETED_URL = "/api/event/book/add";
+    static final String COMMIT_COMPLETED_URL = "http://localhost/api/event/book/add";
 
     public static Consumer<QueueDto> getConsumer(){
         Consumer<QueueDto> queueDtoConsumer = (queueDto -> {
@@ -35,19 +35,7 @@ public class ChainCodeConsumer {
                         ,addBooksDto.getAmount(),addBooksDto.getIssueDate(),addBooksDto.getSalesCount());
                         defaultBookService.addBooks(books);
 
-
-                        HttpHeaders headers = new HttpHeaders();
-                        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
-//                        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-
-                        MultiValueMap<String,String> form = new LinkedMultiValueMap<>();
-                        form.add("isbn", books.getIsbn());
-                        form.add("status", "3");
-
-                        RestTemplate restTemplate = new RestTemplate();
-                        ResponseEntity<String> responseEntity =
-                                restTemplate.exchange(COMMIT_COMPLETED_URL, HttpMethod.PUT
-                                        ,new HttpEntity<>(headers),String.class,form);
+                        // api call chainbook update complete
 
                     }catch (Exception e){
                         log.error("chaincode invoke addbooks error" ,e);
@@ -61,6 +49,11 @@ public class ChainCodeConsumer {
                     try{
                         DefaultBookService defaultBookService = new DefaultBookService();
                         defaultBookService.incrementSalesCount(updateSaleBooksDto.getIsbn(),updateSaleBooksDto.getSalesCount());
+
+                        RestTemplate restTemplate = new RestTemplate();
+                        String url = COMMIT_COMPLETED_URL +"/"+updateSaleBooksDto.getIsbn();
+                        restTemplate.put(url,null);
+//                        restTemplate.put(COMMIT_COMPLETED_URL,updateSaleBooksDto.getIsbn());
                     }catch (Exception e){
                         log.error("chaincode invoke updatebooks error books :" + updateSaleBooksDto);
                     }
