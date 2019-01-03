@@ -100,7 +100,7 @@ public class BookServiceImpl implements BookService {
         }
 
         Book book = order.getBook();
-        if(Strings.isNullOrEmpty(isbn) || isbn.equals(book.getIsbn())) {
+        if(Strings.isNullOrEmpty(isbn) || !isbn.equals(book.getIsbn())) {
             return null;
         }
 
