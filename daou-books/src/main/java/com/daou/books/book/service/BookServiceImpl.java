@@ -72,13 +72,16 @@ public class BookServiceImpl implements BookService {
         String isbn = generateIsbn();
         book.setIsbn(isbn);
         book.setSalesCount(0L);
+        book.setStatus(ProcessStatus.SAVED_DB);
 
         // 1. DB insert
         Book newBook = bookRepository.save(book);
 
         // 2. chaincode에 등록
         pushQueueForBook(newBook);
-
+        newBook.setStatus(ProcessStatus.WAITING_BLOCKCHAIN);
+        bookRepository.save(book);
+        
         return new BookModel(newBook);
     }
 
