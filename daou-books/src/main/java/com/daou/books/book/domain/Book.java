@@ -31,10 +31,10 @@ public class Book {
     private String writer;
 
     @Column
-    private Integer amount = 0;
+    private Integer amount;
 
     @Column
-    private Long salesCount = 0L;
+    private Long salesCount;
 
     @Column
     private String publisher;
