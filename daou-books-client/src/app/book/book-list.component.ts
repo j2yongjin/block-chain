@@ -15,7 +15,9 @@ export class AdminBookListComponent {
     url:"api/books",
     defaultSorting:[[1, "desc"]],
     params:{apitype:"APPR"},
-    columns:[{dataName:"제목", thClass:"date", dataCode:"title", sortable:true, convertData: function(data){
+    columns:[{dataName:"ISBN", thClass:"date", dataCode:"isbn", sortable:true, convertData: function(data){
+        return data.isbn ? data.isbn : "-";
+      }},{dataName:"제목", thClass:"date", dataCode:"title", sortable:true, convertData: function(data){
         return data.title ? data.title : "-";
       }},
       {dataName:"작가", thClass:"system", dataCode:"writer", sortable:false, convertData: function(data){
@@ -36,7 +38,7 @@ export class AdminBookListComponent {
       {dataName:"판매부수", thClass:"state", dataCode:"salesCount", sortable:true, convertData: function(data){
           return data.salesCount ? data.salesCount : "-";
         }},
-      {dataName:"주문상태", thClass:"state", dataCode:"status", sortable:false, convertData: function(data){
+      {dataName:"등록상태", thClass:"state", dataCode:"status", sortable:false, convertData: function(data){
           return data.status ? data.status : "-";
         }}]
   };
