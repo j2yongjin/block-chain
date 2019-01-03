@@ -44,6 +44,7 @@ public class BookModel {
         this.subtitle = book.getSubtitle();
         this.writer = book.getWriter();
         this.amount = book.getAmount();
+        this.salesCount = book.getSalesCount();
         this.publisher = book.getPublisher();
         this.issueDate = book.getIssueDate();
         this.status = book.getStatus();
