@@ -2,7 +2,5 @@ rootProject.name = 'block-chain'
 include "books-chaincode"
 include "chain-code-supplier"
 include "daou-books"
-include "daou-books-admin"
-include "block-chain-common"
 include "queue-consumer"
 include "books-queue"
